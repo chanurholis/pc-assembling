@@ -24,6 +24,18 @@
                         <table class="table table-striped table-bordered">
                             <?php foreach ($result as $r) : ?>
                                 <tr>
+                                    <th>PC</th>
+                                    <td><?= $r->nama_pc ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Institusi</th>
+                                    <td><?= $r->institusi ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Pengguna</th>
+                                    <td><?= $r->pengguna ?></td>
+                                </tr>
+                                <tr>
                                     <th>Processor</th>
                                     <td><?= $r->processor ?></td>
                                 </tr>

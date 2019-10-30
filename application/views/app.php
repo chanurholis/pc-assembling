@@ -1,6 +1,4 @@
-<!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
 			<?= $judul ?>
@@ -10,16 +8,14 @@
 		</ol>
 	</section>
 
-	<!-- Main content -->
 	<section class="content container-fluid">
-		<!-- SELECT EXAMPLE -->
 		<div class="box box-default">
 			<div class="box-header with-border">
 				<h3 class="box-title">Komponen PC</h3>
 
 			</div>
-			<!-- /.box-header -->
 			<div class="box-body">
+
 				<form action="<?= base_url('home/tambah') ?>" method="post">
 					<div class="row">
 						<div class="col-md-8">
@@ -31,15 +27,24 @@
 
 						<div class="col-md-8">
 							<div class="form-group">
+								<label>Institusi</label>
+								<select name="institusi" class="form-control select2" style="width: 100%;">
+									<option value="" selected="selected">-- Pilih Processor --</option>
+									<option value="POLTEKPOS">POLTEKPOS</option>
+									<option value="STIMLOG">STIMLOG</option>
+									<option value="YPBPI">YPBPI</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="col-md-8">
+							<div class="form-group">
 								<label>Processor</label>
-								<select name="processor" id="proce" class="form-control select2" style="width: 100%;">
+								<select name="processor" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih Processor --</option>
 									<?php foreach ($brand_processor as $b) : ?>
 										<option value="<?= $b->brand_processor ?>"><?= $b->brand_processor ?></option>
 									<?php endforeach ?>
-								</select>
-								<select name="" class="form-control select2" id="proce">
-									<option value=""></option>
 								</select>
 							</div>
 						</div>
@@ -69,6 +74,7 @@
 								<label>Hardisk</label>
 								<select name="hardisk" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih Hardisk --</option>
+									<option value="Hardisk">Hardisk</option>
 									<?php foreach ($hardisk as $h) { ?><option><?= $h->nama_hardisk ?></option> <?php } ?>
 								</select>
 							</div>
@@ -79,6 +85,7 @@
 								<label>SSD</label>
 								<select name="ssd" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih SSD --</option>
+									<option value="SSD">SSD</option>
 									<?php foreach ($ssd as $s) { ?><option><?= $s->nama_ssd ?></option> <?php } ?>
 								</select>
 							</div>
@@ -89,7 +96,7 @@
 								<label>Casing</label>
 								<select name="casing" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih Casing --</option>
-									<option>Alabama</option>
+									<option value="Casing">Casing</option>
 								</select>
 							</div>
 						</div>
@@ -99,7 +106,7 @@
 								<label>VGA</label>
 								<select name="vga" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih VGA --</option>
-									<option>Alabama</option>
+									<option value="VGA">VGA</option>
 								</select>
 							</div>
 						</div>
@@ -109,7 +116,7 @@
 								<label>PSU</label>
 								<select name="psu" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih PSU --</option>
-									<option>Alabama</option>
+									<option value="PSU">PSU</option>
 								</select>
 							</div>
 						</div>
@@ -162,12 +169,7 @@
 						</div>
 				</form>
 			</div>
-			<!-- /.row -->
 		</div>
-		<!-- /.box-body -->
 </div>
-<!-- /.box -->
 </section>
-<!-- /.content -->
 </div>
-<!-- /.content-wrapper -->

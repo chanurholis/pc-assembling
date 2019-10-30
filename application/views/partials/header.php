@@ -17,8 +17,6 @@
     <link rel="stylesheet" href="<?= base_url('assets/template/dist/css/AdminLTE.min.css') ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/template/dist/css/skins/skin-blue.min.css') ?>">
-    <!-- Bootstrap -->
-    <!-- <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>"> -->
 
 
     <!-- Google Font -->
@@ -28,11 +26,10 @@
 <body class="skin-blue sidebar-mini sidebar-open">
     <div class="wrapper">
 
-        <!-- Main Header -->
         <header class="main-header">
 
             <!-- Logo -->
-            <a href="#" class="logo">
+            <a href="<?= base_url('home') ?>" class="logo">
                 <!-- mini logo for sidebar mini 50x50 pixels -->
                 <span class="logo-mini"><b>PC</b>A</span>
                 <!-- logo for regular state and mobile devices -->
@@ -48,17 +45,12 @@
                 <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
-                        <!-- User Account Menu -->
                         <li class="dropdown user user-menu">
-                            <!-- Menu Toggle Button -->
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                <!-- The user image in the navbar-->
                                 <!-- <img src="<?= base_url('assets/template/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image"> -->
-                                <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs"><?= $this->session->userdata('username'); ?></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <!-- The user image in the menu -->
                                 <li class="user-header">
                                     <img src="<?= base_url('assets/template/dist/img/cwe.jpg') ?>" class="img-circle" alt="User Image">
 
@@ -67,7 +59,6 @@
                                         <small>Role : Admin | Login : 2 Menit</small>
                                     </p>
                                 </li>
-                                <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
                                         <a href="" class="btn btn-default btn-flat">Ubah Password</a>
@@ -78,7 +69,6 @@
                                 </li>
                             </ul>
                         </li>
-                        <!-- Control Sidebar Toggle Button -->
                     </ul>
                 </div>
             </nav>

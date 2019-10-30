@@ -23,7 +23,8 @@ class Home extends CI_Controller
     public function tambah()
     {
         $user = $this->session->userdata('username');
-        $nama_pc = htmlspecialchars($this->input->post('nama', true));
+        $nama_pc = htmlspecialchars($this->input->post('nama_pc', true));
+        $institusi = htmlspecialchars($this->input->post('institusi', true));
         $processor = htmlspecialchars($this->input->post('processor', true));
         $motherboard = htmlspecialchars($this->input->post('motherboard', true));
         $ram = htmlspecialchars($this->input->post('ram', true));
@@ -42,6 +43,7 @@ class Home extends CI_Controller
         $data = array(
             'user' => $user,
             'nama_pc' => $nama_pc,
+            'institusi' => $institusi,
             'processor' => $processor,
             'motherboard' => $motherboard,
             'ram' => $ram,

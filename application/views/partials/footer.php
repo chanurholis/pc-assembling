@@ -5,16 +5,15 @@
 </footer>
 <div class="control-sidebar-bg"></div>
 </div>
-<!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 3 -->
-<script src="assets/template/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="<?= base_url('assets/template/bower_components/jquery/dist/jquery.min.js') ?>"></script>
 <!-- Bootstrap 3.3.7 -->
-<script src="assets/template/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<?= base_url('assets/template/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
 <!-- AdminLTE App -->
-<script src="assets/template/dist/js/adminlte.min.js"></script>
+<script src="<?= base_url('assets/template/dist/js/adminlte.min.js') ?>"></script>
 
 
 </body>
