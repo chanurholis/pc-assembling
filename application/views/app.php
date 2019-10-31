@@ -126,6 +126,7 @@
 								<label>Keyboard</label>
 								<select name="keyboard" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih Keyboard --</option>
+									<option value="Keyboard">Keyboard</option>
 								</select>
 							</div>
 						</div>
@@ -135,6 +136,7 @@
 								<label>Mouse</label>
 								<select name="mouse" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih Mouse --</option>
+									<option value="Mouse">Mouse</option>
 								</select>
 							</div>
 						</div>
@@ -144,6 +146,7 @@
 								<label>Monitor</label>
 								<select name="monitor" class="form-control select2" style="width: 100%;">
 									<option value="" selected="selected">-- Pilih Monitor --</option>
+									<option value="Monitor">Monitor</option>
 								</select>
 							</div>
 						</div>

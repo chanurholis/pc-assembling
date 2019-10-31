@@ -79,6 +79,10 @@
                                     <th>Monitor</th>
                                     <td><?= $r->monitor ?></td>
                                 </tr>
+                                <tr>
+                                    <th>Digunakan</th>
+                                    <td><?= $r->tgl_digunakan ?></td>
+                                </tr>
                             <?php endforeach ?>
                         </table>
                     </div>

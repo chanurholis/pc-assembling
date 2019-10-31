@@ -25,6 +25,7 @@
                                 <form action="<?= base_url('master/search_brand_processor') ?>" method="post">
                                     <input type="text" name="keyword" class="form-control pull-right" placeholder="Search">
                                 </form>
+                                <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash') ?>"></div>
                             </div>
                         </div>
                     </div>

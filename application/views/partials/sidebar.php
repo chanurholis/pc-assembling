@@ -2,7 +2,7 @@
     <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
             <li class="treeview">
-                <a href="<?= base_url('home') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a>
+            <li><a href="<?= base_url('home/') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
             </li>
             <li class="treeview">
                 <a href="">

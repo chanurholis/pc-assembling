@@ -36,9 +36,9 @@ class Home extends CI_Controller
         $keyboard = htmlspecialchars($this->input->post('keyboard', true));
         $mouse = htmlspecialchars($this->input->post('mouse', true));
         $monitor = htmlspecialchars($this->input->post('monitor', true));
-        $dibuat = time();
+        $tgl_input = date('d m Y');
         $pengguna = htmlspecialchars($this->input->post('pengguna', true));
-        $digunakan = htmlspecialchars($this->input->post('digunakan', true));
+        $tgl_digunakan = htmlspecialchars($this->input->post('digunakan', true));
 
         $data = array(
             'user' => $user,
@@ -55,9 +55,9 @@ class Home extends CI_Controller
             'keyboard' => $keyboard,
             'mouse' => $mouse,
             'monitor' => $monitor,
-            'dibuat' => $dibuat,
+            'tgl_input' => $tgl_input,
             'pengguna' => $pengguna,
-            'digunakan' => $digunakan
+            'tgl_digunakan' => $tgl_digunakan
         );
 
         $this->db->insert('rakit', $data);

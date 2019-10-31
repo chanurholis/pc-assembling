@@ -5,23 +5,61 @@ class Login extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_login');
+        $this->load->library('form_validation');
     }
 
     public function index()
     {
-        $data['judul'] = 'Login PCA';
-        $this->load->view('login', $data);
+        $this->form_validation->set_rules('email', 'Email', 'valid_email|required');
+        $this->form_validation->set_rules('password', 'Password', 'required');
+
+        if ($this->form_validation->run() == false) {
+            $data['judul'] = 'Login PCA';
+            $this->load->view('login', $data);
+        } else {
+            $email = htmlspecialchars($this->input->post('email', true));
+            $password = htmlspecialchars($this->input->post('password', true));
+
+            $user = $this->db->get_where('user', ['email' => $email])->row_array();
+
+            $where = array(
+                'email' => $user['email']
+            );
+
+            $cek = $this->M_login->cek($where);
+            if ($cek != NULL) {
+                if (password_verify($password, $cek->password)) {
+
+                    $data_session = array(
+                        'username' => $user['username'],
+                        'level' => $user['role'],
+                        'status' => 'login',
+                    );
+
+                    $this->session->set_userdata($data_session);
+                    redirect('/home');
+                } else {
+                    $this->session->set_flashdata('message', '<small class="text-danger">
+                    Terjadi Kesalahan!</small>');
+                    redirect('/');
+                }
+            } else {
+                $this->session->set_flashdata('message', '<small class="text-danger">
+                Terjadi Kesalahan!</small>');
+                redirect('/');
+            }
+        }
     }
 
     public function aksi()
     {
-        $id_user = htmlspecialchars($this->input->post('id_user', true));
+        $email = htmlspecialchars($this->input->post('email', true));
         $password = htmlspecialchars($this->input->post('password', true));
 
-        $user = $this->db->get_where('user', ['id_user' => $id_user])->row_array();
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
         $where = array(
-            'id_user' => $user['id_user']
+            'email' => $user['email']
         );
 
         $cek = $this->M_login->cek($where);

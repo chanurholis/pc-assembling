@@ -21,11 +21,12 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form role="form" action="<?= base_url('master/aksi_brand_processor') ?>" method="post">
+            <form role="form" action="<?= base_url('master/tambah_brand_processor') ?>" method="post">
                 <div class="box-body">
                     <div class="form-group col-md-8">
                         <label for="brand">Brand Processor</label>
                         <input type="text" id="brand" name="brand_processor" class="form-control" autofocus>
+                        <?= form_error('brand_processor', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
                         <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-plus"></i> Tambah</button>

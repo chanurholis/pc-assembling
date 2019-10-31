@@ -14,7 +14,10 @@
 <script src="<?= base_url('assets/template/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/template/dist/js/adminlte.min.js') ?>"></script>
-
+<!-- Sweet Alert -->
+<script src="<?= base_url('assets/sweetalert/dist/sweetalert2.all.min.js') ?>"></script>
+<!-- Script -->
+<script src="<?= base_url('assets/js/script.js') ?>"></script>
 
 </body>
 

@@ -5,11 +5,12 @@ class Master extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_master');
+        $this->load->library('form_validation');
     }
 
     public function index()
     {
-        $this->load->view('home');
+        redirect('home');
     }
 
 
@@ -62,23 +63,26 @@ class Master extends CI_Controller
 
     public function tambah_brand_processor()
     {
-        $data['judul'] = 'Tambah Data Brand Processor';
-        $this->load->view('partials/header', $data);
-        $this->load->view('partials/sidebar');
-        $this->load->view('master/tambah_brand_processor', $data);
-        $this->load->view('partials/footer');
-    }
+        $this->form_validation->set_rules('brand_processor', 'Brand Processor', 'required|is_unique[m_brand_processor.brand_processor]|trim');
 
-    public function aksi_brand_processor()
-    {
-        $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
+        if ($this->form_validation->run() == false) {
+            $data['judul'] = 'Tambah Data Brand Processor';
+            $this->load->view('partials/header', $data);
+            $this->load->view('partials/sidebar');
+            $this->load->view('master/tambah_brand_processor', $data);
+            $this->load->view('partials/footer');
+        } else {
+            $this->session->set_flashdata('flash', 'ditambah');
 
-        $data = array(
-            'brand_processor' => $brand_processor,
-        );
+            $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
 
-        $this->db->insert('m_brand_processor', $data);
-        redirect('master/brand_processor');
+            $data = array(
+                'brand_processor' => $brand_processor,
+            );
+
+            $this->db->insert('m_brand_processor', $data);
+            redirect('master/brand_processor');
+        }
     }
 
     public function ubah_processor($id)
