@@ -13,6 +13,16 @@ class Home extends CI_Controller
         if ($status_login == NULL) {
             redirect('/');
         }
+
+        $where = array('username' => $this->session->userdata('username'));
+
+        $data = array(
+            'last_login' => time()
+        );
+
+        $this->db->where($where);
+        $this->db->update('user', $data);
+
         $data['judul'] = "Simulasi Rakit PC";
         $this->load->view('partials/header', $data);
         $this->load->view('partials/sidebar');

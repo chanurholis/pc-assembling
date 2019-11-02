@@ -6,8 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title><?= $judul ?></title>
+
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
     <link rel="stylesheet" href="<?= base_url('assets/template/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="<?= base_url('assets/template/bower_components/font-awesome/css/font-awesome.min.css') ?>">
@@ -18,7 +20,6 @@
 
     <link rel="stylesheet" href="<?= base_url('assets/template/dist/css/skins/skin-blue.min.css') ?>">
 
-
     <!-- Google Font -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
 </head>
@@ -28,36 +29,27 @@
 
         <header class="main-header">
 
-            <!-- Logo -->
             <a href="<?= base_url('home') ?>" class="logo">
-                <!-- mini logo for sidebar mini 50x50 pixels -->
+
                 <span class="logo-mini"><b>PC</b>A</span>
-                <!-- logo for regular state and mobile devices -->
+
                 <span class="logo-lg"><b>PC</b> Assembling</span>
             </a>
 
-            <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
-                <!-- Sidebar toggle button-->
                 <a href="" class="sidebar-toggle" data-toggle="push-menu" role="button">
                     <span class="sr-only">Toggle navigation</span>
                 </a>
-                <!-- Navbar Right Menu -->
                 <div class="navbar-custom-menu">
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                <!-- <img src="<?= base_url('assets/template/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image"> -->
+                                <img src="<?= base_url('assets/template/dist/img/cwe.jpg') ?>" class="user-image" alt="User Image">
                                 <span class="hidden-xs"><?= $this->session->userdata('username'); ?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
                                     <img src="<?= base_url('assets/template/dist/img/cwe.jpg') ?>" class="img-circle" alt="User Image">
-
-                                    <p>
-                                        <?= $this->session->userdata('username'); ?>
-                                        <small>Role : Admin | Login : 2 Menit</small>
-                                    </p>
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">

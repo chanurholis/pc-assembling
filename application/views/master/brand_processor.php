@@ -1,3 +1,4 @@
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash') ?>"></div>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -25,7 +26,6 @@
                                 <form action="<?= base_url('master/search_brand_processor') ?>" method="post">
                                     <input type="text" name="keyword" class="form-control pull-right" placeholder="Search">
                                 </form>
-                                <div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash') ?>"></div>
                             </div>
                         </div>
                     </div>
@@ -45,7 +45,7 @@
                                     <td scope="row"><?= $p->brand_processor ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('master/ubah_brand_processor/') . $p->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a onclick="return confirm('Yakin?');" href="<?= base_url('master/hapus_brand_processor/') . $p->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('master/hapus_brand_processor/') . $p->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -54,11 +54,7 @@
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
                         <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">Previous</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">Next</a></li>
+                            <?= $pagination ?>
                         </ul>
                     </div>
                 </div>

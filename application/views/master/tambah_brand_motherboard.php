@@ -26,6 +26,7 @@
                     <div class="form-group col-md-8">
                         <label for="nama">Brand Motherboard</label>
                         <input type="text" id="nama" name="brand_motherboard" class="form-control" autofocus>
+                        <?= form_error('brand_motherboard', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
                         <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-plus"></i> Tambah</button>

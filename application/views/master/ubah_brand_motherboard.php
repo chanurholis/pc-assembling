@@ -27,7 +27,8 @@
                         <label for="nama">Brand Motherboard</label>
                         <?php foreach ($brand_motherboard as $m) : ?>
                             <input type="hidden" name="id" value="<?= $m->id ?>">
-                            <input type="text" id="nama" name="brand_motherboard" class="form-control" value="<?= $m->brand_motherboard ?>" autofocus>
+                            <input type="text" id="nama" name="brand_motherboard" class="form-control" value="<?= $m->brand_motherboard ?>">
+                            <?= form_error('brand_motherboard', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>
                     </div>
                     <div class="form-group col-md-8">

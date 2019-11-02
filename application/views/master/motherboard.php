@@ -1,3 +1,4 @@
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash'); ?>"></div>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -46,7 +47,7 @@
                                     <td scope="row"><?= $m->motherboard ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('master/ubah_motherboard/') . $m->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a onclick="return confirm('Yakin?');" href="<?= base_url('master/hapus_motherboard/') . $m->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('master/hapus_motherboard/') . $m->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

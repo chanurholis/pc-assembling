@@ -6,6 +6,7 @@ class Master extends CI_Controller
         parent::__construct();
         $this->load->model('M_master');
         $this->load->library('form_validation');
+        $this->load->library('pagination');
     }
 
     public function index()
@@ -39,20 +40,70 @@ class Master extends CI_Controller
 
     public function aksi_processor()
     {
-        $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
-        $nama_processor = htmlspecialchars($this->input->post('processor', true));
+        $this->form_validation->set_rules('processor', 'Processor', 'required|is_unique[m_processor.nama_processor]|trim');
 
-        $data = array(
-            'brand_processor' => $brand_processor,
-            'nama_processor' => $nama_processor
-        );
+        if ($this->form_validation->run() == false) {
+            $data['judul'] = 'Tambah Data Processor';
+            $data['brand_processor'] = $this->M_master->brand_processor()->result();
+            $this->load->view('partials/header', $data);
+            $this->load->view('partials/sidebar');
+            $this->load->view('master/tambah_processor', $data);
+            $this->load->view('partials/footer');
+        } else {
+            $this->session->set_flashdata('flash', 'Ditambahkan');
 
-        $this->db->insert('m_processor', $data);
-        redirect('master/processor');
+            $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
+            $nama_processor = htmlspecialchars($this->input->post('processor', true));
+
+            $data = array(
+                'brand_processor' => $brand_processor,
+                'nama_processor' => $nama_processor
+            );
+
+            $this->db->insert('m_processor', $data);
+            redirect('master/processor');
+        }
     }
 
     public function brand_processor()
     {
+        //konfigurasi pagination
+        $config['base_url'] = site_url('master/brand_processor'); //site url
+        $config['total_rows'] = $this->db->count_all('m_brand_processor'); //total row
+        $config['per_page'] = 5;  //show record per halaman
+        $config["uri_segment"] = 3;  // uri parameter
+        $choice = $config["total_rows"] / $config["per_page"];
+        $config["num_links"] = floor($choice);
+
+        // Membuat Style pagination untuk BootStrap v4
+        $config['first_link']       = 'First';
+        $config['last_link']        = 'Last';
+        $config['next_link']        = 'Next';
+        $config['prev_link']        = 'Prev';
+        $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+        $config['full_tag_close']   = '</ul></nav></div>';
+        $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+        $config['num_tag_close']    = '</span></li>';
+        $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+        $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+        $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+        $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['prev_tagl_close']  = '</span>Next</li>';
+        $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+        $config['first_tagl_close'] = '</span></li>';
+        $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+        $config['last_tagl_close']  = '</span></li>';
+
+        $this->pagination->initialize($config);
+        $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+        //panggil function get_mahasiswa_list yang ada pada mmodel mahasiswa_model. 
+        $data['data'] = $this->M_master->tampil_brand_processor($config["per_page"], $data['page']);
+
+        $data['pagination'] = $this->pagination->create_links();
+
+        //load view mahasiswa view
         $data['judul'] = 'Master Brand Processor';
         $data['processor'] = $this->M_master->tampil_brand_processor()->result();
         $this->load->view('partials/header', $data);
@@ -72,7 +123,7 @@ class Master extends CI_Controller
             $this->load->view('master/tambah_brand_processor', $data);
             $this->load->view('partials/footer');
         } else {
-            $this->session->set_flashdata('flash', 'ditambah');
+            $this->session->set_flashdata('flash', 'Ditambahkan');
 
             $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
 
@@ -98,6 +149,8 @@ class Master extends CI_Controller
 
     public function aksi_ubah_processor()
     {
+        $this->session->set_flashdata('flash', 'Diubah');
+
         $id = htmlspecialchars($this->input->post('id', true));
         $nama_processor = htmlspecialchars($this->input->post('nama_processor', true));
 
@@ -125,22 +178,41 @@ class Master extends CI_Controller
 
     public function aksi_ubah_brand_processor()
     {
-        $id = htmlspecialchars($this->input->post('id', true));
-        $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
+        $this->form_validation->set_rules('brand_processor', 'Brand Processor', 'required|trim|is_unique[m_brand_processor.brand_processor]');
 
-        $where = array('id' => $id);
+        if ($this->form_validation->run() == false) {
 
-        $data = array(
-            'brand_processor' => $brand_processor
-        );
+            $id = htmlspecialchars($this->input->post('id', true));
 
-        $this->db->where($where);
-        $this->db->update('m_brand_processor', $data);
-        redirect('master/brand_processor');
+            $data['judul'] = 'Ubah Data Brand Processor';
+            $where = array('id' => $id);
+            $data['brand_processor'] = $this->M_master->ubah_brand_processor($where)->result();
+            $this->load->view('partials/header', $data);
+            $this->load->view('partials/sidebar');
+            $this->load->view('master/ubah_brand_processor', $data);
+            $this->load->view('partials/footer');
+        } else {
+            $this->session->set_flashdata('flash', 'Diubah');
+
+            $id = htmlspecialchars($this->input->post('id', true));
+            $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
+
+            $where = array('id' => $id);
+
+            $data = array(
+                'brand_processor' => $brand_processor
+            );
+
+            $this->db->where($where);
+            $this->db->update('m_brand_processor', $data);
+            redirect('master/brand_processor');
+        }
     }
 
     public function hapus_processor($id)
     {
+        $this->session->set_flashdata('flash', 'Dihapus');
+
         $where = array('id' => $id);
         $this->M_master->hapus($where, 'm_processor');
         redirect('master/processor');
@@ -148,6 +220,8 @@ class Master extends CI_Controller
 
     public function hapus_brand_processor($id)
     {
+        $this->session->set_flashdata('flash', 'Dihapus');
+
         $where = array('id' => $id);
         $this->M_master->hapus($where, 'm_brand_processor');
         redirect('master/brand_processor');
@@ -203,14 +277,27 @@ class Master extends CI_Controller
 
     public function aksi_motherboard()
     {
-        $brand_motherboard = htmlspecialchars($this->input->post('brand_motherboard', true));
-        $motherboard = htmlspecialchars($this->input->post('motherboard', true));
-        $data = array(
-            'brand_motherboard' => $brand_motherboard,
-            'motherboard' => $motherboard
-        );
-        $this->db->insert('m_motherboard', $data);
-        redirect('master/motherboard');
+        $this->form_validation->set_rules('motherboard', 'Motherboard', 'required|trim|is_unique[m_motherboard.motherboard]');
+
+        if ($this->form_validation->run() == false) {
+            $data['judul'] = 'Tambah Data Motherboard';
+            $data['brand_motherboard'] = $this->M_master->tampil_brand_motherboard()->result();
+            $this->load->view('partials/header', $data);
+            $this->load->view('partials/sidebar');
+            $this->load->view('master/tambah_motherboard', $data);
+            $this->load->view('partials/footer');
+        } else {
+            $this->session->set_flashdata('flash', 'Ditambahkan');
+
+            $brand_motherboard = htmlspecialchars($this->input->post('brand_motherboard', true));
+            $motherboard = htmlspecialchars($this->input->post('motherboard', true));
+            $data = array(
+                'brand_motherboard' => $brand_motherboard,
+                'motherboard' => $motherboard
+            );
+            $this->db->insert('m_motherboard', $data);
+            redirect('master/motherboard');
+        }
     }
 
     public function brand_motherboard()
@@ -234,10 +321,22 @@ class Master extends CI_Controller
 
     public function aksi_brand_motherboard()
     {
-        $brand_motherboard = htmlspecialchars($this->input->post('brand_motherboard', true));
-        $data = array('brand_motherboard' => $brand_motherboard);
-        $this->db->insert('m_brand_motherboard', $data);
-        redirect('master/brand_motherboard');
+        $this->form_validation->set_rules('brand_motherboard', 'Brand Motherboard', 'required|trim|is_unique[m_brand_motherboard.brand_motherboard]');
+
+        if ($this->form_validation->run() == false) {
+            $data['judul'] = 'Tambah Data Brand Motherboard';
+            $this->load->view('partials/header', $data);
+            $this->load->view('partials/sidebar');
+            $this->load->view('master/tambah_brand_motherboard', $data);
+            $this->load->view('partials/footer');
+        } else {
+            $this->session->set_flashdata('flash', 'Ditambahkan');
+
+            $brand_motherboard = htmlspecialchars($this->input->post('brand_motherboard', true));
+            $data = array('brand_motherboard' => $brand_motherboard);
+            $this->db->insert('m_brand_motherboard', $data);
+            redirect('master/brand_motherboard');
+        }
     }
 
     public function ubah_motherboard($id)
@@ -253,18 +352,34 @@ class Master extends CI_Controller
 
     public function aksi_ubah_motherboard()
     {
-        $id = htmlspecialchars($this->input->post('id', true));
-        $nama_motherboard = htmlspecialchars($this->input->post('nama_motherboard', true));
+        $this->form_validation->set_rules('nama_motherboard', 'Motherboard', 'required|trim|is_unique[m_motherboard.motherboard]');
 
-        $where = array('id' => $id);
+        if ($this->form_validation->run() == false) {
+            $id = htmlspecialchars($this->input->post('id', true));
 
-        $data = array(
-            'nama_motherboard' => $nama_motherboard
-        );
+            $data['judul'] = 'Ubah Data Motherboard';
+            $where = array('id' => $id);
+            $data['motherboard'] = $this->M_master->ubah_motherboard($where, 'motherboard')->result();
+            $this->load->view('partials/header', $data);
+            $this->load->view('partials/sidebar');
+            $this->load->view('master/ubah_motherboard', $data);
+            $this->load->view('partials/footer');
+        } else {
+            $this->session->set_flashdata('flash', 'Diubah');
 
-        $this->db->where($where);
-        $this->db->update('m_motherboard', $data);
-        redirect('master/motherboard');
+            $id = htmlspecialchars($this->input->post('id', true));
+            $nama_motherboard = htmlspecialchars($this->input->post('nama_motherboard', true));
+
+            $where = array('id' => $id);
+
+            $data = array(
+                'motherboard' => $nama_motherboard
+            );
+
+            $this->db->where($where);
+            $this->db->update('m_motherboard', $data);
+            redirect('master/motherboard');
+        }
     }
 
     public function ubah_brand_motherboard($id)
@@ -280,22 +395,40 @@ class Master extends CI_Controller
 
     public function aksi_ubah_brand_motherboard()
     {
-        $id = htmlspecialchars($this->input->post('id', true));
-        $brand_motherboard = htmlspecialchars($this->input->post('brand_motherboard', true));
+        $this->form_validation->set_rules('brand_motherboard', 'Brand Motherboard', 'required|trim|is_unique[m_brand_motherboard.brand_motherboard]');
 
-        $where = array('id' => $id);
+        if ($this->form_validation->run() == false) {
+            $id = htmlspecialchars($this->input->post('id', true));
 
-        $data = array(
-            'brand_motherboard' => $brand_motherboard
-        );
+            $data['judul'] = 'Ubah Data Brand Motherboard';
+            $where = array('id' => $id);
+            $data['brand_motherboard'] = $this->M_master->ubah_brand_motherboard($where)->result();
+            $this->load->view('partials/header', $data);
+            $this->load->view('partials/sidebar');
+            $this->load->view('master/ubah_brand_motherboard', $data);
+            $this->load->view('partials/footer');
+        } else {
+            $this->session->set_flashdata('flash', 'Diubah');
 
-        $this->db->where($where);
-        $this->db->update('m_brand_motherboard', $data);
-        redirect('master/brand_motherboard');
+            $id = htmlspecialchars($this->input->post('id', true));
+            $brand_motherboard = htmlspecialchars($this->input->post('brand_motherboard', true));
+
+            $where = array('id' => $id);
+
+            $data = array(
+                'brand_motherboard' => $brand_motherboard
+            );
+
+            $this->db->where($where);
+            $this->db->update('m_brand_motherboard', $data);
+            redirect('master/brand_motherboard');
+        }
     }
 
     public function hapus_motherboard($id)
     {
+        $this->session->set_flashdata('flash', 'Dihapus');
+
         $where = array('id' => $id);
         $this->M_master->hapus($where, 'm_motherboard');
         redirect('master/motherboard');
@@ -303,6 +436,8 @@ class Master extends CI_Controller
 
     public function hapus_brand_motherboard($id)
     {
+        $this->session->set_flashdata('flash', 'Dihapus');
+
         $where = array('id' => $id);
         $this->M_master->hapus($where, 'm_brand_motherboard');
         redirect('master/brand_motherboard');

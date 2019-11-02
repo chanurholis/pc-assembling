@@ -27,7 +27,8 @@
                         <label for="nama">Nama Processor</label>
                         <?php foreach ($motherboard as $m) : ?>
                             <input type="hidden" name="id" value="<?= $m->id ?>">
-                            <input type="text" id="nama" name="nama_motherboard" class="form-control" value="<?= $m->nama_motherboard ?>">
+                            <input type="text" id="nama" name="nama_motherboard" class="form-control" value="<?= $m->motherboard ?>">
+                            <?= form_error('nama_motherboard', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>
                     </div>
                     <div class="form-group col-md-8">

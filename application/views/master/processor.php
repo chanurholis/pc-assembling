@@ -1,3 +1,4 @@
+<div class="flash-data" data-flashdata="<?= $this->session->flashdata('flash') ?>"></div>
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -46,7 +47,7 @@
                                     <td scope="row"><?= $p->nama_processor ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('master/ubah_processor/') . $p->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a onclick="return confirm('Yakin?');" href="<?= base_url('master/hapus_processor/') . $p->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('master/hapus_processor/') . $p->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>
@@ -54,13 +55,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer clearfix">
-                        <ul class="pagination pagination-sm no-margin pull-right">
-                            <li><a href="#">Previous</a></li>
-                            <li><a href="#">1</a></li>
-                            <li><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li><a href="#">Next</a></li>
-                        </ul>
+
                     </div>
                 </div>
                 <!-- /.box -->
