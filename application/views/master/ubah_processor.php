@@ -28,6 +28,7 @@
                         <?php foreach ($processor as $p) : ?>
                             <input type="hidden" name="id" value="<?= $p->id ?>">
                             <input type="text" id="nama" name="nama_processor" class="form-control" autofocus value="<?= $p->nama_processor ?>">
+                            <?= form_error('nama_processor', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>
                     </div>
                     <div class="form-group col-md-8">

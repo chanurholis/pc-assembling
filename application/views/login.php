@@ -10,6 +10,8 @@
     <meta name="author" content="">
 
     <title><?= $judul ?></title>
+    <link rel="icon" type="png/image" href="<?= base_url('assets/ubuntu.png') ?>">
+
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="<?= base_url('assets/bootstrap/css/bootstrap.min.css') ?>">
     <link href="<?= base_url('assets/sbadmin/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">

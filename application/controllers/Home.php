@@ -9,25 +9,43 @@ class Home extends CI_Controller
 
     public function index()
     {
+        $role = $this->session->userdata('role');
         $status_login = $this->session->userdata('status');
+
         if ($status_login == NULL) {
             redirect('/');
+        } else {
+
+            if ($role == 'Admin') {
+                $where = array('username' => $this->session->userdata('username'));
+
+                $data = array(
+                    'last_login' => time()
+                );
+
+                $data['judul'] = 'Simulasi Rakit PC';
+                $this->load->view('partials/header', $data);
+                $this->load->view('partials/sidebar_admin');
+                $this->load->view('home');
+                $this->load->view('partials/footer');
+            } elseif ($role == 'Member') {
+
+                $where = array('username' => $this->session->userdata('username'));
+
+                $data = array(
+                    'last_login' => time()
+                );
+
+                $this->db->where($where);
+                $this->db->update('user', $data);
+
+                $data['judul'] = "Simulasi Rakit PC";
+                $this->load->view('partials/header', $data);
+                $this->load->view('partials/sidebar_member');
+                $this->load->view('home', $data);
+                $this->load->view('partials/footer');
+            }
         }
-
-        $where = array('username' => $this->session->userdata('username'));
-
-        $data = array(
-            'last_login' => time()
-        );
-
-        $this->db->where($where);
-        $this->db->update('user', $data);
-
-        $data['judul'] = "Simulasi Rakit PC";
-        $this->load->view('partials/header', $data);
-        $this->load->view('partials/sidebar');
-        $this->load->view('home', $data);
-        $this->load->view('partials/footer');
     }
 
     public function tambah()
@@ -84,7 +102,11 @@ class Home extends CI_Controller
         $data['hardisk'] = $this->M_data->tampil_hardisk()->result();
         $data['ssd'] = $this->M_data->tampil_ssd()->result();
         $this->load->view('partials/header', $data);
-        $this->load->view('partials/sidebar');
+        if ($this->session->userdata('role') == 'Admin') {
+            $this->load->view('partials/sidebar_admin');
+        } elseif ($this->session->userdata('role') == 'Member') {
+            $this->load->view('partials/sidebar_member');
+        }
         $this->load->view('app', $data);
         $this->load->view('partials/footer');
     }
@@ -95,7 +117,11 @@ class Home extends CI_Controller
         $user = $this->session->userdata('username');
         $data['rakit'] = $this->M_data->tampil($user)->result();
         $this->load->view('partials/header', $data);
-        $this->load->view('partials/sidebar');
+        if ($this->session->userdata('role') == 'Admin') {
+            $this->load->view('partials/sidebar_admin');
+        } elseif ($this->session->userdata('role') == 'Member') {
+            $this->load->view('partials/sidebar_member');
+        }
         $this->load->view('data_table', $data);
         $this->load->view('partials/footer');
     }
@@ -106,7 +132,11 @@ class Home extends CI_Controller
         $where = array('id' => $id);
         $data['result'] = $this->M_data->detail($where, 'rakit')->result();
         $this->load->view('partials/header', $data);
-        $this->load->view('partials/sidebar');
+        if ($this->session->userdata('role') == 'Admin') {
+            $this->load->view('partials/sidebar_admin');
+        } elseif ($this->session->userdata('role') == 'Member') {
+            $this->load->view('partials/sidebar_member');
+        }
         $this->load->view('detail_data', $data);
         $this->load->view('partials/footer');
     }
@@ -279,12 +309,5 @@ class Home extends CI_Controller
 
         $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
         $write->save('php://output');
-    }
-
-    public function master_processor()
-    {
-        $data['judul'] = 'Master Procesor';
-        $data['processor'] = $this->M_data->tampil_processor();
-        $this->load->view('master/processor', $data);
     }
 }

@@ -160,8 +160,14 @@
 
 						<div class="col-md-8">
 							<div class="form-group">
-								<label>Digunakan</label>
+								<label>Diserahkan</label>
 								<input type="date" class="form-control" name="digunakan" required>
+							</div>
+						</div>
+						<div class="col-md-8">
+							<div class="form-group">
+								<label>Upload Bukti</label>
+								<input type="file" class="form-control" name="digunakan" required>
 							</div>
 						</div>
 						<!-- /.col -->

@@ -24,7 +24,7 @@
                         <div class="box-tools">
                             <div class="input-group input-group hidden-xs" style="width: 200px; margin-top:5px;">
                                 <form action="<?= base_url('master/search_brand_processor') ?>" method="post">
-                                    <input type="text" name="keyword" class="form-control pull-right" placeholder="Search">
+                                    <input type="text" name="keyword" class="form-control pull-right col-4" placeholder="Search">
                                 </form>
                             </div>
                         </div>

@@ -28,6 +28,7 @@
                             <label for="brand">Brand RAM</label>
                             <input type="hidden" name="id" value="<?= $b->id ?>">
                             <input type="text" id="brand" name="brand_ram" value="<?= $b->brand_ram ?>" class="form-control" autofocus>
+                            <?= form_error('brand_ram', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>
                     </div>
                     <div class="form-group col-md-8">

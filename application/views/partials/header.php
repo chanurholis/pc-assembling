@@ -9,6 +9,7 @@
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <link rel="icon" type="png/image" href="<?= base_url('assets/ubuntu.png') ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/template/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>">
     <!-- Font Awesome -->
@@ -50,6 +51,10 @@
                             <ul class="dropdown-menu">
                                 <li class="user-header">
                                     <img src="<?= base_url('assets/template/dist/img/cwe.jpg') ?>" class="img-circle" alt="User Image">
+                                    <p>
+                                        <span class="text-center"><?= $this->session->userdata('username'); ?></span>
+                                        <small><b>Role :</b> <?= $this->session->userdata('role') ?> | <b>Last Login :</b> <?= date('d/m/Y H:i'), strtotime($this->session->userdata('last_login')) ?> </small>
+                                    </p>
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">

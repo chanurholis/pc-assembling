@@ -48,7 +48,7 @@
                         </ul>
                     </li>
                     <li class="treeview">
-                        <a href=""><i class="fa fa-circle-o"></i> Hardisk
+                        <a href=""><i class="fa fa-circle-o"></i> Storage
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
@@ -60,7 +60,57 @@
                         </ul>
                     </li>
                     <li class="treeview">
-                        <a href=""><i class="fa fa-circle-o"></i> Level One
+                        <a href=""><i class="fa fa-circle-o"></i> Casing
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href=""><i class="fa fa-circle-o"></i> VGA
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href=""><i class="fa fa-circle-o"></i> PSU
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href=""><i class="fa fa-circle-o"></i> Keyboard
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href=""><i class="fa fa-circle-o"></i> Mouse
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                        </ul>
+                    </li>
+                    <li class="treeview">
+                        <a href=""><i class="fa fa-circle-o"></i> Monitor
                             <span class="pull-right-container">
                                 <i class="fa fa-angle-left pull-right"></i>
                             </span>
