@@ -53,7 +53,7 @@
                                     <img src="<?= base_url('assets/template/dist/img/cwe.jpg') ?>" class="img-circle" alt="User Image">
                                     <p>
                                         <span class="text-center"><?= $this->session->userdata('username'); ?></span>
-                                        <small><b>Role :</b> <?= $this->session->userdata('role') ?> | <b>Last Login :</b> <?= date('d/m/Y H:i'), strtotime($this->session->userdata('last_login')) ?> </small>
+                                        <small><b>Role :</b> <?= $this->session->userdata('role') ?> | <b>Login :</b> <?= date('j M Y'), strtotime($this->session->userdata('last_login')) ?> </small>
                                     </p>
                                 </li>
                                 <li class="user-footer">

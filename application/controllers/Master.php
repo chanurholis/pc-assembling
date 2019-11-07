@@ -628,21 +628,40 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $ddr = htmlspecialchars($this->input->post('ddr', true));
-            $brand_ram = htmlspecialchars($this->input->post('brand_ram', true));
-            $nama_ram = htmlspecialchars($this->input->post('nama_ram', true));
-            $kapasitas = htmlspecialchars($this->input->post('kapasitas', true));
-            $satuan_kapasitas = htmlspecialchars($this->input->post('satuan_kapasitas', true));
+            $this->form_validation->set_rules('ddr', 'DDR', 'required|trim');
+            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim');
+            $this->form_validation->set_rules('nama_ram', 'Type RAM', 'required|trim');
+            $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required|trim');
 
-            $data = array(
-                'ddr' => $ddr,
-                'brand_ram' => $brand_ram,
-                'nama_ram' => $nama_ram,
-                'kapasitas' => $kapasitas,
-                'satuan_kapasitas' => $satuan_kapasitas
-            );
-            $this->db->insert('m_ram', $data);
-            redirect('master/ram');
+            if ($this->form_validation->run() == false) {
+                $data['judul'] = 'Tambah Data RAM';
+                $data['ddr'] = $this->M_master->tampil_ddr()->result();
+                $data['brand'] = $this->M_master->tampil_brand_ram()->result();
+                $data['kapasitas'] = $this->M_master->tampil_kapasitas_ram()->result();
+                $data['ram'] = $this->M_master->tampil_ram()->result();
+                $this->load->view('partials/header', $data);
+                $this->load->view('partials/sidebar_admin');
+                $this->load->view('master/tambah_ram', $data);
+                $this->load->view('partials/footer');
+            } else {
+                $this->session->set_flashdata('flash', 'Ditambahkan');
+
+                $ddr = htmlspecialchars($this->input->post('ddr', true));
+                $brand_ram = htmlspecialchars($this->input->post('brand_ram', true));
+                $nama_ram = htmlspecialchars($this->input->post('nama_ram', true));
+                $kapasitas = htmlspecialchars($this->input->post('kapasitas', true));
+                $satuan_kapasitas = htmlspecialchars($this->input->post('satuan', true));
+
+                $data = array(
+                    'ddr' => $ddr,
+                    'brand_ram' => $brand_ram,
+                    'nama_ram' => $nama_ram,
+                    'kapasitas' => $kapasitas,
+                    'satuan' => $satuan_kapasitas
+                );
+                $this->db->insert('m_ram', $data);
+                redirect('master/ram');
+            }
         }
     }
 
@@ -652,11 +671,12 @@ class Master extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data RAM';
-            $data['ddr'] = $this->M_master->tampil_ddr()->result();
             $data['brand'] = $this->M_master->tampil_brand_ram()->result();
-            $data['kapasitas'] = $this->M_master->tampil_kapasitas_ram()->result();
+            $data['ddr'] = $this->M_master->tampil_ddr()->result();
             $data['ram'] = $this->M_master->ubah_ram($id);
+            $data['kapasitas'] = $this->M_master->tampil_kapasitas_ram()->result();
             $data['result'] = $this->M_master->ram($id)->result();
+
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
             $this->load->view('master/ubah_ram', $data);
@@ -669,26 +689,48 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $id = htmlspecialchars($this->input->post('id', true));
-            $ddr = htmlspecialchars($this->input->post('ddr', true));
-            $brand_ram = htmlspecialchars($this->input->post('brand_ram', true));
-            $nama_ram = htmlspecialchars($this->input->post('nama_ram', true));
-            $kapasitas = htmlspecialchars($this->input->post('kapasitas', true));
-            $satuan_kapasitas = htmlspecialchars($this->input->post('satuan_kapasitas', true));
+            $this->form_validation->set_rules('ddr', 'DDR', 'required|trim');
+            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim');
+            $this->form_validation->set_rules('nama_ram', 'Type RAM', 'required|trim');
+            $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required|trim');
 
-            $where = array('id' => $id);
+            if ($this->form_validation->run() == false) {
+                $id = htmlspecialchars($this->input->post('id', true));
 
-            $data = array(
-                'ddr' => $ddr,
-                'brand_ram' => $brand_ram,
-                'nama_ram' => $nama_ram,
-                'kapasitas' => $kapasitas,
-                'satuan_kapasitas' => $satuan_kapasitas
-            );
+                $data['judul'] = 'Ubah Data RAM';
+                $data['ddr'] = $this->M_master->tampil_ddr()->result();
+                $data['brand'] = $this->M_master->tampil_brand_ram()->result();
+                $data['kapasitas'] = $this->M_master->tampil_kapasitas_ram()->result();
+                $data['ram'] = $this->M_master->ubah_ram($id);
+                $data['result'] = $this->M_master->ram($id)->result();
+                $this->load->view('partials/header', $data);
+                $this->load->view('partials/sidebar_admin');
+                $this->load->view('master/ubah_ram', $data);
+                $this->load->view('partials/footer');
+            } else {
+                $this->session->set_flashdata('flash', 'Diubah');
 
-            $this->db->where($where);
-            $this->db->update('m_ram', $data);
-            redirect('master/ram');
+                $id = htmlspecialchars($this->input->post('id', true));
+                $ddr = htmlspecialchars($this->input->post('ddr', true));
+                $brand_ram = htmlspecialchars($this->input->post('brand_ram', true));
+                $nama_ram = htmlspecialchars($this->input->post('nama_ram', true));
+                $kapasitas = htmlspecialchars($this->input->post('kapasitas', true));
+                $satuan_kapasitas = htmlspecialchars($this->input->post('satuan', true));
+
+                $where = array('id' => $id);
+
+                $data = array(
+                    'ddr' => $ddr,
+                    'brand_ram' => $brand_ram,
+                    'nama_ram' => $nama_ram,
+                    'kapasitas' => $kapasitas,
+                    'satuan' => $satuan_kapasitas
+                );
+
+                $this->db->where($where);
+                $this->db->update('m_ram', $data);
+                redirect('master/ram');
+            }
         }
     }
 
@@ -697,6 +739,8 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
+            $this->session->set_flashdata('flash', 'Dihapus');
+
             $where = array('id' => $id);
             $this->M_master->hapus($where, 'm_ram');
             redirect('master/ram');
@@ -735,14 +779,26 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $ddr_ram = htmlspecialchars($this->input->post('ddr_ram', true));
+            $this->form_validation->set_rules('ddr_ram', 'DDR RAM', 'required|trim|is_unique[m_ddr_ram.ddr]');
 
-            $data = array(
-                'ddr' => $ddr_ram
-            );
+            if ($this->form_validation->run() == false) {
+                $data['judul'] = 'Master DDR RAM';
+                $this->load->view('partials/header', $data);
+                $this->load->view('partials/sidebar_admin');
+                $this->load->view('master/tambah_ddr_ram', $data);
+                $this->load->view('partials/footer');
+            } else {
+                $this->session->set_flashdata('flash', 'Ditambahkan');
 
-            $this->db->insert('m_ddr_ram', $data);
-            redirect('master/ddr_ram');
+                $ddr_ram = htmlspecialchars($this->input->post('ddr_ram', true));
+
+                $data = array(
+                    'ddr' => $ddr_ram
+                );
+
+                $this->db->insert('m_ddr_ram', $data);
+                redirect('master/ddr_ram');
+            }
         }
     }
 
@@ -751,6 +807,8 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
+            $this->session->set_flashdata('flash', 'Dihapus');
+
             $where = array('id' => $id);
             $this->M_master->hapus($where, 'm_ddr_ram');
             redirect('master/ddr_ram');
@@ -833,18 +891,34 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $id = htmlspecialchars($this->input->post('id', true));
-            $ddr_ram = htmlspecialchars($this->input->post('ddr_ram', true));
+            $this->form_validation->set_rules('ddr_ram', 'DDR RAM', 'required|trim|is_unique[m_ddr_ram.ddr]');
 
-            $where = array('id' => $id);
+            if ($this->form_validation->run() == false) {
+                $id = htmlspecialchars($this->input->post('id', true));
 
-            $data = array(
-                'ddr' => $ddr_ram
-            );
+                $data['judul'] = 'Ubah Data DDR RAM';
+                $where = array('id' => $id);
+                $data['ddr'] = $this->M_master->ubah_ddr_ram($where)->result();
+                $this->load->view('partials/header', $data);
+                $this->load->view('partials/sidebar_admin');
+                $this->load->view('master/ubah_ddr_ram', $data);
+                $this->load->view('partials/footer');
+            } else {
+                $this->session->set_flashdata('flash', 'Diubah');
 
-            $this->db->where($where);
-            $this->db->update('m_ddr_ram', $data);
-            redirect('master/ddr_ram');
+                $id = htmlspecialchars($this->input->post('id', true));
+                $ddr_ram = htmlspecialchars($this->input->post('ddr_ram', true));
+
+                $where = array('id' => $id);
+
+                $data = array(
+                    'ddr' => $ddr_ram
+                );
+
+                $this->db->where($where);
+                $this->db->update('m_ddr_ram', $data);
+                redirect('master/ddr_ram');
+            }
         }
     }
 
@@ -990,16 +1064,28 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $kapasitas_ram =  htmlspecialchars($this->input->post('kapasitas_ram', true));
-            $satuan =  htmlspecialchars($this->input->post('satuan', true));
+            $this->form_validation->set_rules('kapasitas_ram', 'Kapasitas RAM', 'required|trim|is_unique[m_kapasitas_ram.kapasitas_ram]');
 
-            $data = array(
-                'kapasitas_ram' => $kapasitas_ram,
-                'satuan' => $satuan
-            );
+            if ($this->form_validation->run() == false) {
+                $data['judul'] = 'Tambah Data Kapasitas RAM';
+                $this->load->view('partials/header', $data);
+                $this->load->view('partials/sidebar_admin');
+                $this->load->view('master/tambah_kapasitas_ram');
+                $this->load->view('partials/footer');
+            } else {
+                $this->session->set_flashdata('flash', 'Ditambahkan');
 
-            $this->db->insert('m_kapasitas_ram', $data);
-            redirect('master/kapasitas_ram');
+                $kapasitas_ram =  htmlspecialchars($this->input->post('kapasitas_ram', true));
+                $satuan =  htmlspecialchars($this->input->post('satuan', true));
+
+                $data = array(
+                    'kapasitas_ram' => $kapasitas_ram,
+                    'satuan' => $satuan
+                );
+
+                $this->db->insert('m_kapasitas_ram', $data);
+                redirect('master/kapasitas_ram');
+            }
         }
     }
 
@@ -1023,16 +1109,32 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $id = htmlspecialchars($this->input->post('id', true));
-            $kapasitas_ram = htmlspecialchars($this->input->post('kapasitas_ram', true));
+            $this->form_validation->set_rules('kapasitas_ram', 'Kapasitas RAM', 'required|trim|is_unique[m_kapasitas_ram.kapasitas_ram]');
 
-            $where = array('id' => $id);
+            if ($this->form_validation->run() == false) {
+                $id = htmlspecialchars($this->input->post('id', true));
 
-            $data = array('kapasitas_ram' => $kapasitas_ram);
+                $data['judul'] = 'Ubah Data Kapasitas RAM';
+                $where = array('id' => $id);
+                $data['kapasitas_ram'] = $this->M_master->ubah_kapasitas_ram($where)->result();
+                $this->load->view('partials/header', $data);
+                $this->load->view('partials/sidebar_admin');
+                $this->load->view('master/ubah_kapasitas_ram', $data);
+                $this->load->view('partials/footer');
+            } else {
+                $this->session->set_flashdata('flash', 'Diubah');
 
-            $this->db->where($where);
-            $this->db->update('m_kapasitas_ram', $data);
-            redirect('master/kapasitas_ram');
+                $id = htmlspecialchars($this->input->post('id', true));
+                $kapasitas_ram = htmlspecialchars($this->input->post('kapasitas_ram', true));
+
+                $where = array('id' => $id);
+
+                $data = array('kapasitas_ram' => $kapasitas_ram);
+
+                $this->db->where($where);
+                $this->db->update('m_kapasitas_ram', $data);
+                redirect('master/kapasitas_ram');
+            }
         }
     }
 
@@ -1041,6 +1143,8 @@ class Master extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
+            $this->session->set_flashdata('flash', 'Dihapus');
+
             $where = array('id' => $id);
             $this->db->where($where);
             $this->db->delete('m_kapasitas_ram');

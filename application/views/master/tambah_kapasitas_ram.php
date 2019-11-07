@@ -26,6 +26,7 @@
                     <div class="form-group col-md-8">
                         <label for="kapasitas">Kapasitas RAM</label>
                         <input type="number" id="kapasitas" name="kapasitas_ram" class="form-control" autofocus>
+                        <?= form_error('kapasitas_ram', '<small class="text-danger">', '</small>') ?>
                         <small>Note : Satuan GB</small>
                         <input type="hidden" value="GB" name="satuan" class="form-control">
                     </div>

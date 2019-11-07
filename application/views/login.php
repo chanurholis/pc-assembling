@@ -49,7 +49,7 @@
                                             <?= $this->session->flashdata('message'); ?>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user rounded-0" placeholder="Password" autofocus>
+                                            <input type="password" name="password" class="form-control form-control-user rounded-0" placeholder="Password">
                                             <?= form_error('password', '<small class="text-danger">', '</small>') ?>
                                             <?= $this->session->flashdata('message'); ?>
                                         </div>

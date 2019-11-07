@@ -28,6 +28,7 @@
                         <?php foreach ($ddr as $d) : ?>
                             <input type="hidden" name="id" id="ddr" value="<?= $d->id ?>">
                             <input type="number" id="ddr" name="ddr_ram" value="<?= $d->ddr ?>" class="form-control">
+                            <?= form_error('ddr_ram', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>
                     </div>
                     <div class="form-group col-md-8">

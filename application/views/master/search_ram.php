@@ -22,7 +22,7 @@
                         <a href="<?= base_url('master/tambah_ram') ?>" class="btn btn-primary btn-flat"><i class="fa fa-plus"></i> RAM</a>
                         <div class="box-tools">
                             <div class="input-group input-group hidden-xs" style="width: 200px; margin-top:5px;">
-                                <form action="<?= base_url('master/search_processor') ?>" method="post">
+                                <form action="<?= base_url('master/search_ram') ?>" method="post">
                                     <input type="text" name="keyword" class="form-control pull-right" placeholder="Search">
                                 </form>
                             </div>
@@ -35,9 +35,8 @@
                                 <th class="text-center" scope="col" width="10px;">No</th>
                                 <th scope="col">DDR</th>
                                 <th scope="col">Brand RAM</th>
-                                <th scope="col">RAM</th>
+                                <th scope="col">Type RAM</th>
                                 <th scope="col">Kapasitas</th>
-                                <th scope="col">Satuan</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
@@ -48,11 +47,10 @@
                                     <td scope="row"><?= $r->ddr ?></td>
                                     <td scope="row"><?= $r->brand_ram ?></td>
                                     <td scope="row"><?= $r->nama_ram ?></td>
-                                    <td scope="row"><?= $r->kapasitas ?></td>
-                                    <td scope="row"><?= $r->satuan_kapasitas ?></td>
+                                    <td scope="row"><?= $r->kapasitas ?><?= $r->satuan ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('master/ubah_ram/') . $r->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a onclick="return confirm('Yakin?');" href="<?= base_url('master/hapus_ram/') . $r->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('master/hapus_ram/') . $r->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

@@ -28,6 +28,7 @@
                             <label for="kapasitas">Kapasitas RAM</label>
                             <input type="hidden" name="id" value="<?= $k->id ?>">
                             <input type="text" id="kapasitas" name="kapasitas_ram" value="<?= $k->kapasitas_ram ?>" class="form-control" autofocus>
+                            <?= form_error('kapasitas_ram', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>
                     </div>
                     <div class="form-group col-md-8">

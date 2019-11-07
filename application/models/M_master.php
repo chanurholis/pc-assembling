@@ -143,7 +143,7 @@ class M_master extends CI_Model
         $this->db->or_like('brand_ram', $keyword);
         $this->db->or_like('nama_ram', $keyword);
         $this->db->or_like('kapasitas', $keyword);
-        $this->db->or_like('satuan_kapasitas', $keyword);
+        $this->db->or_like('satuan', $keyword);
         return $this->db->get()->result();
     }
 
