@@ -2,7 +2,7 @@
     <section class="sidebar">
         <ul class="sidebar-menu" data-widget="tree">
             <li class="treeview">
-            <li><a href="<?= base_url('home/') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+            <li><a href="<?= base_url('Home') ?>"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
             </li>
             <li class="treeview">
                 <a href="">
@@ -19,8 +19,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="<?= base_url('master/brand_processor') ?>"><i class="fa fa-circle-o"></i> Master Brand</a></li>
-                            <li><a href="<?= base_url('master/processor') ?>"><i class="fa fa-circle-o"></i> Master Processor</a></li>
+                            <li><a href="<?= base_url('Processor/brand_processor') ?>">Master Brand</a></li>
+                            <li><a href="<?= base_url('Processor') ?>">Master Processor</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -30,8 +30,8 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="<?= base_url('master/brand_motherboard') ?>"><i class="fa fa-circle-o"></i> Master Brand</a></li>
-                            <li><a href="<?= base_url('master/motherboard') ?>"><i class="fa fa-circle-o"></i> Master Motherboard</a></li>
+                            <li><a href="<?= base_url('Motherboard/brand_motherboard') ?>">Master Brand</a></li>
+                            <li><a href="<?= base_url('Motherboard') ?>">Master Motherboard</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -41,10 +41,10 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="<?= base_url('master/brand_ram') ?>"><i class="fa fa-circle-o"></i> Master Brand </a></li>
-                            <li><a href="<?= base_url('master/ddr_ram') ?>"><i class="fa fa-circle-o"></i> Master DDR</a></li>
-                            <li><a href="<?= base_url('master/kapasitas_ram') ?>"><i class="fa fa-circle-o"></i> Master Kapasitas </a></li>
-                            <li><a href="<?= base_url('master/ram') ?>"><i class="fa fa-circle-o"></i> Master RAM</a></li>
+                            <li><a href="<?= base_url('RAM/brand_ram') ?>">Master Brand </a></li>
+                            <li><a href="<?= base_url('RAM/ddr_ram') ?>">Master DDR</a></li>
+                            <li><a href="<?= base_url('RAM/kapasitas_ram') ?>">Master Kapasitas </a></li>
+                            <li><a href="<?= base_url('RAM') ?>">Master RAM</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -54,9 +54,9 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="<?= base_url('master/brand_hardisk') ?>"><i class="fa fa-circle-o"></i> Master Brand</a></li>
-                            <li><a href="<?= base_url('master/kapasitas_hardisk') ?>"><i class="fa fa-circle-o"></i> Master Kapasitas</a></li>
-                            <li><a href="<?= base_url('master/hardisk') ?>"><i class="fa fa-circle-o"></i> Master Hardisk</a></li>
+                            <li><a href="<?= base_url('Storage/brand_storage') ?>">Master Brand</a></li>
+                            <li><a href="<?= base_url('Storage/kapasitas_storage') ?>">Master Kapasitas</a></li>
+                            <li><a href="<?= base_url('Storage') ?>">Master Storage</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -66,7 +66,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li><a href="<?= base_url('Casing') ?>">Master Casing</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -76,7 +76,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li><a href="<?= base_url('VGA') ?>">Master VGA</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -86,7 +86,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li><a href="<?= base_url('PSU') ?>">Master PSU</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -96,7 +96,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li><a href="<?= base_url('Keyboard') ?>">Master Keyboard</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -106,7 +106,7 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li><a href="<?= base_url('Mouse') ?>">Master Mouse</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
@@ -116,13 +116,13 @@
                             </span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
+                            <li><a href="<?= base_url('Monitor') ?>"><i class="fa fa-circle-o"></i>Master Monitor</a></li>
                         </ul>
                     </li>
                 </ul>
             </li>
-            <li><a href="<?= base_url('home/app') ?>"><i class="fa fa-desktop"></i> <span>Rakit PC</span></a></li>
-            <li><a href="<?= base_url('home/result') ?>"><i class="fa fa-database"></i> <span>My PC</span></a></li>
+            <li><a href="<?= base_url('Rakit') ?>"><i class="fa fa-desktop"></i> <span>Rakit PC</span></a></li>
+            <li><a href="<?= base_url('Mypc') ?>"><i class="fa fa-database"></i> <span>My PC</span></a></li>
         </ul>
     </section>
 </aside>

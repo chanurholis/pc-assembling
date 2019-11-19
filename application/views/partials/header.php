@@ -21,16 +21,14 @@
 
     <link rel="stylesheet" href="<?= base_url('assets/template/dist/css/skins/skin-blue.min.css') ?>">
 
-    <!-- Google Font -->
-    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic"> -->
 </head>
 
-<body class="skin-blue sidebar-mini sidebar-open">
+<body class="skin-blue sidebar-mini">
     <div class="wrapper">
 
         <header class="main-header">
 
-            <a href="<?= base_url('home') ?>" class="logo">
+            <a href="<?= base_url('Home') ?>" class="logo">
 
                 <span class="logo-mini"><b>PC</b>A</span>
 
@@ -45,15 +43,15 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown user user-menu">
                             <a href="" class="dropdown-toggle" data-toggle="dropdown">
-                                <img src="<?= base_url('assets/template/dist/img/cwe.jpg') ?>" class="user-image" alt="User Image">
+                                <img src="<?= base_url('assets/template/dist/img/girl.jpg') ?>" class="user-image" alt="User Image">
                                 <span class="hidden-xs"><?= $this->session->userdata('username'); ?></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <li class="user-header">
-                                    <img src="<?= base_url('assets/template/dist/img/cwe.jpg') ?>" class="img-circle" alt="User Image">
+                                    <img src="<?= base_url('assets/template/dist/img/girl.jpg') ?>" class="img-circle" alt="User Image">
                                     <p>
                                         <span class="text-center"><?= $this->session->userdata('username'); ?></span>
-                                        <small><b>Role :</b> <?= $this->session->userdata('role') ?> | <b>Login :</b> <?= date('j M Y'), strtotime($this->session->userdata('last_login')) ?> </small>
+                                        <small><b>Role :</b> <?= $this->session->userdata('role') ?> | <b>Login :</b> 2 mnt </small>
                                     </p>
                                 </li>
                                 <li class="user-footer">
@@ -61,7 +59,7 @@
                                         <a href="" class="btn btn-default btn-flat">Ubah Password</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="<?= base_url('login/logout') ?>" class="btn btn-default btn-flat">Keluar</a>
+                                        <a href="<?= base_url('Login/logout') ?>" class="btn btn-default btn-flat">Keluar</a>
                                     </div>
                                 </li>
                             </ul>
