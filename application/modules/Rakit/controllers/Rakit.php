@@ -27,7 +27,11 @@ class Rakit extends CI_Controller
         $data['mouse'] = $this->M_rakit->tampil_mouse()->result();
         $data['monitor'] = $this->M_rakit->tampil_monitor()->result();
         $this->load->view('partials/header', $data);
-        $this->load->view('partials/sidebar_admin');
+        if ($this->session->userdata('role')  == 'Admin') {
+            $this->load->view('partials/sidebar_admin');
+        } else {
+            $this->load->view('partials/sidebar_member');
+        }
         $this->load->view('rakit', $data);
         $this->load->view('partials/footer');
     }
@@ -91,7 +95,26 @@ class Rakit extends CI_Controller
                 $tgl_input = date('d m Y');
                 $pengguna = htmlspecialchars($this->input->post('pengguna', true));
                 $tgl_diserahkan = htmlspecialchars($this->input->post('diserahkan', true));
-                $bukti = 'default.jpg';
+                $bukti = $_FILES['image']['name'];
+
+                if ($bukti == NULL) {
+                    $bukti = 'default.jpg';
+                } else {
+                    $config['upload_path'] = './upload/bukti/';
+                    $config['allowed_types'] = 'jpg|png|jpeg';
+                    $config['max_size'] = 2048;
+                    $config['file_name'] = 'item-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
+
+                    $this->load->library('upload', $config);
+
+                    if (!$this->upload->do_upload('image')) {
+                        $error = array('error' => $this->upload->display_errors());
+                        var_dump($error);
+                        die;
+                    }
+
+                    $bukti = $this->upload->data('file_name');
+                }
 
                 $data = array(
                     'user' => $user,

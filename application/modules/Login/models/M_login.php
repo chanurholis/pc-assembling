@@ -11,4 +11,15 @@ class M_login extends CI_Model
         }
         return $result;
     }
+
+    public function forgot($where)
+    {
+        $result = NULL;
+        $query = $this->db->get_where('user', $where);
+
+        if ($query->num_rows() > 0) {
+            $result = $query->row();
+        }
+        return $result;
+    }
 }

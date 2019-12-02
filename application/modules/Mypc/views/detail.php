@@ -15,7 +15,8 @@
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <a href="<?= base_url('Rakit') ?>" class="btn btn-primary btn-flat"><i class="fa fa-plus"></i> Rakit PC</a>
+                        <a href="<?= base_url('Mypc/export_excel') ?>" class="btn btn-flat btn-success pull-right"><i class="fa fa-download"></i> Export Excel</a>
+                        <a href="<?= base_url('Mypc/export_pdf') ?>" class="btn btn-flat btn-danger pull-right" style="margin-right:10px;"><i class="fa fa-download"></i> Export Pdf</a>
                     </div>
                     <div class="box-body table-responsive">
                         <table class="table table-striped table-bordered">
@@ -42,7 +43,7 @@
                                 </tr>
                                 <tr>
                                     <th>RAM</th>
-                                    <td><?= $r->ram ?></td>
+                                    <td>DDR<?= $r->ram ?></td>
                                 </tr>
                                 <tr>
                                     <th>Storage</th>
@@ -78,7 +79,7 @@
                                 </tr>
                                 <tr>
                                     <th>Bukti</th>
-                                    <td><a href="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>"><img src="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>" alt="Bukti" width="200px" height="200px"></a></td>
+                                    <td><a href="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>"><img src="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>" alt="Bukti" width="200px" height="250px"></a></td>
                                 </tr>
                             <?php endforeach ?>
                         </table>

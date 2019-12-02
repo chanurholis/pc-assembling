@@ -13,7 +13,8 @@
 	"require": {
 		"php": ">=5.3.7",
 		"jenssegers/blade": "^1.2",
-		"coolpraz/php-blade": "^0.1.0"
+		"coolpraz/php-blade": "^0.1.0",
+		"setasign/fpdf": "1.8.1" 
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

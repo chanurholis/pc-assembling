@@ -1,3 +1,4 @@
+<div class="login" data-login="<?= $this->session->flashdata('login'); ?>"></div>
 <div class="content-wrapper">
 
     <section class="content-header">

@@ -16,8 +16,11 @@
 <!-- Sweet Alert -->
 <script src="<?= base_url('assets/sweetalert/dist/sweetalert2.all.min.js') ?>"></script>
 <!-- Script -->
-<script src="<?= base_url('assets/js/script.js') ?>"></script>
-
+<script src="<?= base_url('assets/js/sweet_alert.js') ?>"></script>
+<!-- Bootstrap -->
+<script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
+<!-- Data Tables -->
+<script src="<?= base_url('assets/DataTables/datatables.min.js') ?>"></script>
 </body>
 
 </html>

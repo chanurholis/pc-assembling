@@ -9,7 +9,7 @@
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <link rel="icon" type="png/image" href="<?= base_url('assets/ubuntu.png') ?>">
+    <link rel="icon" type="png/image" href="<?= base_url('assets/ypbpi.png') ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/template/bower_components/bootstrap/dist/css/bootstrap.min.css') ?>">
     <!-- Font Awesome -->
@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="<?= base_url('assets/template/bower_components/Ionicons/css/ionicons.min.css') ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets/template/dist/css/AdminLTE.min.css') ?>">
+    <!-- Data Table -->
+    <link rel="stylesheet" href="<?= base_url('assets/DataTables/datatables.min.css') ?>">
 
     <link rel="stylesheet" href="<?= base_url('assets/template/dist/css/skins/skin-blue.min.css') ?>">
 
@@ -56,10 +58,10 @@
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="" class="btn btn-default btn-flat">Ubah Password</a>
+                                        <a href="" class="btn btn-default btn-flat">Change Password</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="<?= base_url('Login/logout') ?>" class="btn btn-default btn-flat">Keluar</a>
+                                        <a href="<?= base_url('Login/logout') ?>" class="btn btn-default btn-flat">Logout</a>
                                     </div>
                                 </li>
                             </ul>
