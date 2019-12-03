@@ -14,13 +14,13 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
-                    <div class="box-header">
-                        <a href="<?= base_url('Mypc/export_excel') ?>" class="btn btn-flat btn-success pull-right"><i class="fa fa-download"></i> Export Excel</a>
-                        <a href="<?= base_url('Mypc/export_pdf') ?>" class="btn btn-flat btn-danger pull-right" style="margin-right:10px;"><i class="fa fa-download"></i> Export Pdf</a>
-                    </div>
-                    <div class="box-body table-responsive">
-                        <table class="table table-striped table-bordered">
-                            <?php foreach ($result as $r) : ?>
+                    <?php foreach ($result as $r) : ?>
+                        <div class="box-header">
+                            <a href="<?= base_url('Mypc/export_excel/') . $r->id ?>" class="btn btn-flat btn-success pull-right"><i class="fa fa-file-excel-o"></i> Export Excel</a>
+                            <a href="<?= base_url('Mypc/export_pdf/') . $r->id ?>" class="btn btn-flat btn-danger pull-right" style="margin-right:10px;"><i class="fa fa-file-pdf-o"></i> Export Pdf</a>
+                        </div>
+                        <div class="box-body table-responsive">
+                            <table class="table table-striped table-bordered">
                                 <tr>
                                     <th>PC</th>
                                     <td><?= $r->nama_pc ?></td>
@@ -81,9 +81,9 @@
                                     <th>Bukti</th>
                                     <td><a href="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>"><img src="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>" alt="Bukti" width="200px" height="250px"></a></td>
                                 </tr>
-                            <?php endforeach ?>
-                        </table>
-                    </div>
+                            </table>
+                        </div>
+                    <?php endforeach ?>
                 </div>
             </div>
         </div>

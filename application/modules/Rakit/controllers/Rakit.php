@@ -102,7 +102,7 @@ class Rakit extends CI_Controller
                 } else {
                     $config['upload_path'] = './upload/bukti/';
                     $config['allowed_types'] = 'jpg|png|jpeg';
-                    $config['max_size'] = 2048;
+                    $config['max_size'] = 5120;
                     $config['file_name'] = 'item-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
 
                     $this->load->library('upload', $config);

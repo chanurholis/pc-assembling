@@ -14,14 +14,13 @@
 		"php": ">=5.3.7",
 		"jenssegers/blade": "^1.2",
 		"coolpraz/php-blade": "^0.1.0",
-		"setasign/fpdf": "1.8.1",
-		"dompdf/dompdf": "^0.8.3" 
+		"dompdf/dompdf": "^0.8.3",
+		"fpdf/fpdf": "^1.81"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"
 	},
 	"require-dev": {
-		"mikey179/vfsStream": "1.1.*",
-		"phpunit/phpunit": "4.* || 5.*"
+		"mikey179/vfsstream": "1.1.*"
 	}
 }

@@ -16,8 +16,8 @@ class M_mypc extends CI_Model
         return $this->db->get_where('rakit', $where);
     }
 
-    public function tampil($user)
+    public function tampil($where)
     {
-        return $this->db->get_where('rakit', array('user' => $user))->result();
+        return $this->db->get_where('rakit', $where)->result();
     }
 }
