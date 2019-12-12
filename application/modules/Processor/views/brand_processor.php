@@ -5,9 +5,9 @@
             Brand Processor
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Processor/brand_processor') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Processor/brand_processor') ?>"> Processor</a></li>
-            <li><a href="<?= base_url('Processor/brand_processor') ?>"> Master Brand</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Processor</a></li>
+            <li><a> Master Brand</a></li>
         </ol>
     </section>
 
@@ -27,7 +27,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- /.box-header -->
                     <div class="box-body table-responsive">
                         <table class="table table-striped table-bordered">
                             <tr>
@@ -42,8 +41,8 @@
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $p->brand_processor ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('Processor/ubah_brand_processor/') . $p->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('Processor/hapus_brand_processor/') . $p->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('Processor/ubah_brand_processor/') . $p->brand_processor_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('Processor/hapus_brand_processor/') . $p->brand_processor_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

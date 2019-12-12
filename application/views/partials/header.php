@@ -18,10 +18,10 @@
     <link rel="stylesheet" href="<?= base_url('assets/template/bower_components/Ionicons/css/ionicons.min.css') ?>">
     <!-- Theme style -->
     <link rel="stylesheet" href="<?= base_url('assets/template/dist/css/AdminLTE.min.css') ?>">
-    <!-- Data Table -->
-    <link rel="stylesheet" href="<?= base_url('assets/DataTables/datatables.min.css') ?>">
-
+    <!-- Theme Skin -->
     <link rel="stylesheet" href="<?= base_url('assets/template/dist/css/skins/skin-blue.min.css') ?>">
+    <!-- DataTable -->
+    <link rel="stylesheet" href="<?= base_url('assets/datatable/datatables.min.css') ?>">
 
 </head>
 

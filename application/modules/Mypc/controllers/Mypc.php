@@ -256,59 +256,59 @@ class Mypc extends CI_Controller
 
             foreach ($data as $result) :
 
-                $pdf->Cell(50, 6, 'PC', 1, 0);
+                $pdf->Cell(40, 6, 'PC', 1, 0);
                 $pdf->Cell(100, 6, $result->nama_pc, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'INSTITUSI', 1, 0);
+                $pdf->Cell(40, 6, 'INSTITUSI', 1, 0);
                 $pdf->Cell(100, 6, $result->institusi, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'PENGGUNA', 1, 0);
+                $pdf->Cell(40, 6, 'PENGGUNA', 1, 0);
                 $pdf->Cell(100, 6, $result->pengguna, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'PROCESSOR', 1, 0);
+                $pdf->Cell(40, 6, 'PROCESSOR', 1, 0);
                 $pdf->Cell(100, 6, $result->processor, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'MOTHERBOARD', 1, 0);
+                $pdf->Cell(40, 6, 'MOTHERBOARD', 1, 0);
                 $pdf->Cell(100, 6, $result->motherboard, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'RAM', 1, 0);
+                $pdf->Cell(40, 6, 'RAM', 1, 0);
                 $pdf->Cell(100, 6, $result->ram, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'STORAGE', 1, 0);
+                $pdf->Cell(40, 6, 'STORAGE', 1, 0);
                 $pdf->Cell(100, 6, $result->storage, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'CASING', 1, 0);
+                $pdf->Cell(40, 6, 'CASING', 1, 0);
                 $pdf->Cell(100, 6, $result->casing, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'VGA', 1, 0);
+                $pdf->Cell(40, 6, 'VGA', 1, 0);
                 $pdf->Cell(100, 6, $result->vga, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'PSU', 1, 0);
+                $pdf->Cell(40, 6, 'PSU', 1, 0);
                 $pdf->Cell(100, 6, $result->psu, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'KEYBOARD', 1, 0);
+                $pdf->Cell(40, 6, 'KEYBOARD', 1, 0);
                 $pdf->Cell(100, 6, $result->keyboard, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'MOUSE', 1, 0);
+                $pdf->Cell(40, 6, 'MOUSE', 1, 0);
                 $pdf->Cell(100, 6, $result->mouse, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'MONITOR', 1, 0);
+                $pdf->Cell(40, 6, 'MONITOR', 1, 0);
                 $pdf->Cell(100, 6, $result->monitor, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 
-                $pdf->Cell(50, 6, 'DISERAHKAN', 1, 0);
+                $pdf->Cell(40, 6, 'DISERAHKAN', 1, 0);
                 $pdf->Cell(100, 6, $result->tgl_diserahkan, 1, 1);
                 $pdf->Cell(50, 6, '', 0, 1);
 

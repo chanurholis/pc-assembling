@@ -4,9 +4,9 @@
             Processor
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Processor') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Processor') ?>"> Processor</a></li>
-            <li><a href="<?= base_url('Processor') ?>"> Master Processor</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Processor</a></li>
+            <li><a> Master Processor</a></li>
         </ol>
     </section>
 
@@ -19,14 +19,20 @@
             </div>
             <form role="form" action="<?= base_url('Processor/aksi_ubah_processor') ?>" method="post">
                 <div class="box-body">
-                    <div class="form-group col-md-8">
-                        <label for="nama">Nama Processor</label>
-                        <?php foreach ($processor as $p) : ?>
-                            <input type="hidden" name="id" value="<?= $p->id ?>">
-                            <input type="text" id="nama" name="nama_processor" class="form-control" autofocus value="<?= $p->nama_processor ?>">
+                    <?php foreach ($processor as $p) : ?>
+                        <div class="form-group col-md-8">
+                            <label for="nama">Brand Processor</label>
+                            <select name="" id="" class="form-control select2" disabled>
+                                <option value="" selected><?= $p->brand_processor ?></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="nama">Nama Processor</label>
+                            <input type="hidden" name="id" value="<?= $p->processor_id ?>">
+                            <input type="text" id="nama" name="nama_processor" class="form-control" autofocus value="<?= $p->nama_processor ?>" a>
                             <?= form_error('nama_processor', '<small class="text-danger">', '</small>') ?>
-                        <?php endforeach ?>
-                    </div>
+                        </div>
+                    <?php endforeach ?>
                     <div class="form-group col-md-8">
                         <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-pencil"></i> Ubah</button>
                     </div>

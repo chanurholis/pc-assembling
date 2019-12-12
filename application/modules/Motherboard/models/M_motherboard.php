@@ -3,7 +3,10 @@ class M_motherboard extends CI_Model
 {
     public function tampil_motherboard()
     {
-        return $this->db->get_where('m_motherboard');
+        $this->db->select('*');
+        $this->db->from('m_motherboard');
+        $this->db->join('m_brand_motherboard', 'm_brand_motherboard.brand_motherboard_id=m_motherboard.brand_motherboard_id', 'inner');
+        return $this->db->get();
     }
 
     public function tampil_brand_motherboard()

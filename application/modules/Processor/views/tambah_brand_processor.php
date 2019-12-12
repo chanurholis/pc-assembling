@@ -4,9 +4,9 @@
             Brand Processor
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('processor/tambah_processor') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('processor/tambahprocessor') ?>"> Processor</a></li>
-            <li><a href="<?= base_url('processor/tambah_processor') ?>"> Brand Processor</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Processor</a></li>
+            <li><a> Brand Processor</a></li>
         </ol>
     </section>
 
@@ -19,6 +19,11 @@
             </div>
             <form role="form" action="<?= base_url('Processor/tambah_brand_processor') ?>" method="post">
                 <div class="box-body">
+                    <div class="form-group col-md-8">
+                        <label for="id">ID Brand Processor</label>
+                        <input type="number" id="id" name="id_brand_processor" class="form-control" autofocus>
+                        <?= form_error('id_brand_processor', '<small class="text-danger pl-3">', '</small>') ?>
+                    </div>
                     <div class="form-group col-md-8">
                         <label for="brand">Brand Processor</label>
                         <input type="text" id="brand" name="brand_processor" class="form-control" autofocus>

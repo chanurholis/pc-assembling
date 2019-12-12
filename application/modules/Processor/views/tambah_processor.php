@@ -4,9 +4,9 @@
             Processor
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Processor/tambah_processor') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Processor/tambah_processor') ?>"> Processor</a></li>
-            <li><a href="<?= base_url('Processor/tambah_processor') ?>"> Master Processor</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Processor</a></li>
+            <li><a> Master Processor</a></li>
         </ol>
     </section>
 
@@ -21,10 +21,10 @@
                 <div class="box-body">
                     <div class="form-group col-md-8">
                         <label for="brand">Brand Processor</label>
-                        <select name="brand_processor" id="brand" class="form-control select2" style="width: 100%;">
+                        <select name="brand_processor" id="brand" class="form-control select2" autofocus>
                             <option value="" selected="selected">-- Pilih Brand --</option>
                             <?php foreach ($brand_processor as $b) :  ?>
-                                <option value="<?= $b->brand_processor ?>"><?= $b->brand_processor ?></option>
+                                <option value="<?= $b->brand_processor_id ?>"><?= $b->brand_processor ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('brand_processor', '<small class="text-danger">', '</small>') ?>

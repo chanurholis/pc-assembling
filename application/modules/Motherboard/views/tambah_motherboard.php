@@ -4,9 +4,9 @@
             Master Motherboard
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Motherboard/tambah_motherboard') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Motherboard/tambah_motherboard') ?>"> Motherboard</a></li>
-            <li><a href="<?= base_url('Motherboard/tambah_motherboard') ?>"> Master Motherboard</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Motherboard</a></li>
+            <li><a> Master Motherboard</a></li>
         </ol>
     </section>
 
@@ -21,13 +21,13 @@
                 <div class="box-body">
                     <div class="form-group col-md-8">
                         <label for="brand">Brand Motherboard</label>
-                        <select name="brand_motherboard" id="brand" class="form-control">
+                        <select name="brand_motherboard" id="brand" class="form-control" autofocus>
                             <option value="" selected>-- Pilih Brand --</option>
                             <?php foreach ($brand_motherboard as $m) : ?>
-                                <option value="<?= $m->brand_motherboard ?>"><?= $m->brand_motherboard ?></option>
+                                <option value="<?= $m->brand_motherboard_id ?>"><?= $m->brand_motherboard ?></option>
                             <?php endforeach ?>
                         </select>
-                        <?= form_error('motherboard', '<small class="text-danger">', '</small>') ?>
+                        <?= form_error('brand_motherboard', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="nama">Motherboard</label>

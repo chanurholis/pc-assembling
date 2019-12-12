@@ -4,9 +4,9 @@
             Brand Motherboard
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('master/tambah_processor') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('master/processor') ?>"><i class="fa fa-circle-o"></i> Motherboard</a></li>
-            <li><a href="<?= base_url('master/tambah_processor') ?>"><i class="fa fa-circle-o"></i> Master Motherboard</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Motherboard</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Motherboard</a></li>
         </ol>
     </section>
 
@@ -22,7 +22,7 @@
                     <div class="form-group col-md-8">
                         <label for="nama">Brand Motherboard</label>
                         <?php foreach ($brand_motherboard as $m) : ?>
-                            <input type="hidden" name="id" value="<?= $m->id ?>">
+                            <input type="hidden" name="id" value="<?= $m->brand_motherboard_id ?>">
                             <input type="text" id="nama" name="brand_motherboard" class="form-control" value="<?= $m->brand_motherboard ?>" autofocus>
                             <?= form_error('brand_motherboard', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>

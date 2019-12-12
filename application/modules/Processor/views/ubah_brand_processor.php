@@ -21,7 +21,7 @@
                     <div class="form-group col-md-8">
                         <label for="brand">Brand Processor</label>
                         <?php foreach ($brand_processor as $b) : ?>
-                            <input type="hidden" name="id" value="<?= $b->id ?>">
+                            <input type="hidden" name="id" value="<?= $b->brand_processor_id ?>">
                             <input type="text" id="brand" name="brand_processor" class="form-control" autofocus value="<?= $b->brand_processor ?>">
                             <?= form_error('brand_processor', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>

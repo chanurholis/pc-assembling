@@ -16,8 +16,13 @@ class Login extends CI_Controller
             $this->session->sess_destroy();
         }
 
-        $this->form_validation->set_rules('email', 'Email', 'valid_email|required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'valid_email|required', [
+            'valid_email' => 'Email harus berisi alamat email yang valid.',
+            'required' => 'Email harus diisi.'
+        ]);
+        $this->form_validation->set_rules('password', 'Password', 'required', [
+            'required' => 'Password harus diisi.'
+        ]);
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Login PCA';
@@ -51,12 +56,12 @@ class Login extends CI_Controller
                     redirect('Home');
                 } else {
                     $this->session->set_flashdata('message', '<small class="text-danger">
-                    Sorry something went wrong.</small>');
+                    Mohon maaf, terjadi kesalahan.</small>');
                     redirect('/');
                 }
             } else {
                 $this->session->set_flashdata('message', '<small class="text-danger">
-                Sorry something went wrong.</small>');
+                Mohon maaf, terjadi kesalahan.</small>');
                 redirect('/');
             }
         }

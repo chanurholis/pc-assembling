@@ -25,8 +25,12 @@ class Processor extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('brand_processor', 'Brand Processor', 'required|trim');
-            $this->form_validation->set_rules('processor', 'Processor', 'required|is_unique[m_processor.nama_processor]|trim');
+            $this->form_validation->set_rules('brand_processor', 'Brand Processor', 'required|trim', [
+                'required' => 'Brand Processor harus diisi.'
+            ]);
+            $this->form_validation->set_rules('processor', 'Processor', 'required|is_unique[m_processor.nama_processor]|trim', [
+                'required' => 'Processor harus diisi.', 'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Data Processor';
@@ -42,7 +46,7 @@ class Processor extends CI_Controller
                 $nama_processor = htmlspecialchars($this->input->post('processor', true));
 
                 $data = array(
-                    'brand_processor' => $brand_processor,
+                    'brand_processor_id' => $brand_processor,
                     'nama_processor' => $nama_processor
                 );
 
@@ -58,7 +62,7 @@ class Processor extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Processor';
-            $where = array('id' => $id);
+            $where = array('processor_id' => $id);
             $data['processor'] = $this->M_processor->ubah_processor($where, 'processor')->result();
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
@@ -78,7 +82,7 @@ class Processor extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data Processor';
-                $where = array('id' => $id);
+                $where = array('processor_id' => $id);
                 $data['processor'] = $this->M_processor->ubah_processor($where, 'processor')->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -110,7 +114,7 @@ class Processor extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('processor_id' => $id);
             $this->M_processor->hapus($where, 'm_processor');
             redirect('Processor');
         }
@@ -149,7 +153,12 @@ class Processor extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('brand_processor', 'Brand Processor', 'required|is_unique[m_brand_processor.brand_processor]|trim');
+            $this->form_validation->set_rules('id_brand_processor', 'ID Brand Processor', 'required|is_unique[m_brand_processor.brand_processor_id]|trim', [
+                'required' => 'ID Brand Processor harus diisi.', 'is_unique' => 'Data sudah digunakan.'
+            ]);
+            $this->form_validation->set_rules('brand_processor', 'Brand Processor', 'required|is_unique[m_brand_processor.brand_processor]|trim', [
+                'required' => 'Brand Processor harus diisi.', 'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Data Brand Processor';
@@ -160,9 +169,11 @@ class Processor extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
+                $brand_processor_id = htmlspecialchars($this->input->post('id_brand_processor', true));
                 $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
 
                 $data = array(
+                    'brand_processor_id' => $brand_processor_id,
                     'brand_processor' => $brand_processor,
                 );
 
@@ -178,7 +189,7 @@ class Processor extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Brand Processor';
-            $where = array('id' => $id);
+            $where = array('brand_processor_id' => $id);
             $data['brand_processor'] = $this->M_processor->ubah_brand_processor($where)->result();
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
@@ -192,14 +203,16 @@ class Processor extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('brand_processor', 'Brand Processor', 'required|trim|is_unique[m_brand_processor.brand_processor]');
+            $this->form_validation->set_rules('brand_processor', 'Brand Processor', 'required|trim|is_unique[m_brand_processor.brand_processor]', [
+                'required' => 'Brand Processor harus diisi.', 'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
 
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data Brand Processor';
-                $where = array('id' => $id);
+                $where = array('brand_processor_id' => $id);
                 $data['brand_processor'] = $this->M_processor->ubah_brand_processor($where)->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -211,7 +224,7 @@ class Processor extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
                 $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
 
-                $where = array('id' => $id);
+                $where = array('brand_processor_id' => $id);
 
                 $data = array(
                     'brand_processor' => $brand_processor
@@ -231,7 +244,7 @@ class Processor extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('brand_processor_id' => $id);
             $this->M_processor->hapus($where, 'm_brand_processor');
             redirect('Processor/brand_processor');
         }

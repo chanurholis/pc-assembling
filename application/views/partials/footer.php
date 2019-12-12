@@ -6,10 +6,9 @@
 
 </div>
 
-
-<!-- jQuery 3 -->
+<!-- jQuery-->
 <script src="<?= base_url('assets/template/bower_components/jquery/dist/jquery.min.js') ?>"></script>
-<!-- Bootstrap 3.3.7 -->
+<!-- Bootstrap -->
 <script src="<?= base_url('assets/template/bower_components/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url('assets/template/dist/js/adminlte.min.js') ?>"></script>
@@ -17,10 +16,12 @@
 <script src="<?= base_url('assets/sweetalert/dist/sweetalert2.all.min.js') ?>"></script>
 <!-- Script -->
 <script src="<?= base_url('assets/js/sweet_alert.js') ?>"></script>
+<!-- DataTables -->
+<script src="<?= base_url('assets/datatable/datatables.min.js') ?>"></script>
 <!-- Bootstrap -->
 <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
-<!-- Data Tables -->
-<script src="<?= base_url('assets/DataTables/datatables.min.js') ?>"></script>
+<script src="<?= base_url('assets/bootstrap/js/jquery.js') ?>"></script>
+
 </body>
 
 </html>

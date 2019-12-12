@@ -15,7 +15,8 @@
 		"jenssegers/blade": "^1.2",
 		"coolpraz/php-blade": "^0.1.0",
 		"dompdf/dompdf": "^0.8.3",
-		"fpdf/fpdf": "^1.81"
+		"fpdf/fpdf": "^1.81",
+		"nesbot/carbon": "^2.27"
 	},
 	"suggest": {
 		"paragonie/random_compat": "Provides better randomness in PHP 5.x"

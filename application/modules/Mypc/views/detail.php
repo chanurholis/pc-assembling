@@ -17,7 +17,7 @@
                     <?php foreach ($result as $r) : ?>
                         <div class="box-header">
                             <a href="<?= base_url('Mypc/export_excel/') . $r->id ?>" class="btn btn-flat btn-success pull-right"><i class="fa fa-file-excel-o"></i> Export Excel</a>
-                            <a href="<?= base_url('Mypc/export_pdf/') . $r->id ?>" class="btn btn-flat btn-danger pull-right" style="margin-right:10px;"><i class="fa fa-file-pdf-o"></i> Export Pdf</a>
+                            <a href="<?= base_url('Mypc/export_pdf/') . $r->id ?>" class="btn btn-flat btn-danger pull-right" style="margin-right:10px;"><i class="fa fa-file-pdf-o"></i> Export PDF</a>
                         </div>
                         <div class="box-body table-responsive">
                             <table class="table table-striped table-bordered">

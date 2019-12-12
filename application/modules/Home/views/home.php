@@ -6,7 +6,7 @@
             Dashboard
         </h1>
         <ol class="breadcrumb">
-            <li><a href=""><i class="fa fa-dashboard"></i> Dashboard</a></li>
+            <li><a><i class="fa fa-dashboard"></i> Dashboard</a></li>
         </ol>
     </section>
 

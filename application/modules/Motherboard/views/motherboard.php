@@ -5,9 +5,9 @@
             Motherboard
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Motherboard') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Motherboard') ?>"> Motherboard</a></li>
-            <li><a href="<?= base_url('Motherboard') ?>"> Master Motherboard</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Motherboard</a></li>
+            <li><a> Master Motherboard</a></li>
         </ol>
     </section>
 
@@ -43,8 +43,8 @@
                                     <td scope="row"><?= $m->brand_motherboard ?></td>
                                     <td scope="row"><?= $m->motherboard ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('Motherboard/ubah_motherboard/') . $m->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('Motherboard/hapus_motherboard/') . $m->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('Motherboard/ubah_motherboard/') . $m->motherboard_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('Motherboard/hapus_motherboard/') . $m->motherboard_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

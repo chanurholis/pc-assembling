@@ -1,12 +1,12 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Dashboard
+            Motherboard
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('master/tambah_processor') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('master/processor') ?>"><i class="fa fa-circle-o"></i> Motherboard</a></li>
-            <li><a href="<?= base_url('master/tambah_processor') ?>"><i class="fa fa-circle-o"></i> Master Motherboard</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Motherboard</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Motherboard</a></li>
         </ol>
     </section>
 
@@ -19,14 +19,20 @@
             </div>
             <form role="form" action="<?= base_url('Motherboard/aksi_ubah_motherboard') ?>" method="post">
                 <div class="box-body">
-                    <div class="form-group col-md-8">
-                        <label for="nama">Nama Processor</label>
-                        <?php foreach ($motherboard as $m) : ?>
-                            <input type="hidden" name="id" value="<?= $m->id ?>">
+                    <?php foreach ($motherboard as $m) : ?>
+                        <div class="form-group col-md-8">
+                            <label for="nama">Brand Motherboard</label>
+                            <select name="" id="" class="form-control select2">
+                                <option value=""></option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-8">
+                            <label for="nama">Nama Motherboard</label>
+                            <input type="hidden" name="id" value="<?= $m->motherboard_id ?>">
                             <input type="text" id="nama" name="nama_motherboard" class="form-control" value="<?= $m->motherboard ?>" autofocus>
                             <?= form_error('nama_motherboard', '<small class="text-danger">', '</small>') ?>
-                        <?php endforeach ?>
-                    </div>
+                        </div>
+                    <?php endforeach ?>
                     <div class="form-group col-md-8">
                         <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-pencil"></i> Ubah</button>
                     </div>
