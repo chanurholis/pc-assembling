@@ -3,7 +3,10 @@ class M_monitor extends CI_Model
 {
     public function tampil_monitor()
     {
-        return $this->db->get('m_monitor');
+        $this->db->select('*');
+        $this->db->from('m_monitor');
+        $this->db->order_by('nama_monitor', 'ASC');
+        return $this->db->get();
     }
 
     public function ubah_monitor($where)
@@ -16,6 +19,8 @@ class M_monitor extends CI_Model
         $this->db->select('*');
         $this->db->from('m_monitor');
         $this->db->like('nama_monitor', $keyword);
+        $this->db->or_like('monitor_id', $keyword);
+        $this->db->order_by('nama_monitor', 'ASC');
         return $this->db->get()->result();
     }
 }

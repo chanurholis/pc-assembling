@@ -21,12 +21,12 @@
                 <div class="box-body">
                     <div class="form-group col-md-8">
                         <label for="id">ID Brand Processor</label>
-                        <input type="number" id="id" name="id_brand_processor" class="form-control" autofocus>
+                        <input type="number" id="id" name="id_brand_processor" class="form-control" autofocus value="<?= set_value('id_brand_processor') ?>">
                         <?= form_error('id_brand_processor', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="brand">Brand Processor</label>
-                        <input type="text" id="brand" name="brand_processor" class="form-control" autofocus>
+                        <input type="text" id="brand" name="brand_processor" class="form-control" autofocus value="<?= set_value('brand_processor') ?>">
                         <?= form_error('brand_processor', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

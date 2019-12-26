@@ -4,9 +4,9 @@
             Master VGA
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('VGA') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('VGA') ?>"> VGA</a></li>
-            <li><a href="<?= base_url('VGA') ?>"> Master VGA</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> VGA</a></li>
+            <li><a> Master VGA</a></li>
         </ol>
     </section>
 
@@ -20,7 +20,11 @@
             <form role="form" action="<?= base_url('VGA/aksi_ubah_vga') ?>" method="post">
                 <?php foreach ($vga as $v) : ?>
                     <div class="box-body">
-                        <input type="hidden" name="id" value="<?= $v->id ?>">
+                        <input type="hidden" name="id" value="<?= $v->vga_id ?>">
+                        <div class="form-group col-md-8">
+                            <label for="id">ID VGA</label>
+                            <input type="number" id="id" name="id_vga" value="<?= $v->vga_id ?>" class="form-control" disabled>
+                        </div>
                         <div class="form-group col-md-8">
                             <label for="nama">VGA</label>
                             <input type="text" id="nama" name="nama_vga" value="<?= $v->nama_vga ?>" class="form-control" autofocus>

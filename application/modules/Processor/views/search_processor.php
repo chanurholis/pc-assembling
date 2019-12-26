@@ -35,11 +35,11 @@
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                            $no = 1;
-                            foreach ($processor as $p) { ?>
+                                                $no = 1;
+                                                foreach ($processor as $p) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
-                                    <td scope="row"><?= $p->brand_processor_id ?></td>
+                                    <td scope="row"><?= $p->brand_processor ?></td>
                                     <td scope="row"><?= $p->nama_processor ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('Processor/ubah_processor/') . $p->processor_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>

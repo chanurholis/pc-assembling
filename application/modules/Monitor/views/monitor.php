@@ -5,9 +5,9 @@
             Master Monitor
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Monitor') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Monitor') ?>"> Monitor</a></li>
-            <li><a href="<?= base_url('Monitor') ?>"> Master Monitor</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Monitor</a></li>
+            <li><a> Master Monitor</a></li>
         </ol>
     </section>
 
@@ -31,17 +31,19 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID Monitor</th>
                                 <th scope="col">Monitor</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php $no = 1;
-                            foreach ($monitor as $v) : ?>
+                                                foreach ($monitor as $v) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $v->monitor_id ?></td>
                                     <td scope="row"><?= $v->nama_monitor ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('Monitor/ubah_monitor/') . $v->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('Monitor/hapus_monitor/') . $v->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('Monitor/ubah_monitor/') . $v->monitor_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('Monitor/hapus_monitor/') . $v->monitor_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

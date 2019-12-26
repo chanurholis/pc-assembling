@@ -1,12 +1,12 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Master DDR
+            Master DDR RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"> Master DDR</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master DDR</a></li>
         </ol>
     </section>
 
@@ -22,7 +22,7 @@
                     <div class="form-group col-md-8">
                         <label for="ddr">DDR RAM</label>
                         <?php foreach ($ddr as $d) : ?>
-                            <input type="hidden" name="id" id="ddr" value="<?= $d->id ?>">
+                            <input type="hidden" name="id" id="ddr" value="<?= $d->ddr_id ?>">
                             <input type="number" id="ddr" name="ddr_ram" value="<?= $d->ddr ?>" class="form-control" autofocus>
                             <?= form_error('ddr_ram', '<small class="text-danger">', '</small>') ?>
                         <?php endforeach ?>

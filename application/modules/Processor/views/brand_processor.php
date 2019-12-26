@@ -31,21 +31,23 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID Brand Processor</th>
                                 <th scope="col">Brand Processor</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                            $no = 1;
-                            foreach ($processor as $p) { ?>
+                                                $no = 1;
+                                                foreach ($processor as $p) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $p->brand_processor_id ?></td>
                                     <td scope="row"><?= $p->brand_processor ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('Processor/ubah_brand_processor/') . $p->brand_processor_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
                                         <a class="tombol-hapus" href="<?= base_url('Processor/hapus_brand_processor/') . $p->brand_processor_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
-                            <?php } ?>
+                            <?php endforeach ?>
                         </table>
                     </div>
                     <div class="box-footer clearfix">

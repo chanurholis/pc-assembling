@@ -10,12 +10,16 @@ class Casing extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Master Casing';
-        $data['casing'] = $this->M_casing->tampil_casing()->result();
-        $this->load->view('partials/header', $data);
-        $this->load->view('partials/sidebar_admin');
-        $this->load->view('casing', $data);
-        $this->load->view('partials/footer');
+        if ($this->session->userdata('status') == NULL) {
+            redirect('/');
+        } else {
+            $data['judul'] = 'Master Casing';
+            $data['casing'] = $this->M_casing->tampil_casing()->result();
+            $this->load->view('partials/header', $data);
+            $this->load->view('partials/sidebar_admin');
+            $this->load->view('casing', $data);
+            $this->load->view('partials/footer');
+        }
     }
 
     public function tambah_casing()
@@ -23,7 +27,16 @@ class Casing extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_casing', 'Casing', 'required|trim|is_unique[m_casing.nama_casing]');
+            $this->form_validation->set_rules('id_casing', 'ID Casing', 'required|trim|is_unique[m_casing.casing_id]|is_natural_no_zero|max_length[8]', [
+                'required' => 'ID Casing harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'ID Casing hanya boleh berisi angka dan harus lebih dari nol.',
+                'max_length' => 'ID Casing hanya boleh berisi 8 karakter..'
+            ]);
+            $this->form_validation->set_rules('nama_casing', 'Casing', 'required|trim|is_unique[m_casing.nama_casing]', [
+                'required' => 'Casing harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Data Master Casing';
@@ -34,9 +47,13 @@ class Casing extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
+                $id = htmlspecialchars($this->input->post('id_casing', true));
                 $nama_casing = htmlspecialchars($this->input->post('nama_casing', true));
 
-                $data = ['nama_casing' => $nama_casing];
+                $data = [
+                    'casing_id' => $id,
+                    'nama_casing' => $nama_casing
+                ];
 
                 $this->db->insert('m_casing', $data);
                 redirect('Casing');
@@ -50,7 +67,7 @@ class Casing extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Master Casing';
-            $where = ['id' => $id];
+            $where = ['casing_id' => $id];
             $data['casing'] = $this->M_casing->ubah_casing($where)->result();
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
@@ -64,13 +81,16 @@ class Casing extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_casing', 'Casing', 'required|is_unique[m_casing.nama_casing]|trim');
+            $this->form_validation->set_rules('nama_casing', 'Casing', 'required|is_unique[m_casing.nama_casing]|trim', [
+                'required' => 'Casing harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data Master Casing';
-                $where = ['id' => $id];
+                $where = ['casing_id' => $id];
                 $data['casing'] = $this->M_casing->ubah_casing($where)->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -82,7 +102,7 @@ class Casing extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
                 $nama_casing = htmlspecialchars($this->input->post('nama_casing', true));
 
-                $where = ['id' => $id];
+                $where = ['casing_id' => $id];
 
                 $data = ['nama_casing' => $nama_casing];
 
@@ -116,7 +136,7 @@ class Casing extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = ['id' => $id];
+            $where = ['casing_id' => $id];
 
             $this->M_casing->hapus($where, 'm_casing');
             redirect('Casing');

@@ -27,7 +27,16 @@ class PSU extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_psu', 'PSU', 'required|trim|is_unique[m_psu.nama_psu]');
+            $this->form_validation->set_rules('psu_id', 'ID PSU', 'required|trim|is_unique[m_psu.psu_id]|is_natural_no_zero|numeric|max_length[8]', [
+                'required' => 'ID PSU harus diisi.',
+                'is_unique' => 'Data sudah digunakan',
+                'is_natural_no_zero' => 'ID PSU hanya boleh berisi angka dan harus lebih dari nol.',
+                'max_length' => 'ID PSU hanya boleh berisi 8 karakter.'
+            ]);
+            $this->form_validation->set_rules('nama_psu', 'PSU', 'required|trim|is_unique[m_psu.nama_psu]', [
+                'required' => 'PSU harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Data Master PSU';
@@ -38,9 +47,13 @@ class PSU extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
+                $id = htmlspecialchars($this->input->post('psu_id'));
                 $nama_psu = htmlspecialchars($this->input->post('nama_psu', true));
 
-                $data = ['nama_psu' => $nama_psu];
+                $data = [
+                    'psu_id' => $id,
+                    'nama_psu' => $nama_psu
+                ];
 
                 $this->db->insert('m_psu', $data);
                 redirect('PSU');
@@ -54,7 +67,7 @@ class PSU extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Master PSU';
-            $where = ['id' => $id];
+            $where = ['psu_id' => $id];
             $data['psu'] = $this->M_psu->ubah_psu($where)->result();
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
@@ -68,13 +81,16 @@ class PSU extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_psu', 'PSU', 'required|trim|is_unique[m_psu.nama_psu]');
+            $this->form_validation->set_rules('nama_psu', 'PSU', 'required|trim|is_unique[m_psu.nama_psu]', [
+                'required' => 'PSU harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id'));
 
                 $data['judul'] = 'Ubah Data Master PSU';
-                $where = ['id' => $id];
+                $where = ['psu_id' => $id];
                 $data['psu'] = $this->M_psu->ubah_psu($where)->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -86,7 +102,7 @@ class PSU extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id'));
                 $nama_psu = htmlspecialchars($this->input->post('nama_psu'));
 
-                $where = ['id' => $id];
+                $where = ['psu_id' => $id];
 
                 $data = [
                     'nama_psu' => $nama_psu
@@ -122,7 +138,7 @@ class PSU extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = ['id' => $id];
+            $where = ['psu_id' => $id];
 
             $this->db->where($where);
             $this->db->delete('m_psu');

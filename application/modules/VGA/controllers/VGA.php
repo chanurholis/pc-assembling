@@ -27,8 +27,19 @@ class VGA extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_vga', 'VGA', 'required|trim|is_unique[m_vga.nama_vga]');
-            $this->form_validation->set_rules('type', 'Type', 'required');
+            $this->form_validation->set_rules('id_vga', 'ID VGA', 'required|trim|is_unique[m_vga.vga_id]|is_natural_no_zero|max_length[8]', [
+                'required' => 'ID VGA harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'ID VGA hanya boleh berisi angka dan harus lebih dari nol.',
+                'max_length' => 'ID VGA hanya boleh berisi 8 karakter.'
+            ]);
+            $this->form_validation->set_rules('nama_vga', 'VGA', 'required|trim|is_unique[m_vga.nama_vga]', [
+                'required' => 'VGA harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
+            $this->form_validation->set_rules('type', 'Type', 'required', [
+                'required' => 'Type harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Data Master VGA';
@@ -39,10 +50,12 @@ class VGA extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
+                $id = htmlspecialchars($this->input->post('id_vga', true));
                 $nama_vga = htmlspecialchars($this->input->post('nama_vga', true));
                 $type = htmlspecialchars($this->input->post('type'));
 
                 $data = [
+                    'vga_id' => $id,
                     'nama_vga' => $nama_vga,
                     'type' => $type
                 ];
@@ -59,7 +72,7 @@ class VGA extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Master VGA';
-            $where = ['id' => $id];
+            $where = ['vga_id' => $id];
             $data['vga'] = $this->M_vga->ubah_vga($where)->result();
             $data['type'] = ['ADD-ON', 'ON-BOARD'];
             $this->load->view('partials/header', $data);
@@ -74,14 +87,19 @@ class VGA extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_vga', 'VGA', 'required|trim|is_unique[m_vga.nama_vga]');
-            $this->form_validation->set_rules('type', 'Type', 'required');
+            $this->form_validation->set_rules('nama_vga', 'VGA', 'required|trim|is_unique[m_vga.nama_vga]', [
+                'required' => 'VGA harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
+            $this->form_validation->set_rules('type', 'Type', 'required', [
+                'required' => 'Type harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id'));
 
                 $data['judul'] = 'Ubah Data Master VGA';
-                $where = ['id' => $id];
+                $where = ['vga_id' => $id];
                 $data['vga'] = $this->M_vga->ubah_vga($where)->result();
                 $data['type'] = ['ADD-ON', 'ON-BOARD'];
                 $this->load->view('partials/header', $data);
@@ -95,7 +113,7 @@ class VGA extends CI_Controller
                 $nama_vga = htmlspecialchars($this->input->post('nama_vga', true));
                 $type = htmlspecialchars($this->input->post('type', true));
 
-                $where = ['id' => $id];
+                $where = ['vga_id' => $id];
 
                 $data = [
                     'nama_vga' => $nama_vga,
@@ -132,7 +150,7 @@ class VGA extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = ['id' => $id];
+            $where = ['vga_id' => $id];
 
             $this->db->where($where);
             $this->db->delete('m_vga');

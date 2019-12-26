@@ -4,9 +4,9 @@
             Kapasitas Storage
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Storage/tambah_kapasitas_storage') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Storage/tambah_kapasitas_storage') ?>"> Storage</a></li>
-            <li><a href="<?= base_url('Storage/tambah_kapasitas_storage') ?>"> Kapasitas Storage</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Storage</a></li>
+            <li><a> Kapasitas Storage</a></li>
         </ol>
     </section>
 
@@ -19,6 +19,12 @@
             </div>
             <form role="form" action="<?= base_url('Storage/tambah_kapasitas_storage') ?>" method="post">
                 <div class="box-body">
+                    <div class="form-group col-md-8">
+                        <label for="id">ID Kapasitas Storage</label>
+                        <input type="number" id="id" name="id_kapasitas_storage" class="form-control" autofocus>
+                        <?= form_error('id_kapasitas_storage', '<small class="text-danger">', '</small>') ?>
+                        <?= $this->session->flashdata('message'); ?>
+                    </div>
                     <div class="form-group col-md-8">
                         <label for="kapasitas">Kapasitas Storage</label>
                         <input type="number" id="kapasitas" name="kapasitas_storage" class="form-control" autofocus>

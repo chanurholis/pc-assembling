@@ -1,10 +1,19 @@
+<?php
+require 'vendor/autoload.php';
+
+use Carbon\Carbon;
+
+$time = Carbon::parse($date['tgl_diserahkan']);
+
+?>
+
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
             Detail Data
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Mypc') ?>"><i class="fa fa-database"></i> My PC</a></li>
+            <li><a><i class="fa fa-database"></i> My PC</a></li>
         </ol>
     </section>
 
@@ -16,69 +25,68 @@
                 <div class="box">
                     <?php foreach ($result as $r) : ?>
                         <div class="box-header">
-                            <a href="<?= base_url('Mypc/export_excel/') . $r->id ?>" class="btn btn-flat btn-success pull-right"><i class="fa fa-file-excel-o"></i> Export Excel</a>
-                            <a href="<?= base_url('Mypc/export_pdf/') . $r->id ?>" class="btn btn-flat btn-danger pull-right" style="margin-right:10px;"><i class="fa fa-file-pdf-o"></i> Export PDF</a>
+                            <a href="<?= base_url('Mypc/export_excel/') . $r->rakit_id ?>" class="btn btn-flat btn-success pull-right"><i class="fa fa-file-excel-o"></i> Export Excel</a>
                         </div>
                         <div class="box-body table-responsive">
                             <table class="table table-striped table-bordered">
                                 <tr>
-                                    <th>PC</th>
-                                    <td><?= $r->nama_pc ?></td>
+                                    <th>NO INDEKS</th>
+                                    <td><?= $r->no_indeks ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Institusi</th>
+                                    <th>INSTITUSI</th>
                                     <td><?= $r->institusi ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Pengguna</th>
+                                    <th>PENGGUNA</th>
                                     <td><?= $r->pengguna ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Processor</th>
-                                    <td><?= $r->processor ?></td>
+                                    <th>PROCESSOR</th>
+                                    <td><?= $r->brand_processor ?> <?= $r->nama_processor ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Motherboard</th>
-                                    <td><?= $r->motherboard ?></td>
+                                    <th>MOTHERBOARD</th>
+                                    <td><?= $r->brand_motherboard ?> <?= $r->motherboard ?></td>
                                 </tr>
                                 <tr>
                                     <th>RAM</th>
-                                    <td>DDR<?= $r->ram ?></td>
+                                    <td><?= $r->brand_ram ?> <?= $r->nama_ram ?> DDR <?= $r->ddr ?> <?= $r->kapasitas_ram ?><?= $r->satuan ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Storage</th>
-                                    <td><?= $r->storage ?></td>
+                                    <th>STORAGE</th>
+                                    <td><?= $r->brand_storage ?> <?= $r->nama_storage ?> <?= $r->type_storage ?> <?= $r->kapasitas_storage ?><?= $r->satuan_storage ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Casing</th>
-                                    <td><?= $r->casing ?></td>
+                                    <th>CASING</th>
+                                    <td><?= $r->nama_casing ?></td>
                                 </tr>
                                 <tr>
                                     <th>VGA</th>
-                                    <td><?= $r->vga ?></td>
+                                    <td><?= $r->nama_vga ?> <?= $r->type_vga ?></td>
                                 </tr>
                                 <tr>
                                     <th>PSU</th>
-                                    <td><?= $r->psu ?></td>
+                                    <td><?= $r->nama_psu ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Keyboard</th>
-                                    <td><?= $r->keyboard ?></td>
+                                    <th>KEYBOARD</th>
+                                    <td><?= $r->nama_keyboard ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Mouse</th>
-                                    <td><?= $r->mouse ?></td>
+                                    <th>MOUSE</th>
+                                    <td><?= $r->nama_mouse ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Monitor</th>
-                                    <td><?= $r->monitor ?></td>
+                                    <th>MONITOR</th>
+                                    <td><?= $r->nama_monitor ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Diserahkan</th>
-                                    <td><?= $r->tgl_diserahkan ?></td>
+                                    <th>DISERAHKAN</th>
+                                    <td><?= $time->isoFormat('D MMMM Y') ?></td>
                                 </tr>
                                 <tr>
-                                    <th>Bukti</th>
+                                    <th>BUKTI</th>
                                     <td><a href="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>"><img src="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>" alt="Bukti" width="200px" height="250px"></a></td>
                                 </tr>
                             </table>

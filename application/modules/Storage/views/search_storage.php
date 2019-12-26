@@ -5,9 +5,9 @@
             Storage
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Storage') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Storage') ?>"> Storage</a></li>
-            <li><a href="<?= base_url('Storage') ?>"> Master Storage</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Storage</a></li>
+            <li><a> Master Storage</a></li>
         </ol>
     </section>
 
@@ -32,23 +32,23 @@
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
                                 <th scope="col">Brand Storage</th>
-                                <th scope="col">Storage</th>
+                                <th scope="col">Type Brand</th>
                                 <th scope="col">Type Storage</th>
                                 <th scope="col">Kapasitas</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                            $no = 1;
-                            foreach ($storage as $r) { ?>
+                                                $no = 1;
+                                                foreach ($storage as $r) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $r->brand_storage ?></td>
                                     <td scope="row"><?= $r->nama_storage ?></td>
                                     <td scope="row"><?= $r->type ?></td>
-                                    <td scope="row"><?= $r->kapasitas ?></td>
+                                    <td scope="row"><?= $r->kapasitas_storage ?><?= $r->satuan ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('Storage/ubah_storage/') . $r->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('Storage/hapus_storage/') . $r->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('Storage/ubah_storage/') . $r->storage_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('Storage/hapus_storage/') . $r->storage_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

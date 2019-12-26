@@ -4,9 +4,9 @@
             Storage
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Storage/tambah_storage') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Storage/tambah_storage') ?>"> Storage</a></li>
-            <li><a href="<?= base_url('Storage/tambah_storage') ?>"> Master Storage</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Storage</a></li>
+            <li><a> Master Storage</a></li>
         </ol>
     </section>
 
@@ -24,7 +24,7 @@
                         <select name="brand_storage" id="brand" class="form-control select2" style="width: 100%;" autofocus>
                             <option value="" selected="selected">-- Pilih Brand --</option>
                             <?php foreach ($brand_storage as $d) : ?>
-                                <option value="<?= $d->brand_storage ?>"><?= $d->brand_storage ?></option>
+                                <option value="<?= $d->brand_storage_id ?>"><?= $d->brand_storage ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('brand_storage', '<small class="text-danger">', '</small>') ?>
@@ -37,7 +37,7 @@
                     <div class="form-group col-md-8">
                         <label for="type">Type</label>
                         <select name="type" id="type" class="form-control select2" style="width: 100%;">
-                            <option value="" selected="selected">-- Pilih DDR --</option>
+                            <option value="" selected="selected">-- Pilih Type Storage --</option>
                             <?php foreach ($type as $d) : ?>
                                 <option value="<?= $d ?>"><?= $d ?></option>
                             <?php endforeach ?>
@@ -45,11 +45,11 @@
                         <?= form_error('type', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
-                        <label for="brand">Kapasitas</label>
-                        <select name="kapasitas" id="brand" class="form-control select2" style="width: 100%;">
+                        <label for="kapasitas">Kapasitas</label>
+                        <select name="kapasitas" id="kapasitas" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih Kapasitas --</option>
                             <?php foreach ($kapasitas_storage as $k) : ?>
-                                <option value="<?= $k->kapasitas_storage ?><?= $k->satuan ?>"><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
+                                <option value="<?= $k->kapasitas_id ?>"><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('kapasitas', '<small class="text-danger">', '</small>') ?>

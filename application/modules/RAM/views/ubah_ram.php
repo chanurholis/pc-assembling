@@ -4,9 +4,9 @@
             RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM') ?>"> Master RAM</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master RAM</a></li>
         </ol>
     </section>
 
@@ -19,16 +19,16 @@
             </div>
             <form role="form" action="<?= base_url('RAM/aksi_ubah_ram') ?>" method="post">
                 <div class="box-body">
-                    <input type="hidden" name="id" value="<?= $ram['id'] ?>">
+                    <input type="hidden" name="id" value="<?= $ram['ram_id'] ?>">
                     <div class="form-group col-md-8">
                         <label for="brand">Brand</label>
                         <select name="brand_ram" id="brand" class="form-control select2" style="width: 100%;" autofocus>
                             <option value="" selected="selected">-- Pilih Brand --</option>
                             <?php foreach ($brand as $d) : ?>
-                                <?php if ($d->brand_ram == $ram['brand_ram']) : ?>
-                                    <option value="<?= $d->brand_ram ?>" selected><?= $d->brand_ram ?></option>
+                                <?php if ($d->brand_ram_id == $ram['brand_ram_id']) : ?>
+                                    <option value="<?= $d->brand_ram_id ?>" selected><?= $d->brand_ram ?></option>
                                 <?php else :  ?>
-                                    <option value="<?= $d->brand_ram ?>"><?= $d->brand_ram ?></option>
+                                    <option value="<?= $d->brand_ram_id ?>"><?= $d->brand_ram ?></option>
                                 <?php endif ?>
                             <?php endforeach ?>
                         </select>
@@ -36,9 +36,9 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="nama">Type RAM</label>
-                        <?php foreach ($result as $r) : ?>
-                            <input type="text" id="nama" value="<?= $r->nama_ram ?>" name="nama_ram" class="form-control">
-                        <?php endforeach ?>
+
+                        <input type="text" id="nama" value="<?= $ram['nama_ram'] ?>" name="nama_ram" class="form-control">
+
                         <?= form_error('nama_ram', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
@@ -46,10 +46,10 @@
                         <select name="ddr" id="brand" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih DDR --</option>
                             <?php foreach ($ddr as $d) : ?>
-                                <?php if ($d->ddr == $ram['ddr']) : ?>
-                                    <option value="<?= $d->ddr ?>" selected><?= $d->ddr ?></option>
+                                <?php if ($d->ddr_id == $ram['ddr_id']) : ?>
+                                    <option value="<?= $d->ddr_id ?>" selected><?= $d->ddr ?></option>
                                 <?php else : ?>
-                                    <option value="<?= $d->ddr ?>"><?= $d->ddr ?></option>
+                                    <option value="<?= $d->ddr_id ?>"><?= $d->ddr ?></option>
                                 <?php endif ?>
                             <?php endforeach ?>
                         </select>
@@ -60,10 +60,10 @@
                         <select name="kapasitas" id="brand" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih Kapasitas --</option>
                             <?php foreach ($kapasitas as $k) : ?>
-                                <?php if ($k->kapasitas_ram == $ram['kapasitas']) : ?>
-                                    <option value="<?= $k->kapasitas_ram ?>" selected><?= $k->kapasitas_ram ?><?= $k->satuan ?></option>
+                                <?php if ($k->kapasitas_id == $ram['kapasitas_id']) : ?>
+                                    <option value="<?= $k->kapasitas_id ?>" selected><?= $k->kapasitas_ram ?><?= $k->satuan ?></option>
                                 <?php else : ?>
-                                    <option value="<?= $k->kapasitas_ram ?>"><?= $k->kapasitas_ram ?><?= $k->satuan ?></option>
+                                    <option value="<?= $k->kapasitas_id ?>"><?= $k->kapasitas_ram ?><?= $k->satuan ?></option>
                                 <?php endif ?>
                             <?php endforeach ?>
                         </select>

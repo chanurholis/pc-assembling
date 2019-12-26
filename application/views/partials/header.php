@@ -1,3 +1,13 @@
+<?php
+require 'vendor/autoload.php';
+
+use Carbon\Carbon;
+
+$where = ['username' => $this->session->userdata('username')];
+
+$time = $this->db->get_where('user', $where)->row_object();
+?>
+
 <!DOCTYPE html>
 
 <html>
@@ -53,7 +63,7 @@
                                     <img src="<?= base_url('assets/template/dist/img/girl.jpg') ?>" class="img-circle" alt="User Image">
                                     <p>
                                         <span class="text-center"><?= $this->session->userdata('username'); ?></span>
-                                        <small><b>Role :</b> <?= $this->session->userdata('role') ?> | <b>Login :</b> 2 mnt </small>
+                                        <small><b>Role :</b> <?= $this->session->userdata('role') ?> | <b>Last Login :</b> <?= Carbon::parse($time->last_login)->diffForHumans() ?> </small>
                                     </p>
                                 </li>
                                 <li class="user-footer">

@@ -4,9 +4,9 @@
             Master Casing
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Casing/tambah_casing') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Casing/tambah_casing') ?>"> Casing</a></li>
-            <li><a href="<?= base_url('Casing/tambah_casing') ?>"> Master Casing</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Casing</a></li>
+            <li><a> Master Casing</a></li>
         </ol>
     </section>
 
@@ -20,9 +20,14 @@
             <form role="form" action="<?= base_url('Casing/tambah_casing') ?>" method="post">
                 <div class="box-body">
                     <div class="form-group col-md-8">
+                        <label for="id">ID Casing</label>
+                        <input type="number" id="id" name="id_casing" class="form-control" autofocus>
+                        <?= form_error('id_casing', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                    <div class="form-group col-md-8">
                         <label for="nama">Casing</label>
-                        <input type="text" id="nama" name="nama_casing" class="form-control" autofocus>
-                        <?= form_error('brand_motherboard', '<small class="text-danger">', '</small>') ?>
+                        <input type="text" id="nama" name="nama_casing" class="form-control">
+                        <?= form_error('nama_casing', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
                         <button type="submit" class="btn btn-primary btn-flat"><i class="fa fa-plus"></i> Tambah</button>

@@ -27,7 +27,7 @@
                             </select>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="nama">Nama Processor</label>
+                            <label for="nama">Type Processor</label>
                             <input type="hidden" name="id" value="<?= $p->processor_id ?>">
                             <input type="text" id="nama" name="nama_processor" class="form-control" autofocus value="<?= $p->nama_processor ?>" a>
                             <?= form_error('nama_processor', '<small class="text-danger">', '</small>') ?>

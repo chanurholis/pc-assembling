@@ -5,9 +5,9 @@
             Master VGA
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Casing') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Casing') ?>"> VGA</a></li>
-            <li><a href="<?= base_url('Casing') ?>"> Master VGA</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> VGA</a></li>
+            <li><a> Master VGA</a></li>
         </ol>
     </section>
 
@@ -31,6 +31,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID VGA</th>
                                 <th scope="col">VGA</th>
                                 <th scope="col">Type</th>
                                 <th scope="col" class="text-center">Aksi</th>
@@ -39,11 +40,12 @@
                             foreach ($vga as $v) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $v->vga_id ?></td>
                                     <td scope="row"><?= $v->nama_vga ?></td>
-                                    <td scope="row"><?= $v->type ?></td>
+                                    <td scope="row"><?= $v->type_vga ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('VGA/ubah_vga/') . $v->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('VGA/hapus_vga/') . $v->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('VGA/ubah_vga/') . $v->vga_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('VGA/hapus_vga/') . $v->vga_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

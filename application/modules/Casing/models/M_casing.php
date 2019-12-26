@@ -3,7 +3,10 @@ class M_casing extends CI_Model
 {
     public function tampil_casing()
     {
-        return $this->db->get('m_casing');
+        $this->db->select('*');
+        $this->db->from('m_casing');
+        $this->db->order_by('nama_casing', 'ASC');
+        return $this->db->get();
     }
 
     public function ubah_casing($where)
@@ -16,6 +19,7 @@ class M_casing extends CI_Model
         $this->db->select('*');
         $this->db->from('m_casing');
         $this->db->like('nama_casing', $keyword);
+        $this->db->order_by('nama_casing', 'ASC');
         return $this->db->get()->result();
     }
 

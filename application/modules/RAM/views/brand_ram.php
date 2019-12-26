@@ -5,9 +5,9 @@
             Brand RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM/brand_ram') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM/brand_ram') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM/brand_ram') ?>"> Master Brand</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master Brand</a></li>
         </ol>
     </section>
 
@@ -31,6 +31,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID Brand RAM</th>
                                 <th scope="col">Brand RAM</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
@@ -39,10 +40,11 @@
                             foreach ($brand_ram as $b) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $b->brand_ram_id ?></td>
                                     <td scope="row"><?= $b->brand_ram ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('RAM/ubah_brand_ram/') . $b->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('RAM/hapus_brand_ram/') . $b->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('RAM/ubah_brand_ram/') . $b->brand_ram_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('RAM/hapus_brand_ram/') . $b->brand_ram_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

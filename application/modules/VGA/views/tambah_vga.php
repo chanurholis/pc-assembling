@@ -4,9 +4,9 @@
             Master VGA
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('VGA/tambah_vga') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('VGA/tambah_vga') ?>"> VGA</a></li>
-            <li><a href="<?= base_url('VGA/tambah_vga') ?>"> Master VGA</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> VGA</a></li>
+            <li><a> Master VGA</a></li>
         </ol>
     </section>
 
@@ -20,8 +20,13 @@
             <form role="form" action="<?= base_url('VGA/tambah_vga') ?>" method="post">
                 <div class="box-body">
                     <div class="form-group col-md-8">
+                        <label for="nama">ID VGA</label>
+                        <input type="number" id="nama" name="id_vga" class="form-control" value="<?= set_value('id_vga') ?>" autofocus>
+                        <?= form_error('id_vga', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                    <div class="form-group col-md-8">
                         <label for="nama">VGA</label>
-                        <input type="text" id="nama" name="nama_vga" class="form-control" autofocus>
+                        <input type="text" id="nama" name="nama_vga" class="form-control" value="<?= set_value('nama_vga') ?>">
                         <?= form_error('nama_vga', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

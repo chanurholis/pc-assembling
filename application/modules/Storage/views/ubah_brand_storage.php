@@ -4,9 +4,9 @@
             Master Brand
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Storage/tambah_brand_storage') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Storage/tambah_brand_storage') ?>"> Storage</a></li>
-            <li><a href="<?= base_url('Storage/tambah_brand_storage') ?>"> Master Brand</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Storage</a></li>
+            <li><a> Master Brand</a></li>
         </ol>
     </section>
 
@@ -20,7 +20,7 @@
             <form role="form" action="<?= base_url('Storage/aksi_ubah_brand_storage') ?>" method="post">
                 <?php foreach ($storage as $s) : ?>
                     <div class="box-body">
-                        <input type="hidden" name="id" value="<?= $s->id ?>">
+                        <input type="hidden" name="id" value="<?= $s->brand_storage_id ?>">
                         <div class="form-group col-md-8">
                             <label for="brand">Brand Storage</label>
                             <input type="text" id="brand" name="brand_storage" value="<?= $s->brand_storage ?>" class="form-control" autofocus>
@@ -31,7 +31,7 @@
                             <select name="type" id="brand" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih Storage --</option>
                                 <?php foreach ($type as $t) : ?>
-                                    <?php if ($t == $s->type) : ?>
+                                    <?php if ($t == $s->type_storage) : ?>
                                         <option value="<?= $t ?>" selected><?= $t ?></option>
                                     <?php else : ?>
                                         <option value="<?= $t ?>"><?= $t ?></option>

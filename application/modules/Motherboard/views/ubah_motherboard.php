@@ -21,15 +21,15 @@
                 <div class="box-body">
                     <?php foreach ($motherboard as $m) : ?>
                         <div class="form-group col-md-8">
-                            <label for="nama">Brand Motherboard</label>
-                            <select name="" id="" class="form-control select2">
-                                <option value=""></option>
+                            <label for="brand_motherboard">Brand Motherboard</label>
+                            <select name="brand_motherboard" id="brand_motherboard" class="form-control select2" disabled>
+                                <option value=""><?= $m->brand_motherboard ?></option>
                             </select>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="nama">Nama Motherboard</label>
+                            <label for="type_m">Type Motherboard</label>
                             <input type="hidden" name="id" value="<?= $m->motherboard_id ?>">
-                            <input type="text" id="nama" name="nama_motherboard" class="form-control" value="<?= $m->motherboard ?>" autofocus>
+                            <input type="text" id="type_m" name="nama_motherboard" class="form-control" value="<?= $m->motherboard ?>" autofocus>
                             <?= form_error('nama_motherboard', '<small class="text-danger">', '</small>') ?>
                         </div>
                     <?php endforeach ?>

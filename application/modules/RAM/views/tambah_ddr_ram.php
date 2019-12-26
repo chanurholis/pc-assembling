@@ -4,9 +4,9 @@
             Master DDR
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"> Master DDR</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master DDR</a></li>
         </ol>
     </section>
 

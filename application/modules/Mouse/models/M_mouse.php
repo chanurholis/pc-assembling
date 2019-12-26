@@ -3,7 +3,10 @@ class M_mouse extends CI_Model
 {
     public function tampil_mouse()
     {
-        return $this->db->get('m_mouse');
+        $this->db->select('*');
+        $this->db->from('m_mouse');
+        $this->db->order_by('nama_mouse', 'ASC');
+        return $this->db->get();
     }
 
     public function ubah_mouse($where)
@@ -16,6 +19,8 @@ class M_mouse extends CI_Model
         $this->db->select('*');
         $this->db->from('m_mouse');
         $this->db->like('nama_mouse', $keyword);
+        $this->db->or_like('mouse_id', $keyword);
+        $this->db->order_by('nama_mouse', 'ASC');
         return $this->db->get()->result();
     }
 }

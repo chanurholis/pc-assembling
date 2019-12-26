@@ -5,9 +5,9 @@
             Master PSU
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('PSU') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('PSU') ?>"> PSU</a></li>
-            <li><a href="<?= base_url('PSU') ?>"> Master PSU</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> PSU</a></li>
+            <li><a> Master PSU</a></li>
         </ol>
     </section>
 
@@ -31,17 +31,19 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID PSU</th>
                                 <th scope="col">PSU</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php $no = 1;
-                            foreach ($psu as $v) : ?>
+                                                foreach ($psu as $v) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $v->psu_id ?></td>
                                     <td scope="row"><?= $v->nama_psu ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('PSU/ubah_psu/') . $v->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('PSU/hapus_psu/') . $v->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('PSU/ubah_psu/') . $v->psu_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('PSU/hapus_psu/') . $v->psu_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

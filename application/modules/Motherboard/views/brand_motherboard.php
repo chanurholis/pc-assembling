@@ -31,6 +31,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID Brand Motherboard</th>
                                 <th scope="col">Brand Motherboard</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
@@ -39,6 +40,7 @@
                             foreach ($motherboard as $m) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $m->brand_motherboard_id ?></td>
                                     <td scope="row"><?= $m->brand_motherboard ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('Motherboard/ubah_brand_motherboard/') . $m->brand_motherboard_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>

@@ -4,9 +4,9 @@
             Master PSU
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('PSU') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('PSU') ?>"> PSU</a></li>
-            <li><a href="<?= base_url('PSU') ?>"> Master PSU</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> PSU</a></li>
+            <li><a> Master PSU</a></li>
         </ol>
     </section>
 
@@ -20,7 +20,11 @@
             <form role="form" action="<?= base_url('PSU/aksi_ubah_psu') ?>" method="post">
                 <?php foreach ($psu as $p) : ?>
                     <div class="box-body">
-                        <input type="hidden" name="id" value="<?= $p->id ?>">
+                        <input type="hidden" name="id" value="<?= $p->psu_id ?>">
+                        <div class="form-group col-md-8">
+                            <label for="id">ID PSU</label>
+                            <input type="number" id="id" name="psu_id" value="<?= $p->psu_id ?>" class="form-control" disabled>
+                        </div>
                         <div class="form-group col-md-8">
                             <label for="nama">PSU</label>
                             <input type="text" id="nama" name="nama_psu" value="<?= $p->nama_psu ?>" class="form-control" autofocus>

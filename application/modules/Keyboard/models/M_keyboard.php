@@ -3,7 +3,10 @@ class M_keyboard extends CI_Model
 {
     public function tampil_keyboard()
     {
-        return $this->db->get('m_keyboard');
+        $this->db->select('*');
+        $this->db->from('m_keyboard');
+        $this->db->order_by('nama_keyboard', 'ASC');
+        return $this->db->get();
     }
 
     public function ubah_keyboard($where)
@@ -16,6 +19,7 @@ class M_keyboard extends CI_Model
         $this->db->select('*');
         $this->db->from('m_keyboard');
         $this->db->like('nama_keyboard', $keyword);
+        $this->db->order_by('nama_keyboard', 'ASC');
         return $this->db->get()->result();
     }
 }

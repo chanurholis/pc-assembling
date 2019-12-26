@@ -5,7 +5,7 @@
             My PC
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-database"></i> My PC</a></li>
+            <li><a><i class="fa fa-database"></i> My PC</a></li>
         </ol>
     </section>
 
@@ -32,7 +32,7 @@
                                 <thead>
                                     <tr>
                                         <th scope="col" width="10px" class="text-center">NO</th>
-                                        <th scope="col">PC</th>
+                                        <th scope="col">NO INDEKS</th>
                                         <th scope="col">INSTITUSI</th>
                                         <th scope="col">PENGGUUNA</th>
                                         <th scope="col">PROCESSOR</th>
@@ -48,17 +48,17 @@
                                     foreach ($rakit as $r) : ?>
                                         <tr>
                                             <td scope="row" class="text-center"><?= $no++ ?></td>
-                                            <td scope="row"><?= $r->nama_pc ?></td>
+                                            <td scope="row"><?= $r->no_indeks ?></td>
                                             <td scope="row"><?= $r->institusi ?></td>
                                             <td scope="row"><?= $r->pengguna ?></td>
-                                            <td scope="row"><?= $r->processor ?></td>
-                                            <td scope="row">DDR<?= $r->ram ?></td>
-                                            <td scope="row"><?= $r->storage ?></td>
-                                            <td scope="row"><?= $r->motherboard ?></td>
+                                            <td scope="row"><?= $r->brand_processor ?> <?= $r->nama_processor ?></td>
+                                            <td scope="row"><?= $r->brand_ram ?> <?= $r->nama_ram ?> DDR <?= $r->ddr ?> <?= $r->kapasitas_ram ?><?= $r->satuan ?></td>
+                                            <td scope="row"><?= $r->brand_storage ?> <?= $r->nama_storage ?> <?= $r->type_storage ?> <?= $r->kapasitas_storage ?><?= $r->satuan ?></td>
+                                            <td scope="row"><?= $r->brand_motherboard ?> <?= $r->motherboard ?></td>
                                             <td scope="row" class="text-center">
-                                                <a href="<?= base_url('Mypc/detail/') . $r->id ?>"><span class="label label-success"><i class="fa fa-plus-circle"></i> Detail</span></a>
-                                                <a href="<?= base_url('Mypc/ubah/') . $r->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                                <a class="tombol-hapus" href="<?= base_url('Mypc/hapus/') . $r->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                                <a href="<?= base_url('Mypc/detail/') . $r->rakit_id ?>"><span class="label label-success"><i class="fa fa-plus-circle"></i> Detail</span></a>
+                                                <a href="<?= base_url('Mypc/ubah/') . $r->rakit_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                                <a class="tombol-hapus" href="<?= base_url('Mypc/hapus/') . $r->rakit_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                             </td>
                                         </tr>
                                     <?php endforeach ?>

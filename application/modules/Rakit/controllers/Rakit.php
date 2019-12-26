@@ -10,30 +10,30 @@ class Rakit extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Rakit PC';
-        $data['processor_intel'] = $this->M_rakit->tampil_processor_intel()->result();
-        $data['processor_amd'] = $this->M_rakit->tampil_processor_amd()->result();
-        $data['motherboard_asrock'] = $this->M_rakit->tampil_motherboard_asrock()->result();
-        $data['motherboard_msi'] = $this->M_rakit->tampil_motherboard_msi()->result();
-        $data['ram_corsair'] = $this->M_rakit->tampil_ram_corsair()->result();
-        $data['ram_gskill'] = $this->M_rakit->tampil_ram_gskill()->result();
-        $data['storage_hdd'] = $this->M_rakit->tampil_storage_hdd()->result();
-        $data['storage_ssd'] = $this->M_rakit->tampil_storage_ssd()->result();
-        $data['casing'] = $this->M_rakit->tampil_casing()->result();
-        $data['vga_addon'] = $this->M_rakit->tampil_vga_addon()->result();
-        $data['vga_onboard'] = $this->M_rakit->tampil_vga_onboard()->result();
-        $data['psu'] = $this->M_rakit->tampil_psu()->result();
-        $data['keyboard'] = $this->M_rakit->tampil_keyboard()->result();
-        $data['mouse'] = $this->M_rakit->tampil_mouse()->result();
-        $data['monitor'] = $this->M_rakit->tampil_monitor()->result();
-        $this->load->view('partials/header', $data);
-        if ($this->session->userdata('role')  == 'Admin') {
-            $this->load->view('partials/sidebar_admin');
+        if ($this->session->userdata('status') == NULL) {
+            redirect('/');
         } else {
-            $this->load->view('partials/sidebar_member');
+            $data['judul'] = 'Rakit PC';
+            $data['institusi'] = ['POLTEKPOS', 'YPBPI', 'STIMLOG'];
+            $data['processor'] = $this->M_rakit->tampil_processor()->result();
+            $data['motherboard'] = $this->M_rakit->tampil_motherboard()->result();
+            $data['ram'] = $this->M_rakit->tampil_ram()->result();
+            $data['storage'] = $this->M_rakit->tampil_storage()->result();
+            $data['casing'] = $this->M_rakit->tampil_casing()->result();
+            $data['vga'] = $this->M_rakit->tampil_vga()->result();
+            $data['psu'] = $this->M_rakit->tampil_psu()->result();
+            $data['keyboard'] = $this->M_rakit->tampil_keyboard()->result();
+            $data['mouse'] = $this->M_rakit->tampil_mouse()->result();
+            $data['monitor'] = $this->M_rakit->tampil_monitor()->result();
+            $this->load->view('partials/header', $data);
+            if ($this->session->userdata('role')  == 'Admin') {
+                $this->load->view('partials/sidebar_admin');
+            } else {
+                $this->load->view('partials/sidebar_member');
+            }
+            $this->load->view('rakit', $data);
+            $this->load->view('partials/footer');
         }
-        $this->load->view('rakit', $data);
-        $this->load->view('partials/footer');
     }
 
     public function rakit_pc()
@@ -41,46 +41,72 @@ class Rakit extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_pc', 'PC', 'required|trim');
-            $this->form_validation->set_rules('institusi', 'Institusi', 'required|trim');
-            $this->form_validation->set_rules('processor', 'Processor', 'required|trim');
-            $this->form_validation->set_rules('motherboard', 'Motherboard', 'required|trim');
-            $this->form_validation->set_rules('ram', 'RAM', 'required|trim');
-            $this->form_validation->set_rules('storage', 'Storage', 'required');
-            $this->form_validation->set_rules('casing', 'Casing', 'required|trim');
-            $this->form_validation->set_rules('vga', 'VGA', 'required|trim');
-            $this->form_validation->set_rules('psu', 'PSU', 'required|trim');
-            $this->form_validation->set_rules('keyboard', 'Keyboard', 'required|trim');
-            $this->form_validation->set_rules('mouse', 'Mouse', 'required|trim');
-            $this->form_validation->set_rules('monitor', 'Monitor', 'required|trim');
-            $this->form_validation->set_rules('pengguna', 'Pengguna', 'required|trim');
+            $this->form_validation->set_rules('no_indeks', 'NO INDEKS', 'required|trim', [
+                'required' => 'NO INDEKS harus diisi.'
+            ]);
+            $this->form_validation->set_rules('institusi', 'INSTITUSI', 'required|trim', [
+                'required' => 'INSTITUSI harus diisi.'
+            ]);
+            $this->form_validation->set_rules('processor', 'PROCESSOR', 'required|trim', [
+                'required' => 'PROCESSOR harus diisi.'
+            ]);
+            $this->form_validation->set_rules('motherboard', 'MOTHERBOARD', 'required|trim', [
+                'required' => 'MOTHERBOARD harus diisi.'
+            ]);
+            $this->form_validation->set_rules('ram', 'RAM', 'required|trim', [
+                'required' => 'RAM harus diisi.'
+            ]);
+            $this->form_validation->set_rules('storage', 'STORAGE', 'required|trim', [
+                'required' => 'STORAGE harus diisi.'
+            ]);
+            $this->form_validation->set_rules('casing', 'CASING', 'required|trim', [
+                'required' => 'CASING harus diisi.'
+            ]);
+            $this->form_validation->set_rules('vga', 'VGA', 'required|trim', [
+                'required' => 'VGA harus diisi.'
+            ]);
+            $this->form_validation->set_rules('psu', 'PSU', 'required|trim', [
+                'required' => 'PSU harus diisi.'
+            ]);
+            $this->form_validation->set_rules('keyboard', 'KEYBOARD', 'required|trim', [
+                'required' => 'KEYBOARD harus diisi.'
+            ]);
+            $this->form_validation->set_rules('mouse', 'MOUSE', 'required|trim', [
+                'required' => 'MOUSE harus diisi.'
+            ]);
+            $this->form_validation->set_rules('monitor', 'MONITOR', 'required|trim', [
+                'required' => 'MONITOR harus diisi.'
+            ]);
+            $this->form_validation->set_rules('pengguna', 'PENGGUNA', 'required|trim', [
+                'required' => 'PENGGUNA harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Rakit PC';
-                $data['processor_intel'] = $this->M_rakit->tampil_processor_intel()->result();
-                $data['processor_amd'] = $this->M_rakit->tampil_processor_amd()->result();
-                $data['motherboard_asrock'] = $this->M_rakit->tampil_motherboard_asrock()->result();
-                $data['motherboard_msi'] = $this->M_rakit->tampil_motherboard_msi()->result();
-                $data['ram_corsair'] = $this->M_rakit->tampil_ram_corsair()->result();
-                $data['ram_gskill'] = $this->M_rakit->tampil_ram_gskill()->result();
-                $data['storage_hdd'] = $this->M_rakit->tampil_storage_hdd()->result();
-                $data['storage_ssd'] = $this->M_rakit->tampil_storage_ssd()->result();
+                $data['institusi'] = ['POLTEKPOS', 'YPBPI', 'STIMLOG'];
+                $data['processor'] = $this->M_rakit->tampil_processor()->result();
+                $data['motherboard'] = $this->M_rakit->tampil_motherboard()->result();
+                $data['ram'] = $this->M_rakit->tampil_ram()->result();
+                $data['storage'] = $this->M_rakit->tampil_storage()->result();
                 $data['casing'] = $this->M_rakit->tampil_casing()->result();
-                $data['vga_addon'] = $this->M_rakit->tampil_vga_addon()->result();
-                $data['vga_onboard'] = $this->M_rakit->tampil_vga_onboard()->result();
+                $data['vga'] = $this->M_rakit->tampil_vga()->result();
                 $data['psu'] = $this->M_rakit->tampil_psu()->result();
                 $data['keyboard'] = $this->M_rakit->tampil_keyboard()->result();
                 $data['mouse'] = $this->M_rakit->tampil_mouse()->result();
                 $data['monitor'] = $this->M_rakit->tampil_monitor()->result();
                 $this->load->view('partials/header', $data);
-                $this->load->view('partials/sidebar_admin');
+                if ($this->session->userdata('role')  == 'Admin') {
+                    $this->load->view('partials/sidebar_admin');
+                } else {
+                    $this->load->view('partials/sidebar_member');
+                }
                 $this->load->view('rakit', $data);
                 $this->load->view('partials/footer');
             } else {
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
                 $user = $this->session->userdata('username');
-                $nama_pc = htmlspecialchars($this->input->post('nama_pc', true));
+                $no_indeks = htmlspecialchars($this->input->post('no_indeks', true));
                 $institusi = htmlspecialchars($this->input->post('institusi', true));
                 $processor = htmlspecialchars($this->input->post('processor', true));
                 $motherboard = htmlspecialchars($this->input->post('motherboard', true));
@@ -92,7 +118,7 @@ class Rakit extends CI_Controller
                 $keyboard = htmlspecialchars($this->input->post('keyboard', true));
                 $mouse = htmlspecialchars($this->input->post('mouse', true));
                 $monitor = htmlspecialchars($this->input->post('monitor', true));
-                $tgl_input = date('d m Y');
+                $tgl_input = date('Y-m-d H:i:s');
                 $pengguna = htmlspecialchars($this->input->post('pengguna', true));
                 $tgl_diserahkan = htmlspecialchars($this->input->post('diserahkan', true));
                 $bukti = $_FILES['image']['name'];
@@ -102,7 +128,7 @@ class Rakit extends CI_Controller
                 } else {
                     $config['upload_path'] = './upload/bukti/';
                     $config['allowed_types'] = 'jpg|png|jpeg';
-                    $config['max_size'] = 5120;
+                    $config['max_size'] = 10240;
                     $config['file_name'] = 'item-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
 
                     $this->load->library('upload', $config);
@@ -118,18 +144,18 @@ class Rakit extends CI_Controller
 
                 $data = array(
                     'user' => $user,
-                    'nama_pc' => $nama_pc,
+                    'no_indeks' => $no_indeks,
                     'institusi' => $institusi,
-                    'processor' => $processor,
-                    'motherboard' => $motherboard,
-                    'ram' => $ram,
-                    'storage' => $storage,
-                    'casing' => $casing,
-                    'vga' => $vga,
-                    'psu' => $psu,
-                    'keyboard' => $keyboard,
-                    'mouse' => $mouse,
-                    'monitor' => $monitor,
+                    'processor_id' => $processor,
+                    'motherboard_id' => $motherboard,
+                    'ram_id' => $ram,
+                    'storage_id' => $storage,
+                    'casing_id' => $casing,
+                    'vga_id' => $vga,
+                    'psu_id' => $psu,
+                    'keyboard_id' => $keyboard,
+                    'mouse_id' => $mouse,
+                    'monitor_id' => $monitor,
                     'tgl_input' => $tgl_input,
                     'pengguna' => $pengguna,
                     'tgl_diserahkan' => $tgl_diserahkan,

@@ -11,7 +11,7 @@ class Login extends CI_Controller
     public function index()
     {
         if ($this->session->userdata('status') == NULL) {
-            // redirect('/');
+            // Biarkan saja seperti itu.
         } else {
             $this->session->sess_destroy();
         }
@@ -44,10 +44,13 @@ class Login extends CI_Controller
                     $data_session = array(
                         'username' => $user['username'],
                         'role' => $user['role'],
-                        'status' => 'login',
-                        'last_login' => $user['last_login']
+                        'status' => 'login'
                     );
 
+                    $data = ['last_login' => date('Y-m-d H:i:s')];
+
+                    $this->db->where($where);
+                    $this->db->update('user', $data);
 
                     $this->session->set_userdata($data_session);
 
@@ -70,7 +73,7 @@ class Login extends CI_Controller
     public function logout()
     {
         $this->session->sess_destroy();
-        redirect('Login');
+        redirect('/');
     }
 
     public function forgot()

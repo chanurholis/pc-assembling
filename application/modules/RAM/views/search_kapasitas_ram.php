@@ -1,12 +1,12 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Master Kapasitas
+            Master Kapasitas RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM/kapasitas_ram') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM/kapasitas_ram') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM/kapasitas_ram') ?>"> Master Kapasitas</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master Kapasitas</a></li>
         </ol>
     </section>
 
@@ -40,8 +40,8 @@
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $k->kapasitas_ram ?><?= $k->satuan ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('RAM/ubah_kapasitas_ram/') . $k->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('RAM/hapus_kapasitas_ram/') . $k->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('RAM/ubah_kapasitas_ram/') . $k->kapasitas_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('RAM/hapus_kapasitas_ram/') . $k->kapasitas_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

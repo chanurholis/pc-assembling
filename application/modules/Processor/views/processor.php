@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="box-body table-responsive">
-                        <table class="table table-striped table-bordered" id="processor">
+                        <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
                                 <th scope="col">Brand</th>
@@ -36,8 +36,8 @@
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                            $no = 1;
-                            foreach ($processor as $p) { ?>
+                                                $no = 1;
+                                                foreach ($processor as $p) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $p->brand_processor ?></td>
@@ -61,9 +61,3 @@
 
     </section>
 </div>
-
-<script>
-    $(document).ready(function() {
-        $('#processor').DataTable();
-    });
-</script>

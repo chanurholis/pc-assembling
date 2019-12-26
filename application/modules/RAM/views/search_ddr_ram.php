@@ -4,9 +4,9 @@
             Master DDR
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM/ddr_ram') ?>"> Master DDR</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master DDR</a></li>
         </ol>
     </section>
 
@@ -40,8 +40,8 @@
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $d->ddr ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('RAM/ubah_ddr_ram/') . $d->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('RAM/hapus_ddr_ram/') . $d->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('RAM/ubah_ddr_ram/') . $d->ddr_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('RAM/hapus_ddr_ram/') . $d->ddr_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

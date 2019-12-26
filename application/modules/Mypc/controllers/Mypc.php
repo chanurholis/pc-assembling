@@ -14,8 +14,10 @@ class Mypc extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
+            $where = ['user' => $this->session->userdata('username')];
+
             $data['judul'] = 'My PC';
-            $data['rakit'] = $this->M_mypc->tampil_mypc()->result();
+            $data['rakit'] = $this->M_mypc->tampil_mypc($where)->result();
             $this->load->view('partials/header', $data);
             if ($this->session->userdata('role')  == 'Admin') {
                 $this->load->view('partials/sidebar_admin');
@@ -34,7 +36,17 @@ class Mypc extends CI_Controller
         } else {
             $data['judul'] = 'Ubah Data My PC';
             $data['institusi'] = ['POLTEKPOS', 'STIMLOG', 'YPBPI'];
-            $where = ['id' => $id];
+            $data['processor'] = $this->M_mypc->tampil_processor()->result();
+            $data['motherboard'] = $this->M_mypc->tampil_motherboard()->result();
+            $data['ram'] = $this->M_mypc->tampil_ram()->result();
+            $data['storage'] = $this->M_mypc->tampil_storage()->result();
+            $data['casing'] = $this->M_mypc->tampil_casing()->result();
+            $data['vga'] = $this->M_mypc->tampil_vga()->result();
+            $data['psu'] = $this->M_mypc->tampil_psu()->result();
+            $data['keyboard'] = $this->M_mypc->tampil_keyboard()->result();
+            $data['mouse'] = $this->M_mypc->tampil_mouse()->result();
+            $data['monitor'] = $this->M_mypc->tampil_monitor()->result();
+            $where = ['rakit_id' => $id];
             $data['result'] = $this->M_mypc->ubah_mypc($where)->result();
             $this->load->view('partials/header', $data);
             if ($this->session->userdata('role') == 'Admin') {
@@ -47,13 +59,154 @@ class Mypc extends CI_Controller
         }
     }
 
+    public function aksi_ubah_mypc()
+    {
+        $this->form_validation->set_rules('no_indeks', 'NO INDEKS', 'required|trim', [
+            'required' => 'NO INDEKS harus diisi.'
+        ]);
+        $this->form_validation->set_rules('institusi', 'INSTITUSI', 'required|trim', [
+            'required' => 'INSTITUSI harus diisi.'
+        ]);
+        $this->form_validation->set_rules('processor', 'PROCESSOR', 'required|trim', [
+            'required' => 'PROCESSOR harus diisi.'
+        ]);
+        $this->form_validation->set_rules('motherboard', 'MOTHERBOARD', 'required|trim', [
+            'required' => 'MOTHERBOARD harus diisi.'
+        ]);
+        $this->form_validation->set_rules('ram', 'RAM', 'required|trim', [
+            'required' => 'RAM harus diisi.'
+        ]);
+        $this->form_validation->set_rules('storage', 'STORAGE', 'required|trim', [
+            'required' => 'STORAGE harus diisi.'
+        ]);
+        $this->form_validation->set_rules('casing', 'CASING', 'required|trim', [
+            'required' => 'CASING harus diisi.'
+        ]);
+        $this->form_validation->set_rules('vga', 'VGA', 'required|trim', [
+            'required' => 'VGA harus diisi.'
+        ]);
+        $this->form_validation->set_rules('psu', 'PSU', 'required|trim', [
+            'required' => 'PSU harus diisi.'
+        ]);
+        $this->form_validation->set_rules('keyboard', 'KEYBOARD', 'required|trim', [
+            'required' => 'KEYBOARD harus diisi.'
+        ]);
+        $this->form_validation->set_rules('mouse', 'MOUSE', 'required|trim', [
+            'required' => 'MOUSE harus diisi.'
+        ]);
+        $this->form_validation->set_rules('monitor', 'MONITOR', 'required|trim', [
+            'required' => 'MONITOR harus diisi.'
+        ]);
+        $this->form_validation->set_rules('pengguna', 'PENGGUNA', 'required|trim', [
+            'required' => 'PENGGUNA harus diisi.'
+        ]);
+
+        if ($this->session->userdata('status') == NULL) {
+            redirect('/');
+        } else {
+            if ($this->form_validation->run() == false) {
+                $id = htmlspecialchars($this->input->post('id', true));
+                $where = ['rakit_id' => $id];
+
+                $data['judul'] = 'Ubah Data My PC';
+                $data['institusi'] = ['POLTEKPOS', 'YPBPI', 'STIMLOG'];
+                $data['processor'] = $this->M_mypc->tampil_processor()->result();
+                $data['motherboard'] = $this->M_mypc->tampil_motherboard()->result();
+                $data['ram'] = $this->M_mypc->tampil_ram()->result();
+                $data['storage'] = $this->M_mypc->tampil_storage()->result();
+                $data['casing'] = $this->M_mypc->tampil_casing()->result();
+                $data['vga'] = $this->M_mypc->tampil_vga()->result();
+                $data['psu'] = $this->M_mypc->tampil_psu()->result();
+                $data['keyboard'] = $this->M_mypc->tampil_keyboard()->result();
+                $data['mouse'] = $this->M_mypc->tampil_mouse()->result();
+                $data['monitor'] = $this->M_mypc->tampil_monitor()->result();
+                $data['result'] = $this->M_mypc->ubah_mypc($where)->result();
+                $this->load->view('partials/header', $data);
+                if ($this->session->userdata('role')  == 'Admin') {
+                    $this->load->view('partials/sidebar_admin');
+                } else {
+                    $this->load->view('partials/sidebar_member');
+                }
+                $this->load->view('ubah', $data);
+                $this->load->view('partials/footer');
+            } else {
+                $this->session->set_flashdata('flash', 'Diubah');
+
+                $user = $this->session->userdata('username');
+                $id = htmlspecialchars($this->input->post('id'));
+                $no_indeks = htmlspecialchars($this->input->post('no_indeks', true));
+                $institusi = htmlspecialchars($this->input->post('institusi', true));
+                $processor = htmlspecialchars($this->input->post('processor', true));
+                $motherboard = htmlspecialchars($this->input->post('motherboard', true));
+                $ram = htmlspecialchars($this->input->post('ram', true));
+                $storage = htmlspecialchars($this->input->post('storage', true));
+                $casing = htmlspecialchars($this->input->post('casing', true));
+                $vga = htmlspecialchars($this->input->post('vga', true));
+                $psu = htmlspecialchars($this->input->post('psu', true));
+                $keyboard = htmlspecialchars($this->input->post('keyboard', true));
+                $mouse = htmlspecialchars($this->input->post('mouse', true));
+                $monitor = htmlspecialchars($this->input->post('monitor', true));
+                $tgl_input = date('Y-m-d H:i:s');
+                $pengguna = htmlspecialchars($this->input->post('pengguna', true));
+                $tgl_diserahkan = htmlspecialchars($this->input->post('diserahkan', true));
+                $bukti = $_FILES['image']['name'];
+
+                $where = ['rakit_id' => $id];
+
+                if ($bukti == NULL) {
+                    $bukti = 'default.jpg';
+                } else {
+                    $config['upload_path'] = './upload/bukti/';
+                    $config['allowed_types'] = 'jpg|png|jpeg';
+                    $config['max_size'] = 10240;
+                    $config['file_name'] = 'item-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
+
+                    $this->load->library('upload', $config);
+
+                    if (!$this->upload->do_upload('image')) {
+                        $error = array('error' => $this->upload->display_errors());
+                        var_dump($error);
+                        die;
+                    }
+
+                    $bukti = $this->upload->data('file_name');
+                }
+
+                $data = array(
+                    'user' => $user,
+                    'no_indeks' => $no_indeks,
+                    'institusi' => $institusi,
+                    'processor_id' => $processor,
+                    'motherboard_id' => $motherboard,
+                    'ram_id' => $ram,
+                    'storage_id' => $storage,
+                    'casing_id' => $casing,
+                    'vga_id' => $vga,
+                    'psu_id' => $psu,
+                    'keyboard_id' => $keyboard,
+                    'mouse_id' => $mouse,
+                    'monitor_id' => $monitor,
+                    'tgl_input' => $tgl_input,
+                    'pengguna' => $pengguna,
+                    'tgl_diserahkan' => $tgl_diserahkan,
+                    'bukti' => $bukti
+                );
+
+                $this->db->where($where);
+                $this->db->update('rakit', $data);
+                redirect('Mypc');
+            }
+        }
+    }
+
     public function detail($id)
     {
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
             $data['judul'] = 'Detail Data';
-            $where = array('id' => $id);
+            $where = array('rakit_id' => $id);
+            $data['date'] = $this->M_mypc->detail($where, 'rakit')->row_array();
             $data['result'] = $this->M_mypc->detail($where, 'rakit')->result();
             $this->load->view('partials/header', $data);
             if ($this->session->userdata('role') == 'Admin') {
@@ -73,7 +226,7 @@ class Mypc extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = ['id' => $id];
+            $where = ['rakit_id' => $id];
 
             $bukti = $this->db->get_where('rakit', $where)->row();
 
@@ -162,25 +315,25 @@ class Mypc extends CI_Controller
             $excel->getActiveSheet()->getStyle('M3')->applyFromArray($style_col);
             $excel->getActiveSheet()->getStyle('N3')->applyFromArray($style_col);
 
-            $where = ['id' => $id];
+            $where = ['rakit_id' => $id];
 
-            $result = $this->M_mypc->tampil($where);
+            $result = $this->M_mypc->tampil_export($where)->result();
 
             $numrow = 4;
             foreach ($result as $data) {
-                $excel->setActiveSheetIndex(0)->setCellValue('A' . $numrow, $data->nama_pc);
+                $excel->setActiveSheetIndex(0)->setCellValue('A' . $numrow, $data->no_indeks);
                 $excel->setActiveSheetIndex(0)->setCellValue('B' . $numrow, $data->institusi);
                 $excel->setActiveSheetIndex(0)->setCellValue('C' . $numrow, $data->pengguna);
-                $excel->setActiveSheetIndex(0)->setCellValue('D' . $numrow, $data->processor);
-                $excel->setActiveSheetIndex(0)->setCellValue('E' . $numrow, $data->motherboard);
-                $excel->setActiveSheetIndex(0)->setCellValue('F' . $numrow, $data->ram);
-                $excel->setActiveSheetIndex(0)->setCellValue('G' . $numrow, $data->storage);
-                $excel->setActiveSheetIndex(0)->setCellValue('H' . $numrow, $data->casing);
-                $excel->setActiveSheetIndex(0)->setCellValue('I' . $numrow, $data->vga);
-                $excel->setActiveSheetIndex(0)->setCellValue('J' . $numrow, $data->psu);
-                $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $data->keyboard);
-                $excel->setActiveSheetIndex(0)->setCellValue('L' . $numrow, $data->mouse);
-                $excel->setActiveSheetIndex(0)->setCellValue('M' . $numrow, $data->monitor);
+                $excel->setActiveSheetIndex(0)->setCellValue('D' . $numrow, $data->brand_processor . " " . $data->nama_processor);
+                $excel->setActiveSheetIndex(0)->setCellValue('E' . $numrow, $data->brand_motherboard . " " . $data->motherboard);
+                $excel->setActiveSheetIndex(0)->setCellValue('F' . $numrow, $data->brand_ram . " " . $data->nama_ram . " DDR " . $data->ddr . " " . $data->kapasitas_ram . $data->satuan_ram);
+                $excel->setActiveSheetIndex(0)->setCellValue('G' . $numrow, $data->brand_storage . " " . $data->nama_storage . " " . $data->type_storage . " " . $data->kapasitas_storage . $data->satuan_storage);
+                $excel->setActiveSheetIndex(0)->setCellValue('H' . $numrow, $data->nama_casing);
+                $excel->setActiveSheetIndex(0)->setCellValue('I' . $numrow, $data->nama_vga . " " . $data->type_vga);
+                $excel->setActiveSheetIndex(0)->setCellValue('J' . $numrow, $data->nama_psu);
+                $excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $data->nama_keyboard);
+                $excel->setActiveSheetIndex(0)->setCellValue('L' . $numrow, $data->nama_mouse);
+                $excel->setActiveSheetIndex(0)->setCellValue('M' . $numrow, $data->nama_monitor);
                 $excel->setActiveSheetIndex(0)->setCellValue('N' . $numrow, $data->tgl_diserahkan);
 
                 $excel->getActiveSheet()->getStyle('A' . $numrow)->applyFromArray($style_row);
@@ -228,96 +381,6 @@ class Mypc extends CI_Controller
             header('Cache-Control: max-age=0');
             $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
             $write->save('php://output');
-        }
-    }
-
-    public function export_pdf($id)
-    {
-        if ($this->session->userdata('status') == NULL) {
-            redirect('/');
-        } else {
-            $pdf = new FPDF('l', 'mm', 'A3');
-
-            $pdf->AddPage();
-
-            $pdf->SetFont('Arial', 'B', 16);
-
-            $pdf->Cell(50, 6, 'LAPORAN HASIL RAKIT PC', 0, 1);
-            $pdf->SetFont('Arial', 'B', 12);
-
-            $where = ['id' => $id];
-
-            $data = $this->M_mypc->tampil($where);
-
-
-            $pdf->Cell(50, 6, '', 0, 1);
-            $pdf->SetFont('Arial', '', 10);
-
-
-            foreach ($data as $result) :
-
-                $pdf->Cell(40, 6, 'PC', 1, 0);
-                $pdf->Cell(100, 6, $result->nama_pc, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'INSTITUSI', 1, 0);
-                $pdf->Cell(100, 6, $result->institusi, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'PENGGUNA', 1, 0);
-                $pdf->Cell(100, 6, $result->pengguna, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'PROCESSOR', 1, 0);
-                $pdf->Cell(100, 6, $result->processor, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'MOTHERBOARD', 1, 0);
-                $pdf->Cell(100, 6, $result->motherboard, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'RAM', 1, 0);
-                $pdf->Cell(100, 6, $result->ram, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'STORAGE', 1, 0);
-                $pdf->Cell(100, 6, $result->storage, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'CASING', 1, 0);
-                $pdf->Cell(100, 6, $result->casing, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'VGA', 1, 0);
-                $pdf->Cell(100, 6, $result->vga, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'PSU', 1, 0);
-                $pdf->Cell(100, 6, $result->psu, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'KEYBOARD', 1, 0);
-                $pdf->Cell(100, 6, $result->keyboard, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'MOUSE', 1, 0);
-                $pdf->Cell(100, 6, $result->mouse, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'MONITOR', 1, 0);
-                $pdf->Cell(100, 6, $result->monitor, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-                $pdf->Cell(40, 6, 'DISERAHKAN', 1, 0);
-                $pdf->Cell(100, 6, $result->tgl_diserahkan, 1, 1);
-                $pdf->Cell(50, 6, '', 0, 1);
-
-            endforeach;
-
-            $pdf->SetFont('Arial', '', 10);
-
-
-            $pdf->Output();
         }
     }
 }

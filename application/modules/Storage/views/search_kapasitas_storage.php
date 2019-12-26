@@ -2,12 +2,12 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Master Kapasitas
+            Master Kapasitas Storage
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Storage/kapasitas_storage') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Storage/kapasitas_storage') ?>"> Storage</a></li>
-            <li><a href="<?= base_url('Storage/kapasitas_storage') ?>"> Master Kapasitas</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Storage</a></li>
+            <li><a> Master Kapasitas</a></li>
         </ol>
     </section>
 
@@ -35,14 +35,14 @@
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                            $no = 1;
-                            foreach ($kapasitas_storage as $k) : ?>
+                                                $no = 1;
+                                                foreach ($kapasitas_storage as $k) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $k->kapasitas_storage ?><?= $k->satuan ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('Storage/ubah_kapasitas_storage/') . $k->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('Storage/hapus_kapasitas_storage/') . $k->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('Storage/ubah_kapasitas_storage/') . $k->kapasitas_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('Storage/hapus_kapasitas_storage/') . $k->kapasitas_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

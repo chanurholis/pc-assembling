@@ -3,7 +3,10 @@ class M_psu extends CI_Model
 {
     public function tampil_psu()
     {
-        return $this->db->get('m_psu');
+        $this->db->select('*');
+        $this->db->from('m_psu');
+        $this->db->order_by('nama_psu', 'ASC');
+        return $this->db->get();
     }
 
     public function ubah_psu($where)

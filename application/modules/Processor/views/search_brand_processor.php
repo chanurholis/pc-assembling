@@ -31,6 +31,7 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID Brand Processor</th>
                                 <th scope="col">Brand Processor</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
@@ -39,6 +40,7 @@
                             foreach ($processor as $p) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $p->brand_processor_id ?></td>
                                     <td scope="row"><?= $p->brand_processor ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('Processor/ubah_brand_processor/') . $p->brand_processor_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>

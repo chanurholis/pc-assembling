@@ -78,13 +78,15 @@ class Motherboard extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_motherboard', 'Motherboard', 'required|trim|is_unique[m_motherboard.motherboard]');
+            $this->form_validation->set_rules('nama_motherboard', 'Motherboard', 'required|trim|is_unique[m_motherboard.motherboard]', [
+                'required' => 'Motherboard harus diisi.', 'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data Motherboard';
-                $where = array('id' => $id);
+                $where = array('motherboard_id' => $id);
                 $data['motherboard'] = $this->M_motherboard->ubah_motherboard($where, 'motherboard')->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -96,7 +98,7 @@ class Motherboard extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
                 $nama_motherboard = htmlspecialchars($this->input->post('nama_motherboard', true));
 
-                $where = array('id' => $id);
+                $where = array('motherboard_id' => $id);
 
                 $data = array(
                     'motherboard' => $nama_motherboard
@@ -116,7 +118,7 @@ class Motherboard extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('motherboard_id' => $id);
             $this->M_motherboard->hapus($where, 'm_motherboard');
             redirect('Motherboard');
         }

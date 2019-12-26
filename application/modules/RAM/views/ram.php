@@ -5,9 +5,9 @@
             RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM') ?>"> Master RAM</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master RAM</a></li>
         </ol>
     </section>
 
@@ -31,27 +31,27 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
-                                <th scope="col">DDR</th>
                                 <th scope="col">Brand RAM</th>
                                 <th scope="col">Type RAM</th>
+                                <th scope="col">DDR</th>
                                 <th scope="col">Kapasitas</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                            $no = 1;
-                            foreach ($ram as $r) { ?>
+                                                $no = 1;
+                                                foreach ($ram as $r) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
-                                    <td scope="row"><?= $r->ddr ?></td>
                                     <td scope="row"><?= $r->brand_ram ?></td>
                                     <td scope="row"><?= $r->nama_ram ?></td>
-                                    <td scope="row"><?= $r->kapasitas ?><?= $r->satuan ?></td>
+                                    <td scope="row"><?= $r->ddr ?></td>
+                                    <td scope="row"><?= $r->kapasitas_ram ?><?= $r->satuan ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('RAM/ubah_ram/') . $r->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('RAM/hapus_ram/') . $r->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('RAM/ubah_ram/') . $r->ram_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('RAM/hapus_ram/') . $r->ram_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
-                            <?php } ?>
+                            <?php endforeach ?>
                         </table>
                     </div>
                 </div>

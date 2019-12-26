@@ -29,7 +29,15 @@ class RAM extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim|is_unique[m_brand_ram.brand_ram]');
+            $this->form_validation->set_rules('brand_ram_id', 'ID Brand RAM', 'required|trim|is_unique[m_brand_ram.brand_ram_id]|numeric|is_natural_no_zero', [
+                'required' => 'ID Brand RAM harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'ID Brand RAM hanya boleh berisi angka dan harus lebih besar dari nol.',
+                'numeric' => 'ID Brand RAM harus berisi angka.'
+            ]);
+            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim|is_unique[m_brand_ram.brand_ram]', [
+                'required' => 'Brand RAM harus diisi.', 'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Brand RAM';
@@ -41,9 +49,11 @@ class RAM extends CI_Controller
 
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
+                $id = htmlspecialchars($this->input->post('brand_ram_id', true));
                 $brand_ram = htmlspecialchars($this->input->post('brand_ram', true));
 
                 $data = array(
+                    'brand_ram_id' => $id,
                     'brand_ram' => $brand_ram
                 );
 
@@ -59,7 +69,7 @@ class RAM extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Brand RAM';
-            $where = array('id' => $id);
+            $where = array('brand_ram_id' => $id);
             $data['brand_ram'] = $this->M_ram->ubah_brand_ram($where)->result();
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
@@ -73,13 +83,16 @@ class RAM extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim|is_unique[m_brand_ram.brand_ram]');
+            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim|is_unique[m_brand_ram.brand_ram]', [
+                'required' => 'Brand RAM harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data Brand RAM';
-                $where = array('id' => $id);
+                $where = array('brand_ram_id' => $id);
                 $data['brand_ram'] = $this->M_ram->ubah_brand_ram($where)->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -91,7 +104,7 @@ class RAM extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
                 $brand_ram = htmlspecialchars($this->input->post('brand_ram', true));
 
-                $where = array('id' => $id);
+                $where = array('brand_ram_id' => $id);
 
                 $data = array(
                     'brand_ram' => $brand_ram
@@ -111,7 +124,7 @@ class RAM extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('brand_ram_id' => $id);
             $this->M_ram->hapus($where, 'm_brand_ram');
             redirect('RAM/brand_ram');
         }
@@ -154,7 +167,12 @@ class RAM extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('ddr_ram', 'DDR RAM', 'required|trim|is_unique[m_ddr_ram.ddr]|numeric|is_natural_no_zero');
+            $this->form_validation->set_rules('ddr_ram', 'DDR RAM', 'required|trim|is_unique[m_ddr_ram.ddr]|numeric|is_natural_no_zero', [
+                'required' => 'DDR RAM harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'numeric' => 'DDR RAM harus berisi angka.',
+                'is_natural_no_zero' => 'DDR RAM hanya boleh berisi angka dan harus lebih besar dari nol.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Master DDR RAM';
@@ -183,7 +201,7 @@ class RAM extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data DDR RAM';
-            $where = array('id' => $id);
+            $where = array('ddr_id' => $id);
             $data['ddr'] = $this->M_ram->ubah_ddr_ram($where)->result();
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
@@ -197,13 +215,18 @@ class RAM extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('ddr_ram', 'DDR RAM', 'required|trim|is_unique[m_ddr_ram.ddr]|numeric|is_natural_no_zero');
+            $this->form_validation->set_rules('ddr_ram', 'DDR RAM', 'required|trim|is_unique[m_ddr_ram.ddr]|numeric|is_natural_no_zero', [
+                'required' => 'DDR RAM harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'numeric' => 'DDR RAM harus berisi angka.',
+                'is_natural_no_zero' => 'DDR RAM hanya boleh berisi angka dan harus lebih besar dari nol.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data DDR RAM';
-                $where = array('id' => $id);
+                $where = array('ddr_id' => $id);
                 $data['ddr'] = $this->M_ram->ubah_ddr_ram($where)->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -215,7 +238,7 @@ class RAM extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
                 $ddr_ram = htmlspecialchars($this->input->post('ddr_ram', true));
 
-                $where = array('id' => $id);
+                $where = array('ddr_id' => $id);
 
                 $data = array(
                     'ddr' => $ddr_ram
@@ -235,7 +258,7 @@ class RAM extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('ddr_id' => $id);
             $this->M_ram->hapus($where, 'm_ddr_ram');
             redirect('RAM/ddr_ram');
         }
@@ -277,7 +300,11 @@ class RAM extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('kapasitas_ram', 'Kapasitas RAM', 'required|trim|is_unique[m_kapasitas_ram.kapasitas_ram]');
+            $this->form_validation->set_rules('kapasitas_ram', 'Kapasitas RAM', 'required|trim|is_unique[m_kapasitas_ram.kapasitas_ram]|is_natural_no_zero|numeric', [
+                'required' => 'Kapasitas RAM harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'Kapasitas RAM hanya boleh berisi angka dan harus lebih besar dari nol.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Data Kapasitas RAM';
@@ -315,7 +342,7 @@ class RAM extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Kapasitas RAM';
-            $where = array('id' => $id);
+            $where = array('kapasitas_id' => $id);
             $data['kapasitas_ram'] = $this->M_ram->ubah_kapasitas_ram($where)->result();
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
@@ -329,13 +356,17 @@ class RAM extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('kapasitas_ram', 'Kapasitas RAM', 'required|trim|is_unique[m_kapasitas_ram.kapasitas_ram]');
+            $this->form_validation->set_rules('kapasitas_ram', 'Kapasitas RAM', 'required|trim|is_unique[m_kapasitas_ram.kapasitas_ram]|is_natural_no_zero', [
+                'required' => 'Kapasitas RAM harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'Kapasitas RAM hanya boleh berisi angka dan harus lebih besar dari nol.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data Kapasitas RAM';
-                $where = array('id' => $id);
+                $where = array('kapasitas_id' => $id);
                 $data['kapasitas_ram'] = $this->M_ram->ubah_kapasitas_ram($where)->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -352,7 +383,7 @@ class RAM extends CI_Controller
                     Terjadi Kesalahan!</small>');
                     redirect('RAM/tambah_kapasitas_ram');
                 } else {
-                    $where = array('id' => $id);
+                    $where = array('kapasitas_id' => $id);
 
                     $data = array('kapasitas_ram' => $kapasitas_ram);
 
@@ -371,7 +402,7 @@ class RAM extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('kapasitas_id' => $id);
             $this->db->where($where);
             $this->db->delete('m_kapasitas_ram');
             redirect('RAM/kapasitas_ram');
@@ -415,17 +446,24 @@ class RAM extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('ddr', 'DDR', 'required|trim');
-            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim');
-            $this->form_validation->set_rules('nama_ram', 'Type RAM', 'required|trim');
-            $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required|trim');
+            $this->form_validation->set_rules('ddr', 'DDR', 'required|trim', [
+                'required' => 'DDR harus diisi.'
+            ]);
+            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim', [
+                'Brand RAM harus diisi.'
+            ]);
+            $this->form_validation->set_rules('nama_ram', 'Type RAM', 'required|trim', [
+                'Type RAM harus diisi.'
+            ]);
+            $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required|trim', [
+                'Kapasitas harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Data RAM';
                 $data['ddr'] = $this->M_ram->tampil_ddr()->result();
                 $data['brand'] = $this->M_ram->tampil_brand_ram()->result();
                 $data['kapasitas'] = $this->M_ram->tampil_kapasitas_ram()->result();
-                $data['ram'] = $this->M_ram->tampil_ram()->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
                 $this->load->view('tambah_ram', $data);
@@ -440,10 +478,10 @@ class RAM extends CI_Controller
                 $satuan_kapasitas = htmlspecialchars($this->input->post('satuan', true));
 
                 $data = array(
-                    'ddr' => $ddr,
-                    'brand_ram' => $brand_ram,
+                    'ddr_id' => $ddr,
+                    'brand_ram_id' => $brand_ram,
                     'nama_ram' => $nama_ram,
-                    'kapasitas' => $kapasitas,
+                    'kapasitas_id' => $kapasitas,
                     'satuan' => $satuan_kapasitas
                 );
                 $this->db->insert('m_ram', $data);
@@ -476,10 +514,19 @@ class RAM extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('ddr', 'DDR', 'required|trim');
-            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim');
-            $this->form_validation->set_rules('nama_ram', 'Type RAM', 'required|trim');
-            $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required|trim');
+            $this->form_validation->set_rules('ddr', 'DDR', 'required|trim', [
+                'required' => 'DDR harus diisi.'
+            ]);
+            $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim', [
+                'required' => 'Brand RAM harus diisi.'
+            ]);
+            $this->form_validation->set_rules('nama_ram', 'Type RAM', 'required|trim|is_unique[m_ram.nama_ram]', [
+                'required' => 'Type RAM harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
+            $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required|trim', [
+                'required' => 'Kapasitas harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id', true));
@@ -504,13 +551,13 @@ class RAM extends CI_Controller
                 $kapasitas = htmlspecialchars($this->input->post('kapasitas', true));
                 $satuan_kapasitas = htmlspecialchars($this->input->post('satuan', true));
 
-                $where = array('id' => $id);
+                $where = array('ram_id' => $id);
 
                 $data = array(
-                    'ddr' => $ddr,
-                    'brand_ram' => $brand_ram,
+                    'ddr_id' => $ddr,
+                    'brand_ram_id' => $brand_ram,
                     'nama_ram' => $nama_ram,
-                    'kapasitas' => $kapasitas,
+                    'kapasitas_id' => $kapasitas,
                     'satuan' => $satuan_kapasitas
                 );
 
@@ -528,7 +575,7 @@ class RAM extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('ram_id' => $id);
             $this->M_ram->hapus($where, 'm_ram');
             redirect('RAM');
         }

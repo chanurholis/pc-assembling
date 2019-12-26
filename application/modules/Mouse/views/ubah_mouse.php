@@ -4,9 +4,9 @@
             Master Mouse
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Mouse') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Mouse') ?>"> Mouse</a></li>
-            <li><a href="<?= base_url('Mouse') ?>"> Master Mouse</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Mouse</a></li>
+            <li><a> Master Mouse</a></li>
         </ol>
     </section>
 
@@ -20,7 +20,11 @@
             <form role="form" action="<?= base_url('Mouse/aksi_ubah_mouse') ?>" method="post">
                 <?php foreach ($mouse as $m) : ?>
                     <div class="box-body">
-                        <input type="hidden" name="id" value="<?= $m->id ?>">
+                        <input type="hidden" name="id" value="<?= $m->mouse_id ?>">
+                        <div class="form-group col-md-8">
+                            <label for="id">ID Mouse</label>
+                            <input type="number" id="id" value="<?= $m->mouse_id ?>" name="mouse_id" class="form-control" disabled>
+                        </div>
                         <div class="form-group col-md-8">
                             <label for="nama">Mouse</label>
                             <input type="text" id="nama" value="<?= $m->nama_mouse ?>" name="nama_mouse" class="form-control" autofocus>

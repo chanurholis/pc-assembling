@@ -5,9 +5,9 @@
             Master Casing
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Casing') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Casing') ?>"> Casing</a></li>
-            <li><a href="<?= base_url('Casing') ?>"> Master Casing</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Casing</a></li>
+            <li><a> Master Casing</a></li>
         </ol>
     </section>
 
@@ -31,18 +31,20 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID Casing</th>
                                 <th scope="col">Casing</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                            $no = 1;
-                            foreach ($casing as $m) { ?>
+                                                $no = 1;
+                                                foreach ($casing as $m) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $m->casing_id ?></td>
                                     <td scope="row"><?= $m->nama_casing ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('Casing/ubah_casing/') . $m->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('Casing/hapus_casing/') . $m->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('Casing/ubah_casing/') . $m->casing_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('Casing/hapus_casing/') . $m->casing_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php } ?>

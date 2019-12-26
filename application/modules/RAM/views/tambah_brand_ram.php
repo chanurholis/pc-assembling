@@ -1,12 +1,12 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Master Brand
+            Master Brand RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM/tambah_brand_ram') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM/tambah_brand_ram') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM/tambah_brand_ram') ?>"> Master Brand</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master Brand</a></li>
         </ol>
     </section>
 
@@ -19,6 +19,11 @@
             </div>
             <form role="form" action="<?= base_url('RAM/tambah_brand_ram') ?>" method="post">
                 <div class="box-body">
+                    <div class="form-group col-md-8">
+                        <label for="id">ID Brand RAM</label>
+                        <input type="number" id="id" name="brand_ram_id" class="form-control" autofocus>
+                        <?= form_error('brand_ram_id', '<small class="text-danger">', '</small>') ?>
+                    </div>
                     <div class="form-group col-md-8">
                         <label for="brand">Brand RAM</label>
                         <input type="text" id="brand" name="brand_ram" class="form-control" autofocus>

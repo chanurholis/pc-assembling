@@ -27,7 +27,16 @@ class Keyboard extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_keyboard', 'Keyboard', 'required|trim|is_unique[m_keyboard.nama_keyboard]');
+            $this->form_validation->set_rules('keyboard_id', 'ID Keyboard', 'required|trim|is_unique[m_keyboard.keyboard_id]|numeric|is_natural_no_zero|max_length[8]', [
+                'required' => 'ID Keyboard harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'ID Keyboard hanya boleh berisi angka dan harus lebih dari nol.',
+                'max_length' => 'ID Keyboard hanya boleh berisi 8 karakter.'
+            ]);
+            $this->form_validation->set_rules('nama_keyboard', 'Keyboard', 'required|trim|is_unique[m_keyboard.nama_keyboard]', [
+                'required' => 'Keyboard harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Data Master Keyboard';
@@ -38,9 +47,13 @@ class Keyboard extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
+                $id = htmlspecialchars($this->input->post('keyboard_id'));
                 $nama_keyboard = htmlspecialchars($this->input->post('nama_keyboard', true));
 
-                $data = ['nama_keyboard' => $nama_keyboard];
+                $data = [
+                    'keyboard_id' => $id,
+                    'nama_keyboard' => $nama_keyboard
+                ];
 
                 $this->db->insert('m_keyboard', $data);
                 redirect('Keyboard');
@@ -51,7 +64,7 @@ class Keyboard extends CI_Controller
     public function ubah_keyboard($id)
     {
         $data['judul'] = 'Ubah Data Master Keyboard';
-        $where = ['id' => $id];
+        $where = ['keyboard_id' => $id];
         $data['keyboard'] = $this->M_keyboard->ubah_keyboard($where)->result();
         $this->load->view('partials/header', $data);
         $this->load->view('partials/sidebar_admin');
@@ -64,12 +77,15 @@ class Keyboard extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('nama_keyboard', 'Keyboard', 'required|trim|is_unique[m_keyboard.nama_keyboard]');
+            $this->form_validation->set_rules('nama_keyboard', 'Keyboard', 'required|trim|is_unique[m_keyboard.nama_keyboard]', [
+                'required' => 'Keyboard harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id', true));
 
-                $where = ['id' => $id];
+                $where = ['keyboard_id' => $id];
                 $data['keyboard'] = $this->M_keyboard->ubah_keyboard($where)->result();
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -81,7 +97,7 @@ class Keyboard extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
                 $nama_keyboard = htmlspecialchars($this->input->post('nama_keyboard'));
 
-                $where = ['id' => $id];
+                $where = ['keyboard_id' => $id];
 
                 $data = ['nama_keyboard' => $nama_keyboard];
 
@@ -99,7 +115,7 @@ class Keyboard extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = ['id' => $id];
+            $where = ['keyboard_id' => $id];
 
             $this->db->where($where);
             $this->db->delete('m_keyboard');

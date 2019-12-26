@@ -5,9 +5,9 @@
             Master Keyboard
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Keyboard') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Keyboard') ?>"> Keyboard</a></li>
-            <li><a href="<?= base_url('Keyboard') ?>"> Master Keyboard</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Keyboard</a></li>
+            <li><a> Master Keyboard</a></li>
         </ol>
     </section>
 
@@ -31,17 +31,19 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
+                                <th scope="col">ID Keyboard</th>
                                 <th scope="col">Keyboard</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php $no = 1;
-                            foreach ($keyboard as $v) : ?>
+                                                foreach ($keyboard as $v) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
+                                    <td scope="row"><?= $v->keyboard_id ?></td>
                                     <td scope="row"><?= $v->nama_keyboard ?></td>
                                     <td scope="row" class="text-center">
-                                        <a href="<?= base_url('Keyboard/ubah_keyboard/') . $v->id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
-                                        <a class="tombol-hapus" href="<?= base_url('Keyboard/hapus_keyboard/') . $v->id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
+                                        <a href="<?= base_url('Keyboard/ubah_keyboard/') . $v->keyboard_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
+                                        <a class="tombol-hapus" href="<?= base_url('Keyboard/hapus_keyboard/') . $v->keyboard_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>
                                     </td>
                                 </tr>
                             <?php endforeach ?>

@@ -4,9 +4,9 @@
             Kapasitas Storage
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Storage/kapasitas_storage') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Storage/kapasitas_storage') ?>"> Storage</a></li>
-            <li><a href="<?= base_url('Storage/kapasitas_storage') ?>"> Kapasitas Storage</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Storage</a></li>
+            <li><a> Kapasitas Storage</a></li>
         </ol>
     </section>
 
@@ -20,7 +20,12 @@
             <form role="form" action="<?= base_url('Storage/aksi_ubah_kapasitas_storage') ?>" method="post">
                 <?php foreach ($kapasitas_storage as $k) : ?>
                     <div class="box-body">
-                        <input type="hidden" name="id" value="<?= $k->id ?>">
+                        <input type="hidden" name="kapasitas_id" value="<?= $k->kapasitas_id ?>">
+                        <div class="form-group col-md-8">
+                            <label for="id">ID Kapasitas Storage</label>
+                            <input type="number" id="id" name="kapasitas_storage" value="<?= $k->kapasitas_id ?>" class="form-control" disabled>
+                        </div>
+
                         <div class="form-group col-md-8">
                             <label for="kapasitas">Kapasitas Storage</label>
                             <input type="number" id="kapasitas" name="kapasitas_storage" value="<?= $k->kapasitas_storage ?>" class="form-control" autofocus>

@@ -4,9 +4,9 @@
             Storage
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Storage') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Storage') ?>"> Storage</a></li>
-            <li><a href="<?= base_url('Storage') ?>"> Master Storage</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Storage</a></li>
+            <li><a> Master Storage</a></li>
         </ol>
     </section>
 
@@ -20,7 +20,7 @@
             <form role="form" action="<?= base_url('Storage/aksi_ubah_storage') ?>" method="post">
                 <?php foreach ($storage as $s) : ?>
                     <div class="box-body">
-                        <input type="hidden" name="id" value="<?= $s->id ?>">
+                        <input type="hidden" name="id" value="<?= $s->storage_id ?>">
                         <div class="form-group col-md-8">
                             <label for="brand">Brand Storage</label>
                             <select name="brand_storage" id="brand" class="form-control select2" style="width: 100%;" autofocus>
@@ -56,8 +56,15 @@
                         </div>
                         <div class="form-group col-md-8">
                             <label for="brand">Kapasitas</label>
-                            <select name="kapasitas" id="brand" class="form-control select2" style="width: 100%;" disabled>
-                                <option value="<?= $s->kapasitas ?>" selected="selected"><?= $s->kapasitas ?></option>
+                            <select name="kapasitas" id="brand" class="form-control select2">
+                                <option value="">-- Pilih Kapasitas --</option>
+                                <?php foreach ($kapasitas as $k) : ?>
+                                    <?php if ($k->kapasitas_id == $s->kapasitas_id) : ?>
+                                        <option value="<?= $k->kapasitas_id ?>" selected><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
+                                    <?php else : ?>
+                                        <option value="<?= $k->kapasitas_id ?>"><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
+                                    <?php endif ?>
+                                <?php endforeach ?>
                             </select>
                             <?= form_error('kapasitas', '<small class="text-danger">', '</small>') ?>
                         </div>

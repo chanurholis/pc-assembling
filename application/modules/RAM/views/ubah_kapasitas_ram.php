@@ -1,12 +1,12 @@
 <div class="content-wrapper">
     <section class="content-header">
         <h1>
-            Kapasitas RAM
+            Master Kapasitas RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM/kapasitas_ram') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM/kapasitas_ram') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM/kapasitas_ram') ?>"> Kapasitas Ram</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Kapasitas Ram</a></li>
         </ol>
     </section>
 
@@ -22,8 +22,9 @@
                     <div class="form-group col-md-8">
                         <?php foreach ($kapasitas_ram as $k) : ?>
                             <label for="kapasitas">Kapasitas RAM</label>
-                            <input type="hidden" name="id" value="<?= $k->id ?>">
-                            <input type="text" id="kapasitas" name="kapasitas_ram" value="<?= $k->kapasitas_ram ?>" class="form-control" autofocus>
+                            <input type="hidden" name="id" value="<?= $k->kapasitas_id ?>">
+                            <input type="number" id="kapasitas" name="kapasitas_ram" value="<?= $k->kapasitas_ram ?>" class="form-control" autofocus>
+                            <small class="text-dark">Note : Satuan GB.</small>
                             <?= form_error('kapasitas_ram', '<small class="text-danger">', '</small>') ?>
                             <?= $this->session->flashdata('message') ?>
                         <?php endforeach ?>

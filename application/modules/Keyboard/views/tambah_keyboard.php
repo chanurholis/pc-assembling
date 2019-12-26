@@ -4,9 +4,9 @@
             Master Keyboard
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Keyboard/tambah_keyboard') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Keyboard/tambah_keyboard') ?>"> Keyboard</a></li>
-            <li><a href="<?= base_url('Keyboard/tambah_keyboard') ?>"> Master Keyboard</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Keyboard</a></li>
+            <li><a> Master Keyboard</a></li>
         </ol>
     </section>
 
@@ -20,8 +20,13 @@
             <form role="form" action="<?= base_url('Keyboard/tambah_keyboard') ?>" method="post">
                 <div class="box-body">
                     <div class="form-group col-md-8">
+                        <label for="id">ID Keyboard</label>
+                        <input type="number" id="id" name="keyboard_id" class="form-control" autofocus>
+                        <?= form_error('keyboard_id', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                    <div class="form-group col-md-8">
                         <label for="nama">Keyboard</label>
-                        <input type="text" id="nama" name="nama_keyboard" class="form-control" autofocus>
+                        <input type="text" id="nama" name="nama_keyboard" class="form-control">
                         <?= form_error('nama_keyboard', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

@@ -4,9 +4,9 @@
             Kapasitas RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM/tambah_kapasitas_ram') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM/tambah_kapasitas_ram') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM/tambah_kapasitas_ram') ?>"> Kapasitas RAM</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Kapasitas RAM</a></li>
         </ol>
     </section>
 
@@ -22,9 +22,9 @@
                     <div class="form-group col-md-8">
                         <label for="kapasitas">Kapasitas RAM</label>
                         <input type="number" id="kapasitas" name="kapasitas_ram" class="form-control" autofocus>
+                        <small class="text-dark">Note : Satuan GB</small>
                         <?= form_error('kapasitas_ram', '<small class="text-danger">', '</small>') ?>
                         <?= $this->session->flashdata('message'); ?>
-                        <small>Note : Satuan GB</small>
                         <input type="hidden" value="GB" name="satuan" class="form-control">
                     </div>
                     <div class="form-group col-md-8">

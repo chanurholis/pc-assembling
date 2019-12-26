@@ -29,10 +29,19 @@ class Storage extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('brand_storage', 'Brand Storage', 'required');
-            $this->form_validation->set_rules('nama_storage', 'Storage', 'required|trim|is_unique[m_storage.nama_storage]');
-            $this->form_validation->set_rules('type', 'Type', 'required');
-            $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required');
+            $this->form_validation->set_rules('brand_storage', 'Brand Storage', 'required', [
+                'required' => 'Brand Storage harus diisi.'
+            ]);
+            $this->form_validation->set_rules('nama_storage', 'Storage', 'required|trim|is_unique[m_storage.nama_storage]', [
+                'required' => 'Storage harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
+            $this->form_validation->set_rules('type', 'Type', 'required', [
+                'required' => 'Type harus diisi.'
+            ]);
+            $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required', [
+                'required' => 'Kapasitas harus diisi.'
+            ]);
 
 
             if ($this->form_validation->run() == false) {
@@ -53,10 +62,10 @@ class Storage extends CI_Controller
                 $kapasitas = htmlspecialchars($this->input->post('kapasitas', true));
 
                 $data = array(
-                    'brand_storage' => $brand_storage,
+                    'brand_storage_id' => $brand_storage,
                     'nama_storage' => $storage,
                     'type' => $type,
-                    'kapasitas' => $kapasitas
+                    'kapasitas_id' => $kapasitas
                 );
 
                 $this->db->insert('m_storage', $data);
@@ -71,9 +80,10 @@ class Storage extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Storage';
-            $where = array('id' => $id);
+            $where = array('storage_id' => $id);
             $data['storage'] = $this->M_storage->ubah_storage($where)->result();
             $data['brand_storage'] = $this->M_storage->tampil_brand_storage()->result();
+            $data['kapasitas'] = $this->M_storage->tampil_kapasitas()->result();
             $data['type'] = ['HDD', 'SSD'];
             $this->load->view('partials/header', $data);
             $this->load->view('partials/sidebar_admin');
@@ -96,7 +106,7 @@ class Storage extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data Storage';
-                $where = array('id' => $id);
+                $where = array('storage_id' => $id);
                 $data['storage'] = $this->M_storage->ubah_storage($where)->result();
                 $data['brand_storage'] = $this->M_storage->tampil_brand_storage()->result();
                 $data['type'] = ['HDD', 'SSD'];
@@ -135,7 +145,7 @@ class Storage extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('storage_id' => $id);
             $this->db->where($where);
             $this->db->delete('m_storage');
             redirect('Storage');
@@ -180,11 +190,23 @@ class Storage extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('brand_storage', 'Brand Storage', 'required|trim|is_unique[m_brand_storage.brand_storage]');
-            $this->form_validation->set_rules('type', 'Storage', 'required');
+            $this->form_validation->set_rules('id_brand_storage', 'ID Brand Storage', 'required|trim|is_unique[m_brand_storage.brand_storage_id]|numeric|is_natural_no_zero|max_length[8]', [
+                'required' => 'ID Brand Storage harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'ID Brand Storage hanya boleh berisi angka dan harus lebih besar dari nol.',
+                'max_length' => 'ID Brand Storage harus berisi 8 karakter.'
+            ]);
+            $this->form_validation->set_rules('brand_storage', 'Brand Storage', 'required|trim|is_unique[m_brand_storage.brand_storage]', [
+                'required' => 'Brand Storage harus diisi.',
+                'is_unique' => 'Data sudah digunakan.'
+            ]);
+            $this->form_validation->set_rules('type', 'Type Storage', 'required', [
+                'required' => 'Type Storage harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Tambah Brand Storage';
+                $data['type'] = ['HDD', 'SSD'];
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
                 $this->load->view('tambah_brand_storage');
@@ -192,12 +214,14 @@ class Storage extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
+                $id = htmlspecialchars($this->input->post('id_brand_storage', true));
                 $brand_storage = htmlspecialchars($this->input->post('brand_storage', true));
                 $type = htmlspecialchars($this->input->post('type', true));
 
                 $data = array(
+                    'brand_storage_id' => $id,
                     'brand_storage' => $brand_storage,
-                    'type' => $type
+                    'type_storage' => $type
                 );
 
                 $this->db->insert('m_brand_storage', $data);
@@ -212,7 +236,7 @@ class Storage extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Brand Storage';
-            $where = array('id' => $id);
+            $where = array('brand_storage_id' => $id);
             $data['storage'] = $this->M_storage->ubah_brand_storage($where)->result();
             $data['type'] = ['HDD', 'SSD'];
             $this->load->view('partials/header', $data);
@@ -233,7 +257,7 @@ class Storage extends CI_Controller
                 $id = htmlspecialchars($this->input->post('id', true));
 
                 $data['judul'] = 'Ubah Data Brand Storage';
-                $where = array('id' => $id);
+                $where = array('brand_storage_id' => $id);
                 $data['storage'] = $this->M_storage->ubah_brand_storage($where)->result();
                 $data['type'] = ['HDD', 'SSD'];
                 $this->load->view('partials/header', $data);
@@ -248,11 +272,11 @@ class Storage extends CI_Controller
                 $brand_storage = htmlspecialchars($this->input->post('brand_storage', true));
                 $type = htmlspecialchars($this->input->post('type', true));
 
-                $where = array('id' => $id);
+                $where = array('brand_storage_id' => $id);
 
                 $data = [
                     'brand_storage' => $brand_storage,
-                    'type' => $type
+                    'type_storage' => $type
                 ];
 
                 $this->db->where($where);
@@ -269,7 +293,7 @@ class Storage extends CI_Controller
         } else {
             $this->session->set_flashdata('flash', 'Dihapus');
 
-            $where = array('id' => $id);
+            $where = array('brand_storage_id' => $id);
             $this->db->where($where);
             $this->db->delete('m_brand_storage');
             redirect('Storage/brand_storage');
@@ -314,8 +338,19 @@ class Storage extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('kapasitas_storage', 'Kapasitas Storage', 'required|numeric|is_unique[m_kapasitas_storage.kapasitas_storage]|is_natural_no_zero');
-            $this->form_validation->set_rules('satuan', 'Satuan Kapasitas', 'required');
+            $this->form_validation->set_rules('id_kapasitas_storage', 'ID Kapasitas Storage', 'required|numeric|is_unique[m_kapasitas_storage.kapasitas_id]|is_natural_no_zero', [
+                'required' => 'ID Kapasitas Storage harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'ID Kapasitas Storage hanya boleh berisi angka dan lebih dari nol.'
+            ]);
+            $this->form_validation->set_rules('kapasitas_storage', 'Kapasitas Storage', 'required|numeric|is_unique[m_kapasitas_storage.kapasitas_storage]|is_natural_no_zero', [
+                'required' => 'Kapasitas Storage harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'Kapasitas Storage hanya boleh berisi angka dan lebih dari nol.'
+            ]);
+            $this->form_validation->set_rules('satuan', 'Satuan Kapasitas', 'required', [
+                'required' => 'Satuan Kapasitas harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Master Kapasitas';
@@ -328,10 +363,12 @@ class Storage extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
+                $id = htmlspecialchars($this->input->post('id_kapasitas_storage', true));
                 $kapasitas_storage =  htmlspecialchars($this->input->post('kapasitas_storage', true));
                 $satuan =  htmlspecialchars($this->input->post('satuan', true));
 
                 $data = array(
+                    'kapasitas_id' => $id,
                     'kapasitas_storage' => $kapasitas_storage,
                     'satuan' => $satuan
                 );
@@ -348,7 +385,7 @@ class Storage extends CI_Controller
             redirect('/');
         } else {
             $data['judul'] = 'Ubah Data Kapasitas Storage';
-            $where = array('id' => $id);
+            $where = array('kapasitas_id' => $id);
             $data['kapasitas_storage'] = $this->M_storage->ubah_kapasitas($where)->result();
             $data['satuan'] = ['GB', 'TB'];
             $this->load->view('partials/header', $data);
@@ -363,14 +400,20 @@ class Storage extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('kapasitas_storage', 'Brand Storage', 'required|trim|is_unique[m_kapasitas_storage.kapasitas_storage]|is_natural_no_zero');
-            $this->form_validation->set_rules('satuan', 'Satuan', 'required');
+            $this->form_validation->set_rules('kapasitas_storage', 'Kapasitas Storage', 'required|trim|is_unique[m_kapasitas_storage.kapasitas_storage]|is_natural_no_zero', [
+                'required' => 'Kapasitas Storage harus diisi.',
+                'is_unique' => 'Data sudah digunakan.',
+                'is_natural_no_zero' => 'Kapasitas Storage hanya boleh berisi angka dan lebih dari nol.'
+            ]);
+            $this->form_validation->set_rules('satuan', 'Satuan', 'required', [
+                'required' => 'Satuan harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
-                $id = htmlspecialchars($this->input->post('id', true));
+                $id = htmlspecialchars($this->input->post('kapasitas_id', true));
 
                 $data['judul'] = 'Ubah Data Kapasitas Storage';
-                $where = array('id' => $id);
+                $where = array('kapasitas_id' => $id);
                 $data['kapasitas_storage'] = $this->M_storage->ubah_kapasitas($where)->result();
                 $data['satuan'] = ['GB', 'TB'];
                 $this->load->view('partials/header', $data);
@@ -380,12 +423,12 @@ class Storage extends CI_Controller
             } else {
                 $this->session->set_flashdata('flash', 'Diubah');
 
-                $id = htmlspecialchars($this->input->post('id', true));
+                $id = htmlspecialchars($this->input->post('kapasitas_id', true));
 
                 $kapasitas_storage = htmlspecialchars($this->input->post('kapasitas_storage', true));
                 $satuan = htmlspecialchars($this->input->post('satuan', true));
 
-                $where = array('id' => $id);
+                $where = array('kapasitas_id' => $id);
 
                 $data = [
                     'kapasitas_storage' => $kapasitas_storage,

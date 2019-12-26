@@ -20,6 +20,7 @@
 <script src="<?= base_url('assets/datatable/datatables.min.js') ?>"></script>
 <!-- Bootstrap -->
 <script src="<?= base_url('assets/bootstrap/js/bootstrap.min.js') ?>"></script>
+
 <script src="<?= base_url('assets/bootstrap/js/jquery.js') ?>"></script>
 
 </body>

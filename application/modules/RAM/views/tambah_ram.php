@@ -4,9 +4,9 @@
             RAM
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('RAM') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('RAM') ?>"> RAM</a></li>
-            <li><a href="<?= base_url('RAM') ?>"> Master RAM</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> RAM</a></li>
+            <li><a> Master RAM</a></li>
         </ol>
     </section>
 
@@ -24,7 +24,7 @@
                         <select name="brand_ram" id="brand" class="form-control select2" style="width: 100%;" autofocus>
                             <option value="" selected="selected">-- Pilih Brand --</option>
                             <?php foreach ($brand as $d) : ?>
-                                <option value="<?= $d->brand_ram ?>"><?= $d->brand_ram ?></option>
+                                <option value="<?= $d->brand_ram_id ?>"><?= $d->brand_ram ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('brand_ram', '<small class="text-danger">', '</small>') ?>
@@ -39,7 +39,7 @@
                         <select name="ddr" id="brand" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih DDR --</option>
                             <?php foreach ($ddr as $d) : ?>
-                                <option value="<?= $d->ddr ?>"><?= $d->ddr ?></option>
+                                <option value="<?= $d->ddr_id ?>"><?= $d->ddr ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('ddr', '<small class="text-danger">', '</small>') ?>
@@ -49,7 +49,7 @@
                         <select name="kapasitas" id="brand" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih Kapasitas --</option>
                             <?php foreach ($kapasitas as $k) : ?>
-                                <option value="<?= $k->kapasitas_ram ?>"><?= $k->kapasitas_ram ?><?= $k->satuan ?></option>
+                                <option value="<?= $k->kapasitas_id ?>"><?= $k->kapasitas_ram ?><?= $k->satuan ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('kapasitas', '<small class="text-danger">', '</small>') ?>

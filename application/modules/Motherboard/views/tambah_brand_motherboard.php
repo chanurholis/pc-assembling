@@ -23,12 +23,12 @@
                 <div class="box-body">
                     <div class="form-group col-md-8">
                         <label for="id">ID Brand Motherboard</label>
-                        <input type="number" id="id" name="brand_motherboard_id" class="form-control" autofocus>
+                        <input type="number" id="id" name="brand_motherboard_id" class="form-control" autofocus value="<?= set_value('brand_motherboard_id') ?>">
                         <?= form_error('brand_motherboard_id', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="nama">Brand Motherboard</label>
-                        <input type="text" id="nama" name="brand_motherboard" class="form-control" autofocus>
+                        <input type="text" id="nama" name="brand_motherboard" class="form-control" autofocus value="<?= set_value('brand_motherboard') ?>">
                         <?= form_error('brand_motherboard', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

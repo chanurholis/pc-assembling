@@ -4,9 +4,9 @@
             Master Monitor
         </h1>
         <ol class="breadcrumb">
-            <li><a href="<?= base_url('Monitor/tambah_monitor') ?>"><i class="fa fa-circle-o"></i> Master Rakit</a></li>
-            <li><a href="<?= base_url('Monitor/tambah_monitor') ?>"> Monitor</a></li>
-            <li><a href="<?= base_url('Monitor/tambah_monitor') ?>"> Master Monitor</a></li>
+            <li><a><i class="fa fa-circle-o"></i> Master Rakit</a></li>
+            <li><a> Monitor</a></li>
+            <li><a> Master Monitor</a></li>
         </ol>
     </section>
 
@@ -20,8 +20,13 @@
             <form role="form" action="<?= base_url('Monitor/tambah_monitor') ?>" method="post">
                 <div class="box-body">
                     <div class="form-group col-md-8">
+                        <label for="id">ID Monitor</label>
+                        <input type="number" id="id" name="monitor_id" class="form-control" autofocus value="<?= set_value('monitor_id') ?>">
+                        <?= form_error('monitor_id', '<small class="text-danger">', '</small>') ?>
+                    </div>
+                    <div class="form-group col-md-8">
                         <label for="nama">Monitor</label>
-                        <input type="text" id="nama" name="nama_monitor" class="form-control" autofocus>
+                        <input type="text" id="nama" name="nama_monitor" class="form-control" value="<?= set_value('nama_monitor') ?>">
                         <?= form_error('nama_monitor', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

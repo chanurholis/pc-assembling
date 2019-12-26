@@ -36,12 +36,12 @@
                                     </div>
                                     <form method="post" action="<?= base_url('Login') ?>" class="user">
                                         <div class="form-group">
-                                            <input type="email" value="<?= set_value('email') ?>" name="email" class="form-control form-control-user rounded-0" placeholder="Email" autofocus>
+                                            <input type="email" name="email" value="<?= set_value('email') ?>" class="form-control form-control-user rounded-0" placeholder="Email" autofocus>
                                             <?= form_error('email', '<small class="text-danger">', '</small>') ?>
                                             <?= $this->session->flashdata('message'); ?>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user rounded-0" placeholder="Password">
+                                            <input type="password" name="password" value="<?= set_value('password') ?>" class="form-control form-control-user rounded-0" placeholder="Password">
                                             <?= form_error('password', '<small class="text-danger">', '</small>') ?>
                                             <?= $this->session->flashdata('message'); ?>
                                         </div>
