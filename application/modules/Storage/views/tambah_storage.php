@@ -24,18 +24,18 @@
                         <select name="brand_storage" id="brand" class="form-control select2" style="width: 100%;" autofocus>
                             <option value="" selected="selected">-- Pilih Brand --</option>
                             <?php foreach ($brand_storage as $d) : ?>
-                                <option value="<?= $d->brand_storage_id ?>"><?= $d->brand_storage ?></option>
+                                <option value="<?= $d->brand_storage_id ?>" <?= set_select('brand_storage', $d->brand_storage_id) ?>><?= $d->brand_storage ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('brand_storage', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
-                        <label for="nama">Storage</label>
-                        <input type="text" id="nama" name="nama_storage" class="form-control">
+                        <label for="nama">Type Brand</label>
+                        <input type="text" style="text-transform: uppercase;" id="nama" name="nama_storage" class="form-control">
                         <?= form_error('nama_storage', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
-                        <label for="type">Type</label>
+                        <label for="type">Type Storage</label>
                         <select name="type" id="type" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih Type Storage --</option>
                             <?php foreach ($type as $d) : ?>

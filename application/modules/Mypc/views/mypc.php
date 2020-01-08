@@ -48,7 +48,7 @@
                                     foreach ($rakit as $r) : ?>
                                         <tr>
                                             <td scope="row" class="text-center"><?= $no++ ?></td>
-                                            <td scope="row"><?= $r->no_indeks ?></td>
+                                            <td scope="row" style="text-transform: uppercase"><?= $r->no_indeks ?></td>
                                             <td scope="row"><?= $r->institusi ?></td>
                                             <td scope="row"><?= $r->pengguna ?></td>
                                             <td scope="row"><?= $r->brand_processor ?> <?= $r->nama_processor ?></td>
@@ -76,32 +76,3 @@
         </div>
     </section>
 </div>
-
-<script>
-    $(document).ready(function() {
-
-        load_data();
-
-        function load_data(query) {
-            $.ajax({
-                url: '<?= base_url() ?>Ajaxsearch/fetch',
-                method: 'post',
-                data: {
-                    query: query
-                },
-                success: function(data) {
-                    $('#result').html(data);
-                }
-            })
-        }
-        $('#search').keyup(function() {
-            var search = $(this).val();
-
-            if (search != '') {
-                load_data(search);
-            } else {
-                load_data();
-            }
-        })
-    });
-</script>

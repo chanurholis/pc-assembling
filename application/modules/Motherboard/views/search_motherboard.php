@@ -31,7 +31,7 @@
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
                                 <th scope="col">Brand Motherboard</th>
-                                <th scope="col">Motherboard</th>
+                                <th scope="col">Type Motherboard</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php

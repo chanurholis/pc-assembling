@@ -23,7 +23,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>NO INDEKS</label>
-                                <input type="text" class="form-control" name="no_indeks" autofocus value="<?= $r->no_indeks ?>" <?= set_value('no_indeks') ?>>
+                                <input type="text" style="text-transform: uppercase" class="form-control" name="no_indeks" autofocus value="<?= $r->no_indeks ?>" <?= set_value('no_indeks') ?>>
                                 <?= form_error('no_indeks', '<small class="text-danger">', '</small>') ?>
                             </div>
                         </div>
@@ -218,7 +218,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>PENGGUNA</label>
-                                <input name="pengguna" type="text" class="form-control" value="<?= $r->pengguna ?><?= set_value('pengguna') ?>">
+                                <input name="pengguna" style="text-transform: uppercase;" type="text" class="form-control" value="<?= $r->pengguna ?><?= set_value('pengguna') ?>">
                                 <?= form_error('pengguna', '<small class="text-danger">', '</small>') ?>
                             </div>
                         </div>
@@ -226,7 +226,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>DISERAHKAN</label>
-                                <input type="date" class="form-control" name="diserahkan" value="<?= $r->tgl_diserahkan ?><?= set_value('diserahkan') ?>">
+                                <input type="date" class="form-control" name="diserahkan" value="2013-01-08<?= set_value('diserahkan') ?>">
                             </div>
                         </div>
                         <div class="col-md-8">

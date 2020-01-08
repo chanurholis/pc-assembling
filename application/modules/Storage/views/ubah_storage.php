@@ -36,16 +36,16 @@
                             <?= form_error('brand_storage', '<small class="text-danger">', '</small>') ?>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="nama">Storage</label>
+                            <label for="nama">Type Brand</label>
                             <input type="text" id="nama" name="nama_storage" value="<?= $s->nama_storage ?>" class="form-control">
                             <?= form_error('nama_storage', '<small class="text-danger">', '</small>') ?>
                         </div>
                         <div class="form-group col-md-8">
-                            <label for="type">Type</label>
+                            <label for="type">Type Storage</label>
                             <select name="type" id="type" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih DDR --</option>
                                 <?php foreach ($type as $t) : ?>
-                                    <?php if ($t == $s->type) : ?>
+                                    <?php if ($t == $s->type_storage) : ?>
                                         <option value="<?= $t ?>" selected><?= $t ?></option>
                                     <?php else : ?>
                                         <option value="<?= $t ?>"><?= $t ?></option>

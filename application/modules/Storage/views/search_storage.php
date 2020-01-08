@@ -38,13 +38,13 @@
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                                                $no = 1;
-                                                foreach ($storage as $r) { ?>
+                            $no = 1;
+                            foreach ($storage as $r) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $r->brand_storage ?></td>
                                     <td scope="row"><?= $r->nama_storage ?></td>
-                                    <td scope="row"><?= $r->type ?></td>
+                                    <td scope="row"><?= $r->type_storage ?></td>
                                     <td scope="row"><?= $r->kapasitas_storage ?><?= $r->satuan ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('Storage/ubah_storage/') . $r->storage_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>

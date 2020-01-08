@@ -16,8 +16,7 @@ class Login extends CI_Controller
             $this->session->sess_destroy();
         }
 
-        $this->form_validation->set_rules('email', 'Email', 'valid_email|required', [
-            'valid_email' => 'Email harus berisi alamat email yang valid.',
+        $this->form_validation->set_rules('username', 'Username', 'required', [
             'required' => 'Email harus diisi.'
         ]);
         $this->form_validation->set_rules('password', 'Password', 'required', [
@@ -28,13 +27,13 @@ class Login extends CI_Controller
             $data['judul'] = 'Login PCA';
             $this->load->view('login', $data);
         } else {
-            $email = htmlspecialchars($this->input->post('email', true));
+            $username = htmlspecialchars($this->input->post('username', true));
             $password = htmlspecialchars($this->input->post('password', true));
 
-            $user = $this->db->get_where('user', ['email' => $email])->row_array();
+            $user = $this->db->get_where('user', ['username' => $username])->row_array();
 
             $where = array(
-                'email' => $user['email']
+                'username' => $user['username']
             );
 
             $cek = $this->M_login->cek($where);

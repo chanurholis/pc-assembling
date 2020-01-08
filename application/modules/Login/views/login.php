@@ -36,7 +36,7 @@
                                     </div>
                                     <form method="post" action="<?= base_url('Login') ?>" class="user">
                                         <div class="form-group">
-                                            <input type="email" name="email" value="<?= set_value('email') ?>" class="form-control form-control-user rounded-0" placeholder="Email" autofocus>
+                                            <input type="text" name="username" value="<?= set_value('username') ?>" class="form-control form-control-user rounded-0" placeholder="Username" autofocus>
                                             <?= form_error('email', '<small class="text-danger">', '</small>') ?>
                                             <?= $this->session->flashdata('message'); ?>
                                         </div>

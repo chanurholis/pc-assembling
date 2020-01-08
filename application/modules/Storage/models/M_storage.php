@@ -32,8 +32,8 @@ class M_storage extends CI_Model
         $this->db->like('m_brand_storage.brand_storage', $keyword);
         $this->db->or_like('nama_storage', $keyword);
         $this->db->or_like('m_kapasitas_storage.kapasitas_storage', $keyword);
-        $this->db->or_like('type', $keyword);
-        $this->db->order_by('type', 'ASC');
+        $this->db->or_like('m_storage.type_storage', $keyword);
+        $this->db->order_by('m_storage.type_storage', 'ASC');
         return $this->db->get()->result();
     }
 

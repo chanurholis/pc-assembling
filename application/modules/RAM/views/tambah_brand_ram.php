@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="brand">Brand RAM</label>
-                        <input type="text" id="brand" name="brand_ram" class="form-control" autofocus>
+                        <input type="text" style="text-transform: uppercase;" id="brand" name="brand_ram" class="form-control" autofocus>
                         <?= form_error('brand_ram', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

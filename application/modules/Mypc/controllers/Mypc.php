@@ -6,7 +6,6 @@ class Mypc extends CI_Controller
         parent::__construct();
         $this->load->model('M_mypc');
         $this->load->library('form_validation');
-        $this->load->library('pdf');
     }
 
     public function index()
@@ -134,7 +133,7 @@ class Mypc extends CI_Controller
 
                 $user = $this->session->userdata('username');
                 $id = htmlspecialchars($this->input->post('id'));
-                $no_indeks = htmlspecialchars($this->input->post('no_indeks', true));
+                $no_indeks = htmlspecialchars(strtoupper($this->input->post('no_indeks', true)));
                 $institusi = htmlspecialchars($this->input->post('institusi', true));
                 $processor = htmlspecialchars($this->input->post('processor', true));
                 $motherboard = htmlspecialchars($this->input->post('motherboard', true));
@@ -147,7 +146,7 @@ class Mypc extends CI_Controller
                 $mouse = htmlspecialchars($this->input->post('mouse', true));
                 $monitor = htmlspecialchars($this->input->post('monitor', true));
                 $tgl_input = date('Y-m-d H:i:s');
-                $pengguna = htmlspecialchars($this->input->post('pengguna', true));
+                $pengguna = htmlspecialchars(strtoupper($this->input->post('pengguna', true)));
                 $tgl_diserahkan = htmlspecialchars($this->input->post('diserahkan', true));
                 $bukti = $_FILES['image']['name'];
 
@@ -228,7 +227,7 @@ class Mypc extends CI_Controller
 
             $where = ['rakit_id' => $id];
 
-            $bukti = $this->db->get_where('rakit', $where)->row();
+            // $bukti = $this->db->get_where('rakit', $where)->row();
 
             $this->db->where($where);
             $this->db->delete('rakit');
@@ -258,11 +257,11 @@ class Mypc extends CI_Controller
                     'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_LEFT,
                     'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER
                 ),
-                'borders' => array(
-                    'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
-                    'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+                'borders'    => array(
+                    'top'    => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+                    'right'  => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
                     'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
-                    'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN)
+                    'left'   => array('style'  => PHPExcel_Style_Border::BORDER_THIN)
                 )
             );
 
@@ -270,11 +269,11 @@ class Mypc extends CI_Controller
                 'alignment' => array(
                     'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER
                 ),
-                'borders' => array(
-                    'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
-                    'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+                'borders'    => array(
+                    'top'    => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
+                    'right'  => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
                     'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),
-                    'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN)
+                    'left'   => array('style'  => PHPExcel_Style_Border::BORDER_THIN)
                 )
             );
 
@@ -285,7 +284,7 @@ class Mypc extends CI_Controller
             $excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
             $excel->getActiveSheet()->getStyle('A1')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_JUSTIFY);
 
-            $excel->setActiveSheetIndex(0)->setCellValue('A3', "PC");
+            $excel->setActiveSheetIndex(0)->setCellValue('A3', "NO INDEKS");
             $excel->setActiveSheetIndex(0)->setCellValue('B3', "INSTITUSI");
             $excel->setActiveSheetIndex(0)->setCellValue('C3', "PENGGUNA");
             $excel->setActiveSheetIndex(0)->setCellValue('D3', "PROCESSOR");

@@ -22,8 +22,12 @@
                     <div class="box-body">
                         <input type="hidden" name="id" value="<?= $s->brand_storage_id ?>">
                         <div class="form-group col-md-8">
+                            <label for="brand">ID Brand Storage</label>
+                            <input type="text" id="id" name="id_brand_storage" value="<?= $s->brand_storage_id ?>" disabled class="form-control">
+                        </div>
+                        <div class="form-group col-md-8">
                             <label for="brand">Brand Storage</label>
-                            <input type="text" id="brand" name="brand_storage" value="<?= $s->brand_storage ?>" class="form-control" autofocus>
+                            <input type="text" style="text-transform: uppercase;" id="brand" name="brand_storage" value="<?= $s->brand_storage ?>" class="form-control" autofocus>
                             <?= form_error('brand_storage', '<small class="text-danger">', '</small>') ?>
                         </div>
                         <div class="form-group col-md-8">

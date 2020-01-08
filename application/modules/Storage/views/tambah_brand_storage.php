@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="brand">Brand Storage</label>
-                        <input type="text" id="brand" name="brand_storage" class="form-control" autofocus value="<?= set_value('brand_storage') ?>">
+                        <input type="text" style="text-transform: uppercase;" id="brand" name="brand_storage" class="form-control" autofocus value="<?= set_value('brand_storage') ?>">
                         <?= form_error('brand_storage', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
@@ -34,7 +34,7 @@
                         <select name="type" id="brand" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih Storage --</option>
                             <?php foreach ($type as $t) : ?>
-                                <option value="<?= $t ?>"><?= $t ?></option>
+                                <option value="<?= $t ?>" <?= set_select('type', $t) ?>><?= $t ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('type', '<small class="text-danger">', '</small>') ?>

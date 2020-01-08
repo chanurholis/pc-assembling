@@ -50,7 +50,7 @@ class RAM extends CI_Controller
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
                 $id = htmlspecialchars($this->input->post('brand_ram_id', true));
-                $brand_ram = htmlspecialchars($this->input->post('brand_ram', true));
+                $brand_ram = htmlspecialchars(strtoupper($this->input->post('brand_ram', true)));
 
                 $data = array(
                     'brand_ram_id' => $id,
@@ -102,7 +102,7 @@ class RAM extends CI_Controller
                 $this->session->set_flashdata('flash', 'Diubah');
 
                 $id = htmlspecialchars($this->input->post('id', true));
-                $brand_ram = htmlspecialchars($this->input->post('brand_ram', true));
+                $brand_ram = htmlspecialchars(strtoupper($this->input->post('brand_ram', true)));
 
                 $where = array('brand_ram_id' => $id);
 
@@ -482,7 +482,7 @@ class RAM extends CI_Controller
                     'brand_ram_id' => $brand_ram,
                     'nama_ram' => $nama_ram,
                     'kapasitas_id' => $kapasitas,
-                    'satuan' => $satuan_kapasitas
+                    'satuan_ram' => $satuan_kapasitas
                 );
                 $this->db->insert('m_ram', $data);
                 redirect('RAM');
@@ -558,7 +558,7 @@ class RAM extends CI_Controller
                     'brand_ram_id' => $brand_ram,
                     'nama_ram' => $nama_ram,
                     'kapasitas_id' => $kapasitas,
-                    'satuan' => $satuan_kapasitas
+                    'satuan_ram' => $satuan_kapasitas
                 );
 
                 $this->db->where($where);

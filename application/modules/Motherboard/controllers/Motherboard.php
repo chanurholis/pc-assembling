@@ -177,7 +177,7 @@ class Motherboard extends CI_Controller
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
                 $brand_motherboard_id = htmlspecialchars($this->input->post('brand_motherboard_id', true));
-                $brand_motherboard = htmlspecialchars($this->input->post('brand_motherboard', true));
+                $brand_motherboard = htmlspecialchars(strtoupper($this->input->post('brand_motherboard', true)));
                 $data = array('brand_motherboard_id' => $brand_motherboard_id, 'brand_motherboard' => $brand_motherboard);
                 $this->db->insert('m_brand_motherboard', $data);
                 redirect('Motherboard/brand_motherboard');
@@ -223,7 +223,7 @@ class Motherboard extends CI_Controller
                 $this->session->set_flashdata('flash', 'Diubah');
 
                 $id = htmlspecialchars($this->input->post('id', true));
-                $brand_motherboard = htmlspecialchars($this->input->post('brand_motherboard', true));
+                $brand_motherboard = htmlspecialchars(strtoupper($this->input->post('brand_motherboard', true)));
 
                 $where = array('brand_motherboard_id' => $id);
 

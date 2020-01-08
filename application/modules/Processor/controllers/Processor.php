@@ -184,7 +184,7 @@ class Processor extends CI_Controller
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
                 $brand_processor_id = htmlspecialchars($this->input->post('id_brand_processor', true));
-                $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
+                $brand_processor = htmlspecialchars(strtoupper($this->input->post('brand_processor', true)));
 
                 $data = array(
                     'brand_processor_id' => $brand_processor_id,
@@ -237,7 +237,7 @@ class Processor extends CI_Controller
                 $this->session->set_flashdata('flash', 'Diubah');
 
                 $id = htmlspecialchars($this->input->post('id', true));
-                $brand_processor = htmlspecialchars($this->input->post('brand_processor', true));
+                $brand_processor = htmlspecialchars(strtoupper($this->input->post('brand_processor', true)));
 
                 $where = array('brand_processor_id' => $id);
 

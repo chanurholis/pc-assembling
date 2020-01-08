@@ -26,7 +26,7 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="brand">Brand Processor</label>
-                        <input type="text" id="brand" name="brand_processor" class="form-control" autofocus value="<?= set_value('brand_processor') ?>">
+                        <input type="text" style="text-transform: uppercase;" id="brand" name="brand_processor" class="form-control" autofocus value="<?= set_value('brand_processor') ?>">
                         <?= form_error('brand_processor', '<small class="text-danger pl-3">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

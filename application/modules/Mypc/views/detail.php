@@ -31,7 +31,7 @@ $time = Carbon::parse($date['tgl_diserahkan']);
                             <table class="table table-striped table-bordered">
                                 <tr>
                                     <th>NO INDEKS</th>
-                                    <td><?= $r->no_indeks ?></td>
+                                    <td style="text-transform: uppercase"><?= $r->no_indeks ?></td>
                                 </tr>
                                 <tr>
                                     <th>INSTITUSI</th>
@@ -55,7 +55,7 @@ $time = Carbon::parse($date['tgl_diserahkan']);
                                 </tr>
                                 <tr>
                                     <th>STORAGE</th>
-                                    <td><?= $r->brand_storage ?> <?= $r->nama_storage ?> <?= $r->type_storage ?> <?= $r->kapasitas_storage ?><?= $r->satuan_storage ?></td>
+                                    <td><?= $r->brand_storage ?> <?= $r->nama_storage ?> <?= $r->type_storage ?> <?= $r->kapasitas_storage ?><?= $r->satuan ?></td>
                                 </tr>
                                 <tr>
                                     <th>CASING</th>
@@ -83,11 +83,11 @@ $time = Carbon::parse($date['tgl_diserahkan']);
                                 </tr>
                                 <tr>
                                     <th>DISERAHKAN</th>
-                                    <td><?= $time->isoFormat('D MMMM Y') ?></td>
+                                    <td><?= $time->isoFormat('DD/MM/Y') ?></td>
                                 </tr>
                                 <tr>
                                     <th>BUKTI</th>
-                                    <td><a href="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>"><img src="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>" alt="Bukti" width="200px" height="250px"></a></td>
+                                    <td><a href="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>"><img src="<?= base_url('upload/bukti/') ?><?= $r->bukti ?>" alt="Bukti" width="250px" height="250px"></a></td>
                                 </tr>
                             </table>
                         </div>

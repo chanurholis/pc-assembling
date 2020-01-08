@@ -31,12 +31,12 @@
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
                                 <th scope="col">Brand</th>
-                                <th scope="col">Processor</th>
+                                <th scope="col">Type Processor</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                                                $no = 1;
-                                                foreach ($processor as $p) { ?>
+                            $no = 1;
+                            foreach ($processor as $p) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $p->brand_processor ?></td>

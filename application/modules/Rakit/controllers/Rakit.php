@@ -106,7 +106,7 @@ class Rakit extends CI_Controller
                 $this->session->set_flashdata('flash', 'Ditambahkan');
 
                 $user = $this->session->userdata('username');
-                $no_indeks = htmlspecialchars($this->input->post('no_indeks', true));
+                $no_indeks = htmlspecialchars(strtoupper($this->input->post('no_indeks', true)));
                 $institusi = htmlspecialchars($this->input->post('institusi', true));
                 $processor = htmlspecialchars($this->input->post('processor', true));
                 $motherboard = htmlspecialchars($this->input->post('motherboard', true));
@@ -119,7 +119,7 @@ class Rakit extends CI_Controller
                 $mouse = htmlspecialchars($this->input->post('mouse', true));
                 $monitor = htmlspecialchars($this->input->post('monitor', true));
                 $tgl_input = date('Y-m-d H:i:s');
-                $pengguna = htmlspecialchars($this->input->post('pengguna', true));
+                $pengguna = htmlspecialchars(strtoupper($this->input->post('pengguna', true)));
                 $tgl_diserahkan = htmlspecialchars($this->input->post('diserahkan', true));
                 $bukti = $_FILES['image']['name'];
 

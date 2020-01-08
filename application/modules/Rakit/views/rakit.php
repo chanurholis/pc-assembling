@@ -21,7 +21,7 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label>NO INDEKS</label>
-                            <input type="text" class="form-control" name="no_indeks" autofocus value="<?= set_value('nama_pc') ?>">
+                            <input type="text" style="text-transform:uppercase" class="form-control" name="no_indeks" autofocus value="<?= set_value('nama_pc') ?>">
                             <?= form_error('no_indeks', '<small class="text-danger">', '</small>') ?>
                         </div>
                     </div>
@@ -172,7 +172,7 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label>PENGGUNA</label>
-                            <input name="pengguna" type="text" class="form-control" value="<?= set_value('pengguna') ?>">
+                            <input name="pengguna" style="text-transform: uppercase;" type="text" class="form-control" value="<?= set_value('pengguna') ?>">
                             <?= form_error('pengguna', '<small class="text-danger">', '</small>') ?>
                         </div>
                     </div>
