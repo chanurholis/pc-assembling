@@ -68,7 +68,7 @@ $time = $this->db->get_where('user', $where)->row_object();
                                 </li>
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="" class="btn btn-default btn-flat">Change Password</a>
+                                        <a href="" class="btn btn-default btn-flat">Ubah Password</a>
                                     </div>
                                     <div class="pull-right">
                                         <a href="<?= base_url('Login/logout') ?>" class="btn btn-default btn-flat">Logout</a>

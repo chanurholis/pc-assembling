@@ -43,22 +43,42 @@ $('.tombol-hapus').on('click', function (e) {
 	})
 });
 
-// tombol ubah
-// $('#tombol-ubah').on('click', function (e) {
-// 	e.preventDefault();
-// 	const href = $(this).attr('href');
+// tombol hapus user
+$('.tombol-hapus-user').on('click', function (e) {
+	e.preventDefault();
+	const href = $(this).attr('href');
 
-// 	Swal.fire({
-// 		title: 'Apakah anda yakin',
-// 		text: "data akan diubah",
-// 		type: 'warning',
-// 		showCancelButton: true,
-// 		confirmButtonColor: '#3085d6',
-// 		cancelButtonColor: '#d33',
-// 		confirmButtonText: 'Ubah Data!'
-// 	}).then((result) => {
-// 		if (result.value) {
-// 			document.location.href = href;
-// 		}
-// 	})
-// });
+	Swal.fire({
+		title: 'Apakah anda yakin',
+		text: "User akan dihapus?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Hapus User!'
+	}).then((result) => {
+		if (result.value) {
+			document.location.href = href;
+		}
+	})
+});
+
+// tombol reset password
+$('.tombol-reset-password').on('click', function (e) {
+	e.preventDefault();
+	const href = $(this).attr('href');
+
+	Swal.fire({
+		title: 'Apakah anda yakin',
+		text: "Password akan direset?",
+		type: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: '#d33',
+		confirmButtonText: 'Reset Password!'
+	}).then((result) => {
+		if (result.value) {
+			document.location.href = href;
+		}
+	})
+});

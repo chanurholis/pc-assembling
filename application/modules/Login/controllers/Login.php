@@ -38,27 +38,33 @@ class Login extends CI_Controller
 
             $cek = $this->M_login->cek($where);
             if ($cek != NULL) {
-                if (password_verify($password, $cek->password)) {
+                if ($user['is_active'] == 'Aktif') {
+                    if (password_verify($password, $cek->password)) {
 
-                    $data_session = array(
-                        'username' => $user['username'],
-                        'role' => $user['role'],
-                        'status' => 'login'
-                    );
+                        $data_session = array(
+                            'username' => $user['username'],
+                            'role' => $user['role'],
+                            'status' => 'login'
+                        );
 
-                    $data = ['last_login' => date('Y-m-d H:i:s')];
+                        $data = ['last_login' => date('Y-m-d H:i:s')];
 
-                    $this->db->where($where);
-                    $this->db->update('user', $data);
+                        $this->db->where($where);
+                        $this->db->update('user', $data);
 
-                    $this->session->set_userdata($data_session);
+                        $this->session->set_userdata($data_session);
 
-                    $this->session->set_flashdata('login', 'Login');
+                        $this->session->set_flashdata('login', 'Login');
 
-                    redirect('Home');
+                        redirect('Home');
+                    } else {
+                        $this->session->set_flashdata('message', '<small class="text-danger">
+                        Mohon maaf, terjadi kesalahan.</small>');
+                        redirect('/');
+                    }
                 } else {
                     $this->session->set_flashdata('message', '<small class="text-danger">
-                    Mohon maaf, terjadi kesalahan.</small>');
+                    Mohon maaf, akun ini belum diaktivasi.</small>');
                     redirect('/');
                 }
             } else {

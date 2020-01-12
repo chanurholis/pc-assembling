@@ -41,8 +41,10 @@ class Rakit extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('no_indeks', 'NO INDEKS', 'required|trim', [
-                'required' => 'NO INDEKS harus diisi.'
+            $this->form_validation->set_rules('no_indeks', 'NO INDEKS', 'required|trim|max_length[9]|min_length[9]', [
+                'required' => 'NO INDEKS harus diisi.',
+                'max_length' => 'NO INDEKS hanya boleh berisi 9 karakter.',
+                'min_length' => 'NO INDEKS hanya boleh berisi 9 karakter.'
             ]);
             $this->form_validation->set_rules('institusi', 'INSTITUSI', 'required|trim', [
                 'required' => 'INSTITUSI harus diisi.'

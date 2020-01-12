@@ -123,6 +123,7 @@
             </li>
             <li><a href="<?= base_url('Rakit') ?>"><i class="fa fa-desktop"></i> <span>Rakit PC</span></a></li>
             <li><a href="<?= base_url('Mypc') ?>"><i class="fa fa-database"></i> <span>My PC</span></a></li>
+            <li><a href="<?= base_url('User') ?>"><i class="fa fa-users"></i> <span>User</span></a></li>
         </ul>
     </section>
 </aside>

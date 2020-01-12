@@ -227,8 +227,6 @@ class Mypc extends CI_Controller
 
             $where = ['rakit_id' => $id];
 
-            // $bukti = $this->db->get_where('rakit', $where)->row();
-
             $this->db->where($where);
             $this->db->delete('rakit');
             redirect('Mypc');
