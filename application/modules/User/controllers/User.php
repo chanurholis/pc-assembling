@@ -194,4 +194,24 @@ class User extends CI_Controller
             }
         }
     }
+
+    public function hapus_user($id)
+    {
+        if ($this->session->userdata('status') == NULL) {
+            redirect('/');
+        } else {
+            if ($this->session->userdata('role') == 'Member') {
+                $url = base_url('Home');
+                redirect($url);
+            } else {
+                $this->session->set_flashdata('flash', 'Dihapus');
+
+                $where = ['id' => $id];
+
+                $this->db->where($where);
+                $this->db->delete('user');
+                redirect('User');
+            }
+        }
+    }
 }

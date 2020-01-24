@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="nama">Type Brand</label>
-                        <input type="text" style="text-transform: uppercase;" id="nama" name="nama_storage" class="form-control">
+                        <input type="text" style="text-transform: uppercase;" id="nama" name="nama_storage" class="form-control" value="<?= set_value('nama_storage') ?>">
                         <?= form_error('nama_storage', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
@@ -39,7 +39,7 @@
                         <select name="type" id="type" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih Type Storage --</option>
                             <?php foreach ($type as $d) : ?>
-                                <option value="<?= $d ?>"><?= $d ?></option>
+                                <option value="<?= $d ?>" <?= set_select('type', $d) ?>><?= $d ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('type', '<small class="text-danger">', '</small>') ?>
@@ -49,7 +49,7 @@
                         <select name="kapasitas" id="kapasitas" class="form-control select2" style="width: 100%;">
                             <option value="" selected="selected">-- Pilih Kapasitas --</option>
                             <?php foreach ($kapasitas_storage as $k) : ?>
-                                <option value="<?= $k->kapasitas_id ?>"><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
+                                <option value="<?= $k->kapasitas_id ?>" <?= set_select('kapasitas', $k->kapasitas_id) ?>><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
                             <?php endforeach ?>
                         </select>
                         <?= form_error('kapasitas', '<small class="text-danger">', '</small>') ?>

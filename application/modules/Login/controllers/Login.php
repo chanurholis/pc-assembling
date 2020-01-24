@@ -17,7 +17,7 @@ class Login extends CI_Controller
         }
 
         $this->form_validation->set_rules('username', 'Username', 'required', [
-            'required' => 'Email harus diisi.'
+            'required' => 'Username harus diisi.'
         ]);
         $this->form_validation->set_rules('password', 'Password', 'required', [
             'required' => 'Password harus diisi.'
@@ -79,50 +79,5 @@ class Login extends CI_Controller
     {
         $this->session->sess_destroy();
         redirect('/');
-    }
-
-    public function forgot()
-    {
-        $this->form_validation->set_rules('email', 'Email', 'required|trim');
-
-        if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Forgot Password';
-            $this->load->view('forgot_password', $data);
-        } else {
-            $email = htmlspecialchars($this->input->post('email'));
-            $user = $this->db->get_where('user', ['email' => $email, 'is_active' => 1])->row_array();
-
-            if ($user) {
-                $token = base64_encode(random_bytes(32));
-                $user_token = [
-                    'email' => $email,
-                    'token' => $token,
-                    'datecreated' => time()
-                ];
-
-                $this->db->insert('user_token', $user_token);
-            } else {
-
-                $this->session->set_flashdata('message', '<small class="text-danger">
-                Sorry this email is not registered or activated.</small>');
-                redirect('Login/forgot');
-            }
-        }
-    }
-
-    private function _sendEmail($token, $type)
-    {
-        $config = [
-            'protocol'  => 'smtp',
-            'smtp_host' => 'ssl://smtp.google.com',
-            'smtp_user' => '',
-            'smtp_pass' => '',
-            'smtp_port' => 465,
-            'mailtype'  => 'html',
-            'charset'   => 'utf-8',
-            'newline'   => "\r\n"
-        ];
-
-        $this->e;
     }
 }

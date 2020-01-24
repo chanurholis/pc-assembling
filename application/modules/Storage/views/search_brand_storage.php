@@ -31,17 +31,15 @@
                         <table class="table table-striped table-bordered">
                             <tr>
                                 <th class="text-center" scope="col" width="10px;">No</th>
-                                <th scope="col">ID Brand Storage</th>
                                 <th scope="col">Brand Storage</th>
                                 <th scope="col">Type Storage</th>
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                                                $no = 1;
-                                                foreach ($storage as $s) { ?>
+                            $no = 1;
+                            foreach ($storage as $s) { ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
-                                    <td scope="row"><?= $s->brand_storage_id ?></td>
                                     <td scope="row"><?= $s->brand_storage ?></td>
                                     <td scope="row"><?= $s->type_storage ?></td>
                                     <td scope="row" class="text-center">

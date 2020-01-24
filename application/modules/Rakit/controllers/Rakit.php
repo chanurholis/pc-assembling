@@ -82,6 +82,9 @@ class Rakit extends CI_Controller
             $this->form_validation->set_rules('pengguna', 'PENGGUNA', 'required|trim', [
                 'required' => 'PENGGUNA harus diisi.'
             ]);
+            $this->form_validation->set_rules('diserahkan', 'DISERAHKAN', 'required|trim', [
+                'required' => 'TANGGAL DISERAHKAN harus diisi.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $data['judul'] = 'Rakit PC';

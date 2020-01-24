@@ -19,6 +19,7 @@ class M_casing extends CI_Model
         $this->db->select('*');
         $this->db->from('m_casing');
         $this->db->like('nama_casing', $keyword);
+        $this->db->or_like('casing_id', $keyword);
         $this->db->order_by('nama_casing', 'ASC');
         return $this->db->get()->result();
     }

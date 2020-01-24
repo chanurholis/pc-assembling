@@ -37,7 +37,7 @@
                                     <form method="post" action="<?= base_url('Login') ?>" class="user">
                                         <div class="form-group">
                                             <input type="text" name="username" value="<?= set_value('username') ?>" class="form-control form-control-user rounded-0" placeholder="Username" autofocus>
-                                            <?= form_error('email', '<small class="text-danger">', '</small>') ?>
+                                            <?= form_error('username', '<small class="text-danger">', '</small>') ?>
                                             <?= $this->session->flashdata('message'); ?>
                                         </div>
                                         <div class="form-group">
@@ -51,7 +51,7 @@
                                         <hr>
                                     </form>
                                     <div class="text-center">
-                                        <a style="text-decoration:none" class="small" href="<?= base_url('Login/forgot') ?>">Forgot Password?</a>
+                                        <a style="text-decoration:none" class="small text-primary">Lupa Password? Hubungi Administrator!</a>
                                     </div>
                                 </div>
                             </div>

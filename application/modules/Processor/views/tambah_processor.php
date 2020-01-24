@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="nama">Type Processor</label>
-                        <input type="text" id="nama" name="processor" class="form-control" value="<?= set_value('processor') ?>" required>
+                        <input type="text" id="nama" name="processor" class="form-control" value="<?= set_value('processor') ?>">
                         <?= form_error('processor', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

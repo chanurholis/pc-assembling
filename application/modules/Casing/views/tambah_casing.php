@@ -21,12 +21,12 @@
                 <div class="box-body">
                     <div class="form-group col-md-8">
                         <label for="id">ID Casing</label>
-                        <input type="number" id="id" name="id_casing" class="form-control" autofocus>
+                        <input type="number" id="id" name="id_casing" class="form-control" autofocus value="<?= set_value('id_casing') ?>">
                         <?= form_error('id_casing', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="nama">Casing</label>
-                        <input type="text" id="nama" name="nama_casing" class="form-control">
+                        <input type="text" id="nama" name="nama_casing" class="form-control" value="<?= set_value('nama_casing') ?>">
                         <?= form_error('nama_casing', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

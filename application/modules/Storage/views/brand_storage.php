@@ -36,8 +36,8 @@
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php
-                                                $no = 1;
-                                                foreach ($storage as $s) : ?>
+                            $no = 1;
+                            foreach ($storage as $s) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $s->brand_storage ?></td>

@@ -36,7 +36,7 @@ class M_ram extends CI_Model
     {
         $this->db->select('*');
         $this->db->from('m_kapasitas_ram');
-        $this->db->order_by('kapasitas_id', 'ASC');
+        $this->db->order_by('kapasitas_id', 'DESC');
         return $this->db->get();
     }
 
@@ -71,7 +71,7 @@ class M_ram extends CI_Model
         $this->db->or_like('m_brand_ram.brand_ram', $keyword);
         $this->db->or_like('m_kapasitas_ram.kapasitas_ram', $keyword);
         $this->db->or_like('nama_ram', $keyword);
-        // $this->db->or_like('satuan', $keyword);
+        $this->db->or_like('satuan', $keyword);
         return $this->db->get()->result();
     }
 

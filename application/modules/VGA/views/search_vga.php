@@ -37,12 +37,12 @@
                                 <th scope="col" class="text-center">Aksi</th>
                             </tr>
                             <?php $no = 1;
-                                                foreach ($vga as $v) : ?>
+                            foreach ($vga as $v) : ?>
                                 <tr>
                                     <td class="text-center" scope="row"><?= $no++ ?></td>
                                     <td scope="row"><?= $v->vga_id ?></td>
                                     <td scope="row"><?= $v->nama_vga ?></td>
-                                    <td scope="row"><?= $v->type ?></td>
+                                    <td scope="row"><?= $v->type_vga ?></td>
                                     <td scope="row" class="text-center">
                                         <a href="<?= base_url('VGA/ubah_vga/') . $v->vga_id ?>"><span class="label label-info"><i class="fa fa-pencil"></i> Ubah</span></a>
                                         <a class="tombol-hapus" href="<?= base_url('VGA/hapus_vga/') . $v->vga_id ?>"><span class="label label-danger"><i class="fa fa-trash"></i> Hapus</span></a>

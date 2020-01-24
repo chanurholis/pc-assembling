@@ -21,12 +21,12 @@
                 <div class="box-body">
                     <div class="form-group col-md-8">
                         <label for="id">ID PSU</label>
-                        <input type="number" id="id" name="psu_id" class="form-control" autofocus>
+                        <input type="number" id="id" name="psu_id" class="form-control" autofocus value="<?= set_value('psu_id') ?>">
                         <?= form_error('psu_id', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">
                         <label for="nama">PSU</label>
-                        <input type="text" id="nama" name="nama_psu" class="form-control">
+                        <input type="text" id="nama" name="nama_psu" class="form-control" value="<?= set_value('nama_psu') ?>">
                         <?= form_error('nama_psu', '<small class="text-danger">', '</small>') ?>
                     </div>
                     <div class="form-group col-md-8">

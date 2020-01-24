@@ -57,7 +57,7 @@ class VGA extends CI_Controller
                 $data = [
                     'vga_id' => $id,
                     'nama_vga' => $nama_vga,
-                    'type' => $type
+                    'type_vga' => $type
                 ];
 
                 $this->db->insert('m_vga', $data);
@@ -117,7 +117,7 @@ class VGA extends CI_Controller
 
                 $data = [
                     'nama_vga' => $nama_vga,
-                    'type' => $type
+                    'type_vga' => $type
                 ];
 
                 $this->db->where($where);

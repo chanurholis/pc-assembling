@@ -161,4 +161,42 @@ class M_mypc extends CI_Model
         $this->db->order_by('nama_monitor', 'ASC');
         return $this->db->get();
     }
+
+    public function get_keyword_mypc($keyword, $where)
+    {
+        $this->db->select('*');
+        $this->db->from('rakit');
+        $this->db->where($where);
+        $this->db->join('m_processor', 'rakit.processor_id=m_processor.processor_id', 'inner');
+        $this->db->join('m_brand_processor', 'm_processor.brand_processor_id=m_brand_processor.brand_processor_id', 'inner');
+        $this->db->join('m_ram', 'rakit.ram_id=m_ram.ram_id', 'inner');
+        $this->db->join('m_brand_ram', 'm_ram.brand_ram_id=m_brand_ram.brand_ram_id', 'inner');
+        $this->db->join('m_ddr_ram', 'm_ram.ddr_id=m_ddr_ram.ddr_id', 'inner');
+        $this->db->join('m_kapasitas_ram', 'm_ram.kapasitas_id=m_kapasitas_ram.kapasitas_id', 'inner');
+        $this->db->join('m_storage', 'rakit.storage_id=m_storage.storage_id', 'inner');
+        $this->db->join('m_brand_storage', 'm_storage.brand_storage_id=m_brand_storage.brand_storage_id', 'inner');
+        $this->db->join('m_kapasitas_storage', 'm_storage.kapasitas_id=m_kapasitas_storage.kapasitas_id', 'inner');
+        $this->db->join('m_motherboard', 'rakit.motherboard_id=m_motherboard.motherboard_id', 'inner');
+        $this->db->join('m_brand_motherboard', 'm_motherboard.brand_motherboard_id=m_brand_motherboard.brand_motherboard_id', 'inner');
+        $this->db->like('no_indeks', $keyword);
+        $this->db->or_like('institusi', $keyword);
+        $this->db->or_like('pengguna', $keyword);
+        $this->db->or_like('m_processor.nama_processor', $keyword);
+        $this->db->or_like('m_brand_processor.brand_processor', $keyword);
+        $this->db->or_like('m_ram.nama_ram', $keyword);
+        $this->db->or_like('m_ram.satuan_ram', $keyword);
+        $this->db->or_like('m_brand_ram.brand_ram', $keyword);
+        $this->db->or_like('m_ddr_ram.ddr', $keyword);
+        $this->db->or_like('m_kapasitas_ram.kapasitas_ram', $keyword);
+        $this->db->or_like('m_kapasitas_ram.satuan', $keyword);
+        $this->db->or_like('m_storage.nama_storage', $keyword);
+        $this->db->or_like('m_storage.type_storage', $keyword);
+        $this->db->or_like('m_brand_storage.brand_storage', $keyword);
+        $this->db->or_like('m_brand_storage.type_storage', $keyword);
+        $this->db->or_like('m_kapasitas_storage.kapasitas_storage', $keyword);
+        $this->db->or_like('m_kapasitas_storage.satuan', $keyword);
+        $this->db->or_like('m_motherboard.motherboard', $keyword);
+        $this->db->or_like('m_brand_motherboard.brand_motherboard', $keyword);
+        return $this->db->get();
+    }
 }

@@ -450,13 +450,14 @@ class RAM extends CI_Controller
                 'required' => 'DDR harus diisi.'
             ]);
             $this->form_validation->set_rules('brand_ram', 'Brand RAM', 'required|trim', [
-                'Brand RAM harus diisi.'
+                'required' => 'Brand RAM harus diisi.'
             ]);
-            $this->form_validation->set_rules('nama_ram', 'Type RAM', 'required|trim', [
-                'Type RAM harus diisi.'
+            $this->form_validation->set_rules('nama_ram', 'Type RAM', 'required|trim|is_unique[m_ram.nama_ram]', [
+                'required' => 'Type RAM harus diisi.',
+                'is_unique' => 'Type RAM sudah digunakan.'
             ]);
             $this->form_validation->set_rules('kapasitas', 'Kapasitas', 'required|trim', [
-                'Kapasitas harus diisi.'
+                'required' => 'Kapasitas harus diisi.'
             ]);
 
             if ($this->form_validation->run() == false) {

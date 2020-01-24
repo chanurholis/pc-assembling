@@ -226,7 +226,7 @@
                         <div class="col-md-8">
                             <div class="form-group">
                                 <label>DISERAHKAN</label>
-                                <input type="date" class="form-control" name="diserahkan" value="2013-01-08<?= set_value('diserahkan') ?>">
+                                <input type="date" class="form-control" name="diserahkan" value="2013-01-08">
                             </div>
                         </div>
                         <div class="col-md-8">

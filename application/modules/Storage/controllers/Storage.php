@@ -116,6 +116,7 @@ class Storage extends CI_Controller
                 $where = array('storage_id' => $id);
                 $data['storage'] = $this->M_storage->ubah_storage($where)->result();
                 $data['brand_storage'] = $this->M_storage->tampil_brand_storage()->result();
+                $data['kapasitas'] = $this->M_storage->tampil_kapasitas()->result();
                 $data['type'] = ['HDD', 'SSD'];
                 $this->load->view('partials/header', $data);
                 $this->load->view('partials/sidebar_admin');
@@ -130,12 +131,12 @@ class Storage extends CI_Controller
                 $nama_storage = htmlspecialchars(strtoupper($this->input->post('nama_storage', true)));
                 $type = htmlspecialchars($this->input->post('type', true));
 
-                $where = array('id' => $id);
+                $where = array('storage_id' => $id);
 
                 $data = [
-                    'brand_storage' => $brand_storage,
+                    'brand_storage_id' => $brand_storage,
                     'nama_storage' => $nama_storage,
-                    'type' => $type
+                    'type_storage' => $type
                 ];
 
                 $this->db->where($where);
@@ -258,7 +259,10 @@ class Storage extends CI_Controller
         if ($this->session->userdata('status') == NULL) {
             redirect('/');
         } else {
-            $this->form_validation->set_rules('brand_storage', 'Brand Storage', 'required|trim|is_unique[m_brand_storage.brand_storage]');
+            $this->form_validation->set_rules('brand_storage', 'Brand Storage', 'required|trim|is_unique[m_brand_storage.brand_storage]', [
+                'required' => 'Brand Storage harus diisi.',
+                'is_unique' => 'Brand Storage sudah digunakan.'
+            ]);
 
             if ($this->form_validation->run() == false) {
                 $id = htmlspecialchars($this->input->post('id', true));

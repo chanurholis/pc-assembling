@@ -21,7 +21,7 @@
                     <div class="col-md-8">
                         <div class="form-group">
                             <label>NO INDEKS</label>
-                            <input type="text" style="text-transform:uppercase" class="form-control" name="no_indeks" autofocus value="<?= set_value('nama_pc') ?>">
+                            <input type="text" style="text-transform:uppercase" class="form-control" name="no_indeks" autofocus value="<?= set_value('no_indeks') ?>">
                             <?= form_error('no_indeks', '<small class="text-danger">', '</small>') ?>
                         </div>
                     </div>
@@ -58,7 +58,7 @@
                             <select name="motherboard" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih Motherboard --</option>
                                 <?php foreach ($motherboard as $m) : ?>
-                                    <option value="<?= $m->motherboard_id ?>" <?= set_select('motherboard', $m->brand_motherboard . $m->motherboard) ?>><?= $m->brand_motherboard ?> <?= $m->motherboard ?></option>
+                                    <option value="<?= $m->motherboard_id ?>" <?= set_select('motherboard', $m->motherboard_id) ?>><?= $m->brand_motherboard ?> <?= $m->motherboard ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('motherboard', '<small class="text-danger">', '</small>') ?>
@@ -71,7 +71,7 @@
                             <select name="ram" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih RAM --</option>
                                 <?php foreach ($ram as $r) : ?>
-                                    <option value="<?= $r->ram_id ?>" <?= set_select('ram', $r->brand_ram . $r->nama_ram . "DDR" . $r->ddr . $r->kapasitas_ram) ?>><?= $r->brand_ram ?> <?= $r->nama_ram ?> DDR<?= $r->ddr ?> <?= $r->kapasitas_ram ?><?= $r->satuan ?></option>
+                                    <option value="<?= $r->ram_id ?>" <?= set_select('ram', $r->ram_id) ?>><?= $r->brand_ram ?> <?= $r->nama_ram ?> DDR<?= $r->ddr ?> <?= $r->kapasitas_ram ?><?= $r->satuan ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('ram', '<small class="text-danger">', '</small>') ?>
@@ -84,7 +84,7 @@
                             <select name="storage" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih Storage --</option>
                                 <?php foreach ($storage as $s) : ?>
-                                    <option value="<?= $s->storage_id ?>" <?= set_select('storage', $s->brand_storage . $s->nama_storage . $s->type_storage . $s->kapasitas_storage . $r->satuan) ?>><?= $s->brand_storage ?> <?= $s->nama_storage ?> <?= $s->type_storage ?> <?= $s->kapasitas_storage ?><?= $s->satuan ?></option>
+                                    <option value="<?= $s->storage_id ?>" <?= set_select('storage', $s->storage_id) ?>><?= $s->brand_storage ?> <?= $s->nama_storage ?> <?= $s->type_storage ?> <?= $s->kapasitas_storage ?><?= $s->satuan ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('storage', '<small class="text-danger">', '</small>') ?>
@@ -97,7 +97,7 @@
                             <select name="casing" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih Casing --</option>
                                 <?php foreach ($casing as $c) : ?>
-                                    <option value="<?= $c->casing_id ?> <?= set_select('casing', $c->nama_casing) ?>"><?= $c->nama_casing ?></option>
+                                    <option value="<?= $c->casing_id ?>" <?= set_select('casing', $c->casing_id) ?>><?= $c->nama_casing ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('casing', '<small class="text-danger">', '</small>') ?>
@@ -110,7 +110,7 @@
                             <select name="vga" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih VGA --</option>
                                 <?php foreach ($vga as $v) : ?>
-                                    <option value="<?= $v->vga_id ?>" <?= set_select('vga', $v->nama_vga) ?>><?= $v->nama_vga ?> <?= $v->type_vga ?></option>
+                                    <option value="<?= $v->vga_id ?>" <?= set_select('vga', $v->vga_id) ?>><?= $v->nama_vga ?> <?= $v->type_vga ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('vga', '<small class="text-danger">', '</small>') ?>
@@ -123,7 +123,7 @@
                             <select name="psu" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih PSU --</option>
                                 <?php foreach ($psu as $p) : ?>
-                                    <option value="<?= $p->psu_id ?>" <?= set_select('psu', $p->nama_psu) ?>><?= $p->nama_psu ?></option>
+                                    <option value="<?= $p->psu_id ?>" <?= set_select('psu', $p->psu_id) ?>><?= $p->nama_psu ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('psu', '<small class="text-danger">', '</small>') ?>
@@ -136,7 +136,7 @@
                             <select name="keyboard" class="form-control select2" style="width: 100%;" value="<?= set_value('keyboard') ?>">
                                 <option value="" selected="selected">-- Pilih Keyboard --</option>
                                 <?php foreach ($keyboard as $k) : ?>
-                                    <option value="<?= $k->keyboard_id ?>" <?= set_select('keyboard', $k->nama_keyboard) ?>><?= $k->nama_keyboard ?></option>
+                                    <option value="<?= $k->keyboard_id ?>" <?= set_select('keyboard', $k->keyboard_id) ?>><?= $k->nama_keyboard ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('keyboard', '<small class="text-danger">', '</small>') ?>
@@ -149,7 +149,7 @@
                             <select name="mouse" class="form-control select2" style="width: 100%;" value="<?= set_value('mouse') ?>">
                                 <option value="" selected="selected">-- Pilih Mouse --</option>
                                 <?php foreach ($mouse as $k) : ?>
-                                    <option value="<?= $k->mouse_id ?>" <?= set_select('mouse', $k->nama_mouse) ?>><?= $k->nama_mouse ?></option>
+                                    <option value="<?= $k->mouse_id ?>" <?= set_select('mouse', $k->mouse_id) ?>><?= $k->nama_mouse ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('mouse', '<small class="text-danger">', '</small>') ?>
@@ -162,7 +162,7 @@
                             <select name="monitor" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih Monitor --</option>
                                 <?php foreach ($monitor as $k) : ?>
-                                    <option value="<?= $k->monitor_id ?>" <?= set_select('monitor', $k->nama_monitor) ?>><?= $k->nama_monitor ?></option>
+                                    <option value="<?= $k->monitor_id ?>" <?= set_select('monitor', $k->monitor_id) ?>><?= $k->nama_monitor ?></option>
                                 <?php endforeach ?>
                             </select>
                             <?= form_error('monitor', '<small class="text-danger">', '</small>') ?>
@@ -181,6 +181,7 @@
                         <div class="form-group">
                             <label>DISERAHKAN</label>
                             <input type="date" class="form-control" name="diserahkan" value="<?= set_value('diserahkan') ?>">
+                            <?= form_error('diserahkan', '<small class="text-danger">', '</small>') ?>
                         </div>
                     </div>
                     <div class="col-md-8">

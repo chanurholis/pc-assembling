@@ -19,6 +19,8 @@ class M_psu extends CI_Model
         $this->db->select('*');
         $this->db->from('m_psu');
         $this->db->like('nama_psu', $keyword);
+        $this->db->or_like('psu_id', $keyword);
+        $this->db->order_by('nama_psu', 'ASC');
         return $this->db->get()->result();
     }
 }

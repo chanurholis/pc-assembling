@@ -1,5 +1,5 @@
 <footer style="background-color:#ECF0F5;" class="main-footer">
-    <strong>Copyright &copy; <?= date('Y'); ?> <a target="_blank" href="https://www.instagram.com/chanurholis/" class="text-light">Chacha Nurholis</a>.</strong>
+    <strong>Copyright &copy; <?= date('Y'); ?> <a target="_top" href="mailto:chachanurholis29@gmail.com" class="text-light">Chacha Nurholis</a>.</strong>
 </footer>
 
 <div class="control-sidebar-bg"></div>

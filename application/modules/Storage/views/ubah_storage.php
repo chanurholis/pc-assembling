@@ -27,9 +27,9 @@
                                 <option value="" selected="selected">-- Pilih Brand --</option>
                                 <?php foreach ($brand_storage as $b) : ?>
                                     <?php if ($s->brand_storage == $b->brand_storage) : ?>
-                                        <option value="<?= $b->brand_storage ?>" selected><?= $b->brand_storage ?></option>
+                                        <option value="<?= $b->brand_storage_id ?>" selected><?= $b->brand_storage ?></option>
                                     <?php else : ?>
-                                        <option value="<?= $b->brand_storage ?>"><?= $b->brand_storage ?></option>
+                                        <option value="<?= $b->brand_storage_id ?>"><?= $b->brand_storage ?></option>
                                     <?php endif ?>
                                 <?php endforeach ?>
                             </select>
@@ -60,9 +60,9 @@
                                 <option value="">-- Pilih Kapasitas --</option>
                                 <?php foreach ($kapasitas as $k) : ?>
                                     <?php if ($k->kapasitas_id == $s->kapasitas_id) : ?>
-                                        <option value="<?= $k->kapasitas_id ?>" selected><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
+                                        <option value="<?= $k->kapasitas_id ?>" <?= set_select('kapasitas', $k->kapasitas_id) ?> selected><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
                                     <?php else : ?>
-                                        <option value="<?= $k->kapasitas_id ?>"><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
+                                        <option value="<?= $k->kapasitas_id ?>" <?= set_select('kapasitas', $k->kapasitas_id) ?>><?= $k->kapasitas_storage ?><?= $k->satuan ?></option>
                                     <?php endif ?>
                                 <?php endforeach ?>
                             </select>

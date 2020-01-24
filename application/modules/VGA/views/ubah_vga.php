@@ -35,7 +35,7 @@
                             <select name="type" id="type" class="form-control select2" style="width: 100%;">
                                 <option value="" selected="selected">-- Pilih Type --</option>
                                 <?php foreach ($type as $t) : ?>
-                                    <?php if ($v->type == $t) : ?>
+                                    <?php if ($v->type_vga == $t) : ?>
                                         <option value="<?= $t ?>" selected><?= $t ?></option>
                                     <?php else : ?>
                                         <option value="<?= $t ?>"><?= $t ?></option>

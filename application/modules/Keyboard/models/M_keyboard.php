@@ -19,6 +19,7 @@ class M_keyboard extends CI_Model
         $this->db->select('*');
         $this->db->from('m_keyboard');
         $this->db->like('nama_keyboard', $keyword);
+        $this->db->or_like('keyboard_id', $keyword);
         $this->db->order_by('nama_keyboard', 'ASC');
         return $this->db->get()->result();
     }
