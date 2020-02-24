@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 26, 2019 at 11:53 AM
--- Server version: 5.7.28-0ubuntu0.18.04.4
--- PHP Version: 7.2.24-0ubuntu0.18.04.1
+-- Generation Time: Feb 24, 2020 at 06:00 PM
+-- Server version: 5.7.29-0ubuntu0.18.04.1
+-- PHP Version: 7.2.24-0ubuntu0.18.04.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -37,7 +37,7 @@ CREATE TABLE `m_brand_motherboard` (
 
 INSERT INTO `m_brand_motherboard` (`brand_motherboard_id`, `brand_motherboard`) VALUES
 (1, 'MSI'),
-(2, 'AsRock');
+(2, 'ASUS');
 
 -- --------------------------------------------------------
 
@@ -55,7 +55,7 @@ CREATE TABLE `m_brand_processor` (
 --
 
 INSERT INTO `m_brand_processor` (`brand_processor_id`, `brand_processor`) VALUES
-(1, 'Intel'),
+(1, 'INTEL'),
 (2, 'AMD');
 
 -- --------------------------------------------------------
@@ -74,10 +74,8 @@ CREATE TABLE `m_brand_ram` (
 --
 
 INSERT INTO `m_brand_ram` (`brand_ram_id`, `brand_ram`) VALUES
-(1, 'Corsair'),
-(2, 'G.Skill'),
-(3, 'Kingston'),
-(12, 'Toshiba');
+(1, 'TOSHIBA'),
+(2, 'SAMSUNG');
 
 -- --------------------------------------------------------
 
@@ -96,10 +94,9 @@ CREATE TABLE `m_brand_storage` (
 --
 
 INSERT INTO `m_brand_storage` (`brand_storage_id`, `brand_storage`, `type_storage`) VALUES
-(1, 'Toshiba', 'HDD'),
-(3, 'Sandisk', 'SSD'),
-(4, 'Lenovo', 'HDD'),
-(5, 'Samsung', 'SSD');
+(1, 'TOSHIBA', 'HDD'),
+(2, 'SAMSUNG', 'SSD'),
+(3, 'ASUS', 'SSD');
 
 -- --------------------------------------------------------
 
@@ -117,10 +114,7 @@ CREATE TABLE `m_casing` (
 --
 
 INSERT INTO `m_casing` (`casing_id`, `nama_casing`) VALUES
-(2, 'Cooler Master Cosmos C700P'),
-(3, 'NZXT H710i'),
-(4, 'Logitech'),
-(5, 'ASUS');
+(1, 'Dazumba');
 
 -- --------------------------------------------------------
 
@@ -182,10 +176,8 @@ CREATE TABLE `m_kapasitas_storage` (
 --
 
 INSERT INTO `m_kapasitas_storage` (`kapasitas_id`, `kapasitas_storage`, `satuan`) VALUES
-(3, '80', 'GB'),
-(4, '2', 'TB'),
-(10, '1', 'TB'),
-(11, '500', 'GB');
+(1, '500', 'GB'),
+(3, '1', 'TB');
 
 -- --------------------------------------------------------
 
@@ -204,7 +196,8 @@ CREATE TABLE `m_keyboard` (
 
 INSERT INTO `m_keyboard` (`keyboard_id`, `nama_keyboard`) VALUES
 (1, 'Logitech I'),
-(3, 'Votre');
+(3, 'Votre'),
+(4, 'Lenovo');
 
 -- --------------------------------------------------------
 
@@ -224,7 +217,8 @@ CREATE TABLE `m_monitor` (
 INSERT INTO `m_monitor` (`monitor_id`, `nama_monitor`) VALUES
 (1, 'Logitech'),
 (2, 'ASUS'),
-(3, 'Samsung');
+(3, 'Samsung'),
+(4, 'Acer');
 
 -- --------------------------------------------------------
 
@@ -243,9 +237,9 @@ CREATE TABLE `m_motherboard` (
 --
 
 INSERT INTO `m_motherboard` (`motherboard_id`, `brand_motherboard_id`, `motherboard`) VALUES
-(15, 1, 'B450'),
-(19, 2, 'E3V5 WS'),
-(21, 4, 'ThinkPad X240');
+(21, 4, 'ThinkPad X240'),
+(22, 1, 'MS17'),
+(23, 2, 'A5US');
 
 -- --------------------------------------------------------
 
@@ -284,11 +278,9 @@ CREATE TABLE `m_processor` (
 --
 
 INSERT INTO `m_processor` (`processor_id`, `brand_processor_id`, `nama_processor`) VALUES
-(16, 1, 'Core i3'),
-(17, 2, 'Ryzen II'),
-(18, 1, 'Core i9'),
-(19, 2, 'Ryzen I'),
-(20, 3, 'coba');
+(20, 3, 'coba'),
+(21, 2, 'Ryzen'),
+(22, 1, 'Core');
 
 -- --------------------------------------------------------
 
@@ -330,9 +322,9 @@ CREATE TABLE `m_ram` (
 --
 
 INSERT INTO `m_ram` (`ram_id`, `ddr_id`, `brand_ram_id`, `nama_ram`, `kapasitas_id`, `satuan_ram`) VALUES
-(8, 2, 2, 'Toshiba', 6, 'GB'),
-(9, 1, 2, 'G.Skill', 7, 'GB'),
-(10, 2, 1, 'Corsair', 2, 'GB');
+(16, 2, 1, 'TOSHIBA', 5, 'GB'),
+(17, 2, 2, 'MURAH', 7, 'GB'),
+(18, 2, 2, 'Samsung', 7, 'GB');
 
 -- --------------------------------------------------------
 
@@ -345,19 +337,16 @@ CREATE TABLE `m_storage` (
   `brand_storage_id` varchar(100) NOT NULL,
   `nama_storage` varchar(100) NOT NULL,
   `kapasitas_id` varchar(20) NOT NULL,
-  `type_storage` enum('HDD','SSD') NOT NULL,
-  `satuan_storage` enum('GB','TB') NOT NULL
+  `type_storage` enum('HDD','SSD') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `m_storage`
 --
 
-INSERT INTO `m_storage` (`storage_id`, `brand_storage_id`, `nama_storage`, `kapasitas_id`, `type_storage`, `satuan_storage`) VALUES
-(2, '1', 'Coba dua', '10', 'HDD', 'GB'),
-(3, '4', 'ASK22', '4', 'HDD', 'GB'),
-(4, '5', 'SNGS', '3', 'SSD', 'GB'),
-(5, '3', 'AKSN', '4', 'SSD', 'GB');
+INSERT INTO `m_storage` (`storage_id`, `brand_storage_id`, `nama_storage`, `kapasitas_id`, `type_storage`) VALUES
+(7, '1', 'HDT6', '1', 'HDD'),
+(12, '2', 'SANGUAN', '3', 'SSD');
 
 -- --------------------------------------------------------
 
@@ -376,10 +365,7 @@ CREATE TABLE `m_vga` (
 --
 
 INSERT INTO `m_vga` (`vga_id`, `nama_vga`, `type_vga`) VALUES
-(2, 'MSI GTX 750 OC 2Gb DDR5 N751', 'ADD-ON'),
-(3, 'Galax Geforce GTX 980 Ti HOF 6GB DDR5 – Triple Fan', 'ADD-ON'),
-(4, 'Gigabyte', 'ON-BOARD'),
-(8, 'OOD', 'ON-BOARD');
+(1, 'VGA', 'ADD-ON');
 
 -- --------------------------------------------------------
 
@@ -413,8 +399,11 @@ CREATE TABLE `rakit` (
 --
 
 INSERT INTO `rakit` (`rakit_id`, `user`, `no_indeks`, `processor_id`, `motherboard_id`, `ram_id`, `storage_id`, `casing_id`, `vga_id`, `psu_id`, `keyboard_id`, `mouse_id`, `monitor_id`, `tgl_input`, `tgl_diserahkan`, `pengguna`, `institusi`, `bukti`) VALUES
-(3, 'Admin', 'stimlog-6477', 20, 19, 10, 3, 5, 2, 2, 1, 2, 3, '2019-12-20 21:16:09', '2019-12-21 00:00:00', 'Dosen', 'STIMLOG', 'item-201219-6474290249.png'),
-(8, 'Admin', 'sadmnsa,mdn,sad', 17, 19, 10, 3, 5, 2, 2, 1, 2, 2, '2019-12-26 11:45:47', '2019-01-31 00:00:00', 'Dosen', 'YPBPI', 'item-261219-e9b1c23517.png');
+(6, 'Admin', 'A-1-0-V-C', 21, 23, 17, 12, 1, 1, 2, 1, 2, 2, '2020-01-19 10:13:58', '2013-01-08 00:00:00', 'DOSEN', 'YPBPI', 'default.jpg'),
+(7, 'Admin', 'A-1-A-D-3', 22, 23, 16, 12, 1, 1, 2, 1, 2, 2, '2020-01-19 10:11:21', '2013-01-08 00:00:00', 'SISWA MAGANG', 'POLTEKPOS', 'default.jpg'),
+(8, 'Admin', 'C-D-4-D-F', 21, 23, 17, 12, 1, 1, 2, 1, 2, 2, '2020-01-19 10:19:55', '2020-12-31 00:00:00', 'STAFF', 'POLTEKPOS', 'item-190120-7791fe8803.png'),
+(9, 'Member', '123457895', 22, 23, 18, 7, 1, 1, 3, 1, 1, 3, '2020-02-24 14:55:49', '2020-02-24 00:00:00', 'RIFKY', 'STIMLOG', 'default.jpg'),
+(10, 'Rifky', '123456789', 21, 22, 18, 7, 1, 1, 2, 1, 3, 2, '2020-02-24 15:02:09', '2020-02-27 00:00:00', 'RIFKY A', 'STIMLOG', 'default.jpg');
 
 -- --------------------------------------------------------
 
@@ -424,11 +413,10 @@ INSERT INTO `rakit` (`rakit_id`, `user`, `no_indeks`, `processor_id`, `motherboa
 
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
-  `email` varchar(100) NOT NULL,
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `role` varchar(10) NOT NULL,
-  `is_active` varchar(10) NOT NULL,
+  `is_active` enum('Aktif','Tidak Aktif') NOT NULL,
   `last_login` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -436,9 +424,11 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `username`, `password`, `role`, `is_active`, `last_login`) VALUES
-(1, 'admin@admin.com', 'Admin', '$2y$10$665stnvehU55TSVUduRQ/.RNBsEUV6pviUnY79sXeRh4wTCEvlHMW', 'Admin', '1', '2019-12-26 09:30:04'),
-(9, 'member@member.com', 'Member', '$2y$10$HzTHOCIyW4pwWmyJhufBHOKf1oQ4c..0jabDMEApcuTlot7XktAEq', 'Member', '1', '2019-12-13 10:34:19');
+INSERT INTO `user` (`id`, `username`, `password`, `role`, `is_active`, `last_login`) VALUES
+(12, 'Admin', '$2y$10$Ap1bn46w0nLv8GMxuS4Xj.Is0POg1KhAVfgrGdC8n7OjFibgG/6uO', 'Admin', 'Aktif', '2020-02-24 17:59:28'),
+(13, 'Member', '$2y$10$dPO3WX1uEv3oZIzD7Q5pe.WNkYTuyVaGpXzXeb.tFknZYoVNh/4Ja', 'Member', 'Aktif', '2020-02-24 14:53:48'),
+(14, 'Rifky', '$2y$10$YKjUQvmaNkhYuGZ5Vf00GOGLrIfHiHRBWua5KZoGzJcXvAgd8bK6e', 'Member', 'Aktif', '2020-02-24 14:57:51'),
+(15, 'Amelia', '$2y$10$NgJrh3N4keHI7x65OX8Ea.arAd9IlKgYxV/MBzthVg/H/77dTn4Ia', 'Admin', 'Aktif', '2020-02-24 15:00:37');
 
 --
 -- Indexes for dumped tables
@@ -574,42 +564,42 @@ ALTER TABLE `m_ddr_ram`
 -- AUTO_INCREMENT for table `m_kapasitas_ram`
 --
 ALTER TABLE `m_kapasitas_ram`
-  MODIFY `kapasitas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `kapasitas_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `m_motherboard`
 --
 ALTER TABLE `m_motherboard`
-  MODIFY `motherboard_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `motherboard_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `m_processor`
 --
 ALTER TABLE `m_processor`
-  MODIFY `processor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `processor_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `m_ram`
 --
 ALTER TABLE `m_ram`
-  MODIFY `ram_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ram_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `m_storage`
 --
 ALTER TABLE `m_storage`
-  MODIFY `storage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `storage_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT for table `m_vga`
 --
 ALTER TABLE `m_vga`
-  MODIFY `vga_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `vga_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `rakit`
 --
 ALTER TABLE `rakit`
-  MODIFY `rakit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `rakit_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -27,7 +27,7 @@
                     <div class="card-body p-0 rounded-0">
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block rounded-0">
-                                <img style="margin-left:100px;" class="mt-3" src="<?= base_url('assets/ypbpi.png') ?>" width="300px" height="300px" alt="">
+                                <img style="margin-left:100px;" class="mt-3" src="<?= base_url('assets/ubuntu.png') ?>" width="300px" height="300px" alt="">
                             </div>
                             <div class="col-lg-6 rounded-0">
                                 <div class="p-5 rounded-0">
